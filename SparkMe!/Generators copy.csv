@@ -1,0 +1,342 @@
+Participant,Station Name,Region,Dispatch Type,Category,Classification,Fuel Source - Primary,Fuel Source - Descriptor,Technology Type - Primary,Technology Type - Descriptor,DUID,Reg Cap (MW),Max Cap (MW)
+AGL Hydro Partnership,Banimboola Power Station,VIC1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,BAPS,12.85,13
+AGL Hydro Partnership,Bogong / Mckay Power Station,VIC1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,MCKAY1,300,300
+AGL Hydro Partnership,Dartmouth Power Station,VIC1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,DARTM1,150,185
+AGL Hydro Partnership,Eildon Power Station,VIC1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,EILDON1,60,60
+AGL Hydro Partnership,Eildon Power Station,VIC1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,EILDON2,60,60
+AGL Hydro Partnership,Hallett 1 Wind Farm,SA1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,HALLWF1,94.5,95
+AGL Hydro Partnership,Hallett 2 Wind Farm,SA1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,HALLWF2,71.4,71
+AGL Hydro Partnership,ISIS Central Sugar Mill Co-generation Plant,QLD1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Bagasse,Combustion,Steam Sub-Critical,ICSM,25,25
+AGL Hydro Partnership,Moranbah Generation Project,QLD1,Generator,Market,Non-Scheduled,Fossil,Coal Seam Methane,Combustion,Compression Reciprocating Engine,MORANBAH,12.56,13
+AGL Hydro Partnership,North Brown Hill Wind Farm,SA1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,NBHWF1,132.3,132
+AGL Hydro Partnership,Oakey Power Station,QLD1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),OAKEY1,141,171
+AGL Hydro Partnership,Oakey Power Station,QLD1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),OAKEY2,141,171
+AGL Hydro Partnership,Oaklands Hill Wind Farm,VIC1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,OAKLAND1,67,63
+AGL Hydro Partnership,Pindari Hydro Power Station,NSW1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,PINDARI,6.7,6
+AGL Hydro Partnership,Roghan Road LFG Power Plant,QLD1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Bagasse,Combustion,Steam Sub-Critical,EDLRGNRD,2,2
+AGL Hydro Partnership,Somerton Power Station,VIC1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),AGLSOM,160,170
+AGL Hydro Partnership,Suncoast Gold Macadamias,QLD1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Macadamia Nut Shells,Combustion,Steam Sub-Critical,SUNCOAST,1.5,1
+AGL Hydro Partnership,The Bluff Wind Farm,SA1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,BLUFF1,52.5,52.5
+AGL Hydro Partnership,Townsville Gas Turbine,QLD1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),YABULU,160,174
+AGL Hydro Partnership,Townsville Gas Turbine,QLD1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),YABULU2,82,84
+AGL Hydro Partnership,Wattle Point Wind Farm,SA1,Generator,Market,Non-Scheduled,Wind,Wind,Renewable,Wind - Onshore,WPWF,90.75,91
+AGL Hydro Partnership,West Kiewa Power Station,VIC1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,WKIEWA1,31,31
+AGL Hydro Partnership,West Kiewa Power Station,VIC1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,WKIEWA2,31,31
+AGL Hydro Partnership,West Nowra Landfill Gas Power Generation Facility,NSW1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Landfill Methane / Landfill Gas,Combustion,Compression Reciprocating Engine,AGLNOW1,1,1
+AGL Hydro Partnership,Wyangala A Power Station,NSW1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,WYANGALA,20,20
+AGL Hydro Partnership,Wyangala B Power Station,NSW1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,WYANGALB,4,4
+AGL SA Generation Pty Limited ,"Torrens Island Power Station ""A""",SA1,Generator,Market, Scheduled,Fossil,Natural Gas / Fuel Oil,Combustion,Steam Sub-Critical,TORRA1,120,120
+AGL SA Generation Pty Limited ,"Torrens Island Power Station ""A""",SA1,Generator,Market, Scheduled,Fossil,Natural Gas / Fuel Oil,Combustion,Steam Sub-Critical,TORRA2,120,120
+AGL SA Generation Pty Limited ,"Torrens Island Power Station ""A""",SA1,Generator,Market, Scheduled,Fossil,Natural Gas / Fuel Oil,Combustion,Steam Sub-Critical,TORRA3,120,120
+AGL SA Generation Pty Limited ,"Torrens Island Power Station ""A""",SA1,Generator,Market,Scheduled,Fossil,Natural Gas / Fuel Oil,Combustion,Steam Sub-Critical,TORRA4,120,120
+AGL SA Generation Pty Limited ,"Torrens Island Power Station ""B""",SA1,Generator,Market,Scheduled,Fossil,Natural Gas / Fuel Oil,Combustion,Steam Sub-Critical,TORRB1,200,210
+AGL SA Generation Pty Limited ,"Torrens Island Power Station ""B""",SA1,Generator,Market,Scheduled,Fossil,Natural Gas / Fuel Oil,Combustion,Steam Sub-Critical,TORRB2,200,210
+AGL SA Generation Pty Limited ,"Torrens Island Power Station ""B""",SA1,Generator,Market,Scheduled,Fossil,Natural Gas / Fuel Oil,Combustion,Steam Sub-Critical,TORRB3,200,210
+AGL SA Generation Pty Limited ,"Torrens Island Power Station ""B""",SA1,Generator,Market,Scheduled,Fossil,Natural Gas / Fuel Oil,Combustion,Steam Sub-Critical,TORRB4,200,210
+Energy Developments Limited (EDL),Brooklyn Landfill And Waste Recycling Facility,VIC1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Landfill Methane / Landfill Gas,Combustion,Compression Reciprocating Engine,BROOKLYN,2.83,2.83
+Energy Developments Limited (EDL),Eastern Creek Power Station,NSW1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Landfill Methane / Landfill Gas,Combustion,Compression Reciprocating Engine,EASTCRK,5.4,5
+Energy Developments Limited (EDL),German Creek Power Station,QLD1,Generator,Market,Non-Scheduled,Fossil,Waste Coal Mine Gas,Combustion,Compression Reciprocating Engine,GERMCRK,32,45
+AGL Sales (Queensland Electricity) Pty Limited,Grange Avenue Power Station,NSW1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Landfill Methane / Landfill Gas,Combustion,Compression Reciprocating Engine,GRANGEAV,2,2
+Energy Developments Limited (EDL),Jacks Gully Power Station,NSW1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Landfill Methane / Landfill Gas,Combustion,Compression Reciprocating Engine,JACKSGUL,2.3,2.3
+AGL Sales (Queensland Electricity) Pty Limited,KRC Cogeneration Plant Power Station,QLD1,Generator,Market,Non-Scheduled,Fossil,Natural Gas,Combustion,Steam Sub-Critical,KRCCOGEN,4.5,5
+Aurora Energy (Tamar Valley) Pty Ltd trading as AETV Power,Bairnsdale Power Station,VIC1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),BDL01,47,47
+Aurora Energy (Tamar Valley) Pty Ltd trading as AETV Power,Bairnsdale Power Station,VIC1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),BDL02,47,47
+Aurora Energy (Tamar Valley) Pty Ltd trading as AETV Power,Bell Bay Three Power Station,TAS1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),BBTHREE1,35,49
+Aurora Energy (Tamar Valley) Pty Ltd trading as AETV Power,Bell Bay Three Power Station,TAS1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),BBTHREE2,35,49
+Aurora Energy (Tamar Valley) Pty Ltd trading as AETV Power,Bell Bay Three Power Station,TAS1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),BBTHREE3,35,49
+Aurora Energy (Tamar Valley) Pty Ltd trading as AETV Power,Tamar Valley Combined Cycle Power Station,TAS1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),TVCC201,208,208
+Aurora Energy (Tamar Valley) Pty Ltd trading as AETV Power,Tamar Valley Peaking  Power Station,TAS1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),TVPP104,58,58
+Basslink Pty Ltd,Basslink HVDC Link,TAS1,Network Service Provider,Market,Scheduled,,,,,BLNKTAS,478,478
+Basslink Pty Ltd,Basslink HVDC Link,VIC1,Network Service Provider,Market,Scheduled,,,,,BLNKVIC,594,594
+Braemar Power Project Pty Ltd,Braemar Power Station ,QLD1,Generator,Market,Scheduled,Fossil,Coal Seam Methane,Combustion,Open Cycle Gas turbines (OCGT),BRAEMAR1,168,173
+Braemar Power Project Pty Ltd,Braemar Power Station ,QLD1,Generator,Market,Scheduled,Fossil,Coal Seam Methane,Combustion,Open Cycle Gas turbines (OCGT),BRAEMAR2,168,173
+Braemar Power Project Pty Ltd,Braemar Power Station ,QLD1,Generator,Market,Scheduled,Fossil,Coal Seam Methane,Combustion,Open Cycle Gas turbines (OCGT),BRAEMAR3,168,173
+Callide Power Trading Pty Ltd,Callide Power Plant,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Super Critical,CPP_3,420,500
+Callide Power Trading Pty Ltd,Callide Power Plant,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Super Critical,CPP_4,420,500
+Cathedral Rocks Wind Farm Pty Ltd,Cathedral Rocks Wind Farm,SA1,Generator,Market,Non-Scheduled,Wind,Wind,Renewable,Wind - Onshore,CATHROCK,66,66
+Essential Energy,Broken Hill Gas Turbines,NSW1,Generator,Market,Non-Scheduled,Fossil,Diesel,Combustion,Open Cycle Gas turbines (OCGT),GB01,50,50
+Origin Energy Electricity Limited,Daandine Power Station,QLD1,Generator,Market,Non-Scheduled,Fossil,Coal Seam Methane,Combustion,Compression Reciprocating Engine,DAANDINE,33,33
+Essential Energy,EarthPower Biomass Plant,NSW1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Municipal and Industrial Materials,Combustion,Compression Reciprocating Engine,PMATTAEP,3.9,4
+Origin Energy Electricity Limited,Oaky Creek  Power Station,QLD1,Generator,Market,Non-Scheduled,Fossil,Coal Seam Methane,Combustion,Compression Reciprocating Engine,OAKYCREK,20,20
+EnviroGen Pty Limited,Teralba Power Station ,NSW1,Generator,Market,Non-Scheduled,Fossil,Coal Seam Methane,Combustion,Compression Reciprocating Engine,TERALBA,3,3
+CS Energy Limited,Callide A Power Station,QLD1,Generator,Market,Non-Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,CALL_A_4,30,30
+CS Energy Limited,Callide B Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,CALL_B_1,350,385
+CS Energy Limited,Callide B Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,CALL_B_2,350,385
+CS Energy Limited,Gladstone Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,GSTONE1,280,285
+CS Energy Limited,Gladstone Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,GSTONE2,280,285
+CS Energy Limited,Gladstone Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,GSTONE3,280,285
+CS Energy Limited,Gladstone Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,GSTONE4,280,285
+CS Energy Limited,Gladstone Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,GSTONE5,280,285
+CS Energy Limited,Gladstone Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,GSTONE6,280,285
+CS Energy Limited,Kogan Creek Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Super Critical,KPP_1,744,781
+CS Energy Limited,Wivenhoe Power Station,QLD1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - pump storage,W/HOE#1,250,312
+CS Energy Limited,Wivenhoe Power Station,QLD1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - pump storage,W/HOE#2,250,312
+CS Energy Limited,Wivenhoe Power Station No. 1 Pump,QLD1,Load Norm Off,Market,Scheduled,Hydro,Water,Renewable,Hydro - pump storage,PUMP1,240,245
+CS Energy Limited,Wivenhoe Power Station No. 2 Pump,QLD1,Load Norm Off,Market,Scheduled,Hydro,Water,Renewable,Hydro - pump storage,PUMP2,240,245
+Cape Byron Management Pty Ltd,Broadwater Power Station,NSW1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Bagasse,Combustion,Steam Sub-Critical,BWTR1,38,38
+Delta Electricity,Colongra Power Station,NSW1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),CG1,181,181
+Delta Electricity,Colongra Power Station,NSW1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),CG2,181,181
+Delta Electricity,Colongra Power Station,NSW1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),CG3,181,181
+Delta Electricity,Colongra Power Station,NSW1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),CG4,181,181
+Cape Byron Management Pty Ltd,Condong Power Station,NSW1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Bagasse,Combustion,Steam Sub-Critical,CONDONG1,30,30
+Delta Electricity,Munmorah Power Station,NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,MM3,300,310
+Delta Electricity,Munmorah Power Station,NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,MM4,300,310
+Delta Electricity,"Vales Point ""B"" Power Station",NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,VP5,660,680
+Delta Electricity,"Vales Point ""B"" Power Station",NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,VP6,660,680
+Diamond Energy Pty Ltd ,Shepparton Wastewater Treatment Facility,VIC1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Sewerage/Waste Water,Combustion,Compression Reciprocating Engine,SHEP1,1.1,1
+Diamond Energy Pty Ltd ,Tatura Biomass Generator,VIC1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Sewerage/Waste Water,Combustion,Compression Reciprocating Engine,TATURA01,1.1,1
+Ecogen Energy Pty Ltd,"Jeeralang ""A"" Power Station",VIC1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),JLA01,51,65
+Ecogen Energy Pty Ltd,"Jeeralang ""A"" Power Station",VIC1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),JLA02,51,65
+Ecogen Energy Pty Ltd,"Jeeralang ""A"" Power Station",VIC1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),JLA03,51,65
+Ecogen Energy Pty Ltd,"Jeeralang ""A"" Power Station",VIC1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),JLA04,51,65
+Ecogen Energy Pty Ltd,"Jeeralang ""B"" Power Station",VIC1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),JLB01,76,100
+Ecogen Energy Pty Ltd,"Jeeralang ""B"" Power Station",VIC1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),JLB02,76,100
+Ecogen Energy Pty Ltd,"Jeeralang ""B"" Power Station",VIC1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),JLB03,76,100
+Ecogen Energy Pty Ltd,Newport Power Station,VIC1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Steam Sub-Critical,NPS,500,510
+Energy Developments Limited (EDL),Browns Plains Land Fill Gas Power Station,QLD1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Landfill Methane / Landfill Gas,Combustion,Spark Ignition Reciprocating Engine,BPLANDF1,2.18,2.18
+Energy Developments Limited (EDL),Moranbah North Power Station,QLD1,Generator,Market,Non-Scheduled,Fossil,Coal Seam Methane,Combustion,Spark Ignition Reciprocating Engine,MBAHNTH,63,57
+Energy Brix Australia Corporation Pty Ltd,Energy Brix Complex Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,MOR1,90,90
+Energy Brix Australia Corporation Pty Ltd,Energy Brix Complex Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,MOR2,30,30
+Energy Brix Australia Corporation Pty Ltd,Energy Brix Complex Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,MOR3,75,75
+Energy Pacific (Vic) Pty Ltd,Yambuk Wind Farm ,VIC1,Generator ,Market,Non-Scheduled,Wind,Wind,Renewable,Wind - Onshore,YAMBUKWF,30,30
+EnerNOC Pty Ltd,Amcor Glass Gawler Plant,SA1,Generator,Market,Non-Scheduled,Fossil,Diesel,Combustion,Compression Reciprocating Engine,AMCORGR,4,4
+EnerNOC Pty Ltd,Ballarat Base Hospital Plant,VIC1,Generator,Market,Non-Scheduled,Fossil,Natural Gas,Combustion,Compression Reciprocating Engine,BBASEHOS,3,3
+EnerNOC Pty Ltd,Bankstown Sports Club Plant Units ,NSW1,Generator,Market,Non-Scheduled,Fuel Oil,Diesel,Combustion,Compression Reciprocating Engine,BANKSPT1,2,2
+EnerNOC Pty Ltd,Blue Lake Milling Power Plant,SA1,Generator,Market,Non-Scheduled,Fossil,Diesel,Combustion,Compression Reciprocating Engine,BLULAKE1,1,1
+EnerNOC Pty Ltd,Nine Network Willoughby Plant ,NSW1,Generator,Market,Non-Scheduled,Fuel Oil,Diesel,Combustion,Compression Reciprocating Engine,NINEWIL1,3.2,2
+EnerNOC Pty Ltd,St George Leagues Club Plant,NSW1,Generator,Market,Non-Scheduled,Fuel Oil,Diesel,Combustion,Compression Reciprocating Engine,STGEORG1,1,1
+EnerNOC Pty Ltd,Symex Power Plant ,VIC1,Generator,Market,Non-Scheduled,Gas,Natural,Combustion,Open Cycle Gas turbines (OCGT),SYMEX1,5,5
+EnerNOC Pty Ltd,Tatiara Bordertown Plant,SA1,Generator,Market,Non-Scheduled,Fuel Oil,Diesel,Combustion,Compression Reciprocating Engine,TATIARA1,0.5,1
+EnerNOC Pty Ltd,West Illawarra Leagues Club Plant,NSW1,Generator,Market,Non-Scheduled,Fuel Oil,Diesel,Combustion,Compression Reciprocating Engine,WESTILL1,1,1
+EnerNOC Pty Ltd,Western Suburbs League Club (Campbelltown) Plant,NSW1,Generator,Market,Non-Scheduled,Fuel Oil,Diesel,Combustion,Compression Reciprocating Engine,WESTCBT1,1,1
+Delta Electricity,Brown Mountain,NSW1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,BROWNMT,4.95,6
+Green State Power Pty Ltd,Burrinjuck Power Station,NSW1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,BURRIN,27,28
+Green State Power Pty Ltd,Hume Power Station,NSW1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,HUMENSW,29,70
+Green State Power Pty Ltd,Hume Power Station,VIC1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,HUMEV,29,70
+Green State Power Pty Ltd,Keepit Power Station,NSW1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,KEEPIT,6,8
+Green State Power Pty Ltd,Warragamba Power Station,NSW1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,WG01,50,50
+Ergon Energy Queensland Pty Ltd,Barcaldine Power Station,QLD1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Combined Cycle Gas Turbine (CCGT),BARCALDN,37,37
+Flinders Operating Services Pty Ltd,Northern Power Station,SA1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,NPS1,265,273
+Flinders Operating Services Pty Ltd,Northern Power Station,SA1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,NPS2,265,273
+Flinders Operating Services Pty Ltd,Playford B Power Station,SA1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,PLAYB-AG,240,252
+Gunning Wind Energy Developments Pty Ltd,Gunning Wind Farm,NSW1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,GUNNING1,47,47
+Hazelwood Power,Hazelwood Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,HWPS1,200,220
+Hazelwood Power,Hazelwood Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,HWPS2,200,220
+Hazelwood Power,Hazelwood Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,HWPS3,200,220
+Hazelwood Power,Hazelwood Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,HWPS4,200,220
+Hazelwood Power,Hazelwood Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,HWPS5,200,220
+Hazelwood Power,Hazelwood Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,HWPS6,200,220
+Hazelwood Power,Hazelwood Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,HWPS7,200,220
+Hazelwood Power,Hazelwood Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,HWPS8,200,220
+Hydro-Electric Corporation trading as Hydro Tasmania,Bastyan Power Station,TAS1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,BASTYAN,79.9,88
+Hydro-Electric Corporation trading as Hydro Tasmania,Butlers Gorge Power Station,TAS1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,BUTLERSG,14.4,15
+Hydro-Electric Corporation trading as Hydro Tasmania,Catagunya / Liapootah / Wayatinah Power Station,TAS1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,LI_WY_CA,170.1,183
+Hydro-Electric Corporation trading as Hydro Tasmania,Cethana Power Station,TAS1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,CETHANA,85,100
+Hydro-Electric Corporation trading as Hydro Tasmania,Cluny Power Station,TAS1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,CLUNY,17,19
+Hydro-Electric Corporation trading as Hydro Tasmania,Devils Gate Power Station,TAS1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,DEVILS_G,60,65
+Hydro-Electric Corporation trading as Hydro Tasmania,Fisher Power Station,TAS1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,FISHER,43.2,46
+Hydro-Electric Corporation trading as Hydro Tasmania,Gordon Power Station,TAS1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,GORDON,432,450
+Hydro-Electric Corporation trading as Hydro Tasmania,John Butters Power Station,TAS1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,JBUTTERS,144,144
+Hydro-Electric Corporation trading as Hydro Tasmania,Lake Echo Power Station,TAS1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,LK_ECHO,32.4,34
+Hydro-Electric Corporation trading as Hydro Tasmania,Lemonthyme / Wilmot  Power Station,TAS1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,LEM_WIL,81.6,86
+Hydro-Electric Corporation trading as Hydro Tasmania,Mackintosh Power Station,TAS1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,MACKNTSH,79.9,89
+Hydro-Electric Corporation trading as Hydro Tasmania,Meadowbank Power Station,TAS1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,MEADOWBK,40,42
+Hydro-Electric Corporation trading as Hydro Tasmania,Paloona Power Station,TAS1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,PALOONA,28,33
+Hydro-Electric Corporation trading as Hydro Tasmania,Poatina Power Station,TAS1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,POAT110,100,124
+Hydro-Electric Corporation trading as Hydro Tasmania,Poatina Power Station,TAS1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,POAT220,200,248
+Hydro-Electric Corporation trading as Hydro Tasmania,Reece Power Station,TAS1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,REECE1,115.6,119
+Hydro-Electric Corporation trading as Hydro Tasmania,Reece Power Station,TAS1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,REECE2,115.6,119
+Hydro-Electric Corporation trading as Hydro Tasmania,Repulse Power Station,TAS1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,REPULSE,28,29
+Hydro-Electric Corporation trading as Hydro Tasmania,Rowallan Power Station,TAS1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,ROWALLAN,10.5,11
+Hydro-Electric Corporation trading as Hydro Tasmania,Tarraleah Power Station,TAS1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,TARRALEA,90,94
+Hydro-Electric Corporation trading as Hydro Tasmania,Terminal Storage Mini Hydro Power Station,SA1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,TERMSTOR,2.5,2
+Hydro-Electric Corporation trading as Hydro Tasmania,Trevallyn Power Station,TAS1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,TREVALLN,80,103
+Hydro-Electric Corporation trading as Hydro Tasmania,Tribute Power Station,TAS1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,TRIBUTE,82.8,92
+Hydro-Electric Corporation trading as Hydro Tasmania,Tungatinah Power Station,TAS1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,TUNGATIN,125,131
+Hydro-Electric Corporation trading as Hydro Tasmania,Woolnorth Studland Bay / Bluff Point Wind Farm,TAS1,Generator,Market,Non-Scheduled,Wind,Wind,Renewable,Wind - Onshore,WOOLNTH1,140,140
+Infigen Energy Markets Pty Limited,Capital Wind Farm,NSW1,Generator,Market,Non-Scheduled,Wind,Wind,Renewable,Wind - Onshore,CAPTL_WF,140,140
+LUMO Generation SA Pty Ltd,Angaston Power Station,SA1,Generator,Market,Non-Scheduled,Fossil,Diesel,Combustion,Compression Reciprocating Engine,ANGAS1,30,30
+LUMO Generation SA Pty Ltd,Angaston Power Station,SA1,Generator,Market,Non-Scheduled,Fossil,Diesel,Combustion,Compression Reciprocating Engine,ANGAS2,20,20
+LUMO Generation SA Pty Ltd,Awaba Power Station,NSW1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Landfill Methane / Landfill Gas,Combustion,,AWABAREF,1.123,1
+LUMO Generation SA Pty Ltd,Hunter Economic Zone,NSW1,Generator,Market,Non-Scheduled,Fossil,Diesel,Combustion,,HEZ,29,29
+LUMO Generation SA Pty Ltd,Lonsdale Power Station,SA1,Generator,Market,Non-Scheduled,Fossil,Diesel,Combustion,Compression Reciprocating Engine,LONSDALE,20,20
+LUMO Generation SA Pty Ltd,Port Stanvac Power Station 1,SA1,Generator,Market,Non-Scheduled,Fossil,Diesel,Combustion,Compression Reciprocating Engine,STANV1,28.8,32
+LUMO Generation SA Pty Ltd,Port Stanvac Power Station 2,SA1,Generator,Market,Non-Scheduled,Fossil,Diesel,Combustion,Compression Reciprocating Engine,STANV2,28.8,32
+LUMO Generation SA Pty Ltd,Remount Power Station,TAS1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Landfill Methane / Landfill Gas,Combustion,,REMOUNT,2,2
+IPM Australia Limited ,Loy Yang B Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,LOYYB1,500,600
+IPM Australia Limited ,Loy Yang B Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,LOYYB2,500,600
+Lake Bonney Wind Power Pty Ltd,Lake Bonney Stage 2 Windfarm,SA1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,LKBONNY2,159,159
+Lake Bonney Wind Power Pty Ltd,Lake Bonney Stage 3 Wind Farm,SA1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,LKBONNY3,39,39
+AGL Loy Yang Marketing Pty Ltd,Loy Yang A Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,LYA1,560,590
+AGL Loy Yang Marketing Pty Ltd,Loy Yang A Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,LYA2,530,535
+AGL Loy Yang Marketing Pty Ltd,Loy Yang A Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,LYA3,560,590
+AGL Loy Yang Marketing Pty Ltd,Loy Yang A Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,LYA4,560,580
+AGL Macquarie Pty Limited,Bayswater Power Station,NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,BW01,660,700
+AGL Macquarie Pty Limited,Bayswater Power Station,NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,BW02,660,700
+AGL Macquarie Pty Limited,Bayswater Power Station,NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,BW03,660,700
+AGL Macquarie Pty Limited,Bayswater Power Station,NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,BW04,660,700
+AGL Macquarie Pty Limited,Hunter Valley Gas Turbine ,NSW1,Generator,Market,Scheduled,Fossil,Kerosene,Combustion,Open Cycle Gas turbines (OCGT),HVGTS,50,50
+AGL Macquarie Pty Limited,Liddell Power Station,NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,LD01,500,550
+AGL Macquarie Pty Limited,Liddell Power Station,NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,LD02,500,550
+AGL Macquarie Pty Limited,Liddell Power Station,NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,LD03,500,550
+AGL Macquarie Pty Limited,Liddell Power Station,NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,LD04,500,550
+Marubeni Australia Power Services Pty Ltd,Smithfield Energy Facility,NSW1,Generator,Non-Market,Scheduled,Fossil,Natural Gas,Combustion,Combined Cycle Gas Turbine (CCGT),SITHE01,160,175
+Millmerran Energy Trader Pty Ltd,Millmerran Power Plant,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Super Critical,MPP_1,426,450
+Millmerran Energy Trader Pty Ltd,Millmerran Power Plant,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Super Critical,MPP_2,426,450
+Mt Millar Wind Farm Pty Ltd,Mt Millar Wind Farm,SA1,Generator,Market,Non-Scheduled,Wind,Wind,Renewable,Wind - Onshore,MTMILLAR,70,70
+NewGen Braemar 2 Partnership,Braemar 2 Power Station,QLD1,Generator,Market,Scheduled,Fossil,Coal Seam Methane,Combustion,Open Cycle Gas turbines (OCGT),BRAEMAR5,173,173
+NewGen Braemar 2 Partnership,Braemar 2 Power Station,QLD1,Generator,Market,Scheduled,Fossil,Coal Seam Methane,Combustion,Open Cycle Gas turbines (OCGT),BRAEMAR6,173,173
+NewGen Braemar 2 Partnership,Braemar 2 Power Station,QLD1,Generator,Market,Scheduled,Fossil,Coal Seam Methane,Combustion,Open Cycle Gas turbines (OCGT),BRAEMAR7,173,173
+Origin Energy Electricity Limited,Cullerin Range Wind Farm,NSW1,Generator,Market,Non-Scheduled,Wind,Wind,Renewable,Wind - Onshore,CULLRGWF,30,30
+Origin Energy Electricity Limited,Bendeela / Kangaroo Valley Power Station,NSW1,Generator ,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,SHGEN,240,240
+Origin Energy Electricity Limited,Bendeela / Kangaroo Valley Pumps,NSW1,Load Norm Off,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,SHPUMP,240,240
+Origin Energy Electricity Limited,Darling Downs Power Station,QLD1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Combined Cycle Gas Turbine (CCGT),DDPS1,644,663
+Origin Energy Electricity Limited,Eraring Power Station,NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,ER01,720,750
+Origin Energy Electricity Limited,Eraring Power Station,NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,ER02,720,750
+Origin Energy Electricity Limited,Eraring Power Station,NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,ER03,720,750
+Origin Energy Electricity Limited,Eraring Power Station,NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,ER04,720,750
+Origin Energy Electricity Limited,Eraring Power Station,NSW1,Generator,Market,Non-Scheduled,Fossil,Diesel,Combustion,Compression Reciprocating Engine,ERGT01,41.5,56
+Origin Energy Electricity Limited,Ladbroke Grove Power Station,SA1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),LADBROK1,40,50
+Origin Energy Electricity Limited,Ladbroke Grove Power Station,SA1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),LADBROK2,40,50
+Origin Energy Electricity Limited,Lake Bonney Wind Farm,SA1,Generator,Market,Non-Scheduled,Wind,Wind,Renewable,Wind - Onshore,LKBONNY1,80.5,81
+Energy Developments Limited (EDL),Lucas Heights II Stage 2,NSW1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Landfill Methane / Landfill Gas,Combustion,Compression Reciprocating Engine,LUCAS2S2,13,13
+Origin Energy Electricity Limited,Mortlake Power Station Units,VIC1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),MORTLK11,283,281
+Origin Energy Electricity Limited,Mortlake Power Station Units,VIC1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),MORTLK12,283,281
+Origin Energy Electricity Limited,Mt Stuart Power Station,QLD1,Generator,Market,Scheduled,Fossil,Kerosene,Combustion,Open Cycle Gas turbines (OCGT),MSTUART1,146,152
+Origin Energy Electricity Limited,Mt Stuart Power Station,QLD1,Generator,Market,Scheduled,Fossil,Kerosene,Combustion,Open Cycle Gas turbines (OCGT),MSTUART2,146,152
+Origin Energy Electricity Limited,Mt Stuart Power Station,QLD1,Generator,Market,Scheduled,Fossil,Kerosene,Combustion,Open Cycle Gas turbines (OCGT),MSTUART3,131,139
+Origin Energy Electricity Limited,Osborne Power Station,SA1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Combined Cycle Gas Turbine (CCGT),OSB-AG,180,204
+Origin Energy Electricity Limited,Quarantine Power Station,SA1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),QPS1,24,25
+Origin Energy Electricity Limited,Quarantine Power Station,SA1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),QPS2,24,25
+Origin Energy Electricity Limited,Quarantine Power Station,SA1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),QPS3,24,25
+Origin Energy Electricity Limited,Quarantine Power Station,SA1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),QPS4,24,25
+Origin Energy Electricity Limited,Quarantine Power Station,SA1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),QPS5,128,128
+Origin Energy Electricity Limited,Rochedale Renewable Energy Facility,QLD1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Landfill Methane / Landfill Gas,Combustion,Compression Reciprocating Engine,ROCHEDAL,4,4
+Origin Energy Electricity Limited,Roma Gas Turbine Station,QLD1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),ROMA_7,40,42
+Origin Energy Electricity Limited,Roma Gas Turbine Station,QLD1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),ROMA_8,40,42
+Origin Energy Electricity Limited,Whitwood Road Renewable Energy Facility,QLD1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Landfill Methane / Landfill Gas,Combustion,Compression Reciprocating Engine,WHIT1,1,1
+Origin Energy Electricity Limited,Wonthaggi Wind Farm,VIC1,Generator,Market,Non-Scheduled,Wind,,Renewable,Wind - Onshore,WONWP,12,12
+Origin Energy Uranquinty Power Pty Ltd,Uranquinty Power Station ,NSW1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),URANQ11,166,166
+Origin Energy Uranquinty Power Pty Ltd,Uranquinty Power Station ,NSW1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),URANQ12,166,166
+Origin Energy Uranquinty Power Pty Ltd,Uranquinty Power Station ,NSW1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),URANQ13,166,166
+Origin Energy Uranquinty Power Pty Ltd,Uranquinty Power Station ,NSW1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),URANQ14,166,166
+Pacific Hydro Clements Gap Pty Ltd,Clements Gap Wind Farm,SA1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,CLEMGPWF,57,57
+Pelican Point Power Limited,Pelican Point Power Station,SA1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Combined Cycle Gas Turbine (CCGT),PPCCGT,478,510
+Progressive Green Pty Ltd,South East Water - Hallam Hydro Plant,VIC1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,HLMSEW01,0.25,1
+Pyrenees Wind Energy Development Pty Ltd,Waubra Wind Farm,VIC1,Generator,Market,Non-Scheduled,Wind,Wind,Renewable,Wind - Onshore,WAUBRAWF,192,192
+QGC Sales Qld Pty Ltd,Condamine Power Station A,QLD1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Combined Cycle Gas Turbine (CCGT),CPSA,144,144
+RATCH-Australia Collinsville Pty Ltd and Transfield Services Collinsville BV as a joint venture,Collinsville Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,COLNSV_1,32,33
+RATCH-Australia Collinsville Pty Ltd and Transfield Services Collinsville BV as a joint venture,Collinsville Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,COLNSV_2,32,33
+RATCH-Australia Collinsville Pty Ltd and Transfield Services Collinsville BV as a joint venture,Collinsville Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,COLNSV_3,32,35
+RATCH-Australia Collinsville Pty Ltd and Transfield Services Collinsville BV as a joint venture,Collinsville Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,COLNSV_4,33,35
+RATCH-Australia Collinsville Pty Ltd and Transfield Services Collinsville BV as a joint venture,Collinsville Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,COLNSV_5,66,69
+Redbank Project Pty Limited,Redbank Power Station,NSW1,Generator,Market,Scheduled,Fossil,Coal Tailings,Combustion,Steam Sub-Critical,REDBANK1,150,151
+Red Energy Pty Ltd,Hepburn Wind Farm,VIC1,Generator,Market,Non-Scheduled,Wind,Wind,Renewable,Wind - Onshore,HEPWIND1,4.1,4.1
+FPC 30 Limited (as Trustee for the FPC Green Trust),Rocky Point Cogeneration Plant,QLD1,Generator,Market,Non-Scheduled,Biomass,Bagasse,Renewable,,RPCG,30,32
+RTA Yarwun Pty Ltd,Yarwun Power Station,QLD1,Generator,Market,Non-Scheduled,Fossil,Natural Gas,Combustion,,YARWUN_1,154,180
+Secure Energy Pty Ltd,Southbank Institute Of Technology Unit 1 Plant,QLD1,Generator,Market,Non-Scheduled,Fossil,Diesel,Combustion,Compression Reciprocating Engine,STHBKTEC,1,1
+Snowtown Wind Farm Pty Ltd,Snowtown Wind Farm Stage 1,SA1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,SNOWTWN1,99,99
+Snowy Hydro Limited,Blowering Power Station,NSW1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,BLOWERNG,70,80
+Snowy Hydro Limited,Guthega Power Station,NSW1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,GUTHEGA,60,80
+Snowy Hydro Limited,Jindabyne Small Hydro Power Station ,NSW1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,JNDABNE1,1.1,1
+Snowy Hydro Limited,Jounama Small Hydro Power Station,NSW1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,JOUNAMA1,14,14
+Snowy Hydro Limited,Laverton North Power Station,VIC1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),LAVNORTH,312,346
+Snowy Hydro Limited,Murray 1 Power Station,VIC1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,MURRAY,1500,1575
+Snowy Hydro Limited,Tumut 1 Power Station,NSW1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,UPPTUMUT,616,665
+Snowy Hydro Limited,Tumut 3 Power Station,NSW1,Generator,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,TUMUT3,1500,1800
+Snowy Hydro Limited,Valley Power Peaking Facility,VIC1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),VPGS,300,390
+Stanwell Corporation Limited,Barron Gorge Power Station,QLD1,Generator,Market,Scheduled,Hydro,Water,Renewable,Run of River,BARRON-1,30,33
+Stanwell Corporation Limited,Barron Gorge Power Station,QLD1,Generator,Market,Scheduled,Hydro,Water,Renewable,Run of River,BARRON-2,30,33
+Stanwell Corporation Limited,Kareeya Power Station,QLD1,Generator,Market,Scheduled,Hydro,Water,Renewable,Run of River,KAREEYA1,21,22
+Stanwell Corporation Limited,Kareeya Power Station,QLD1,Generator,Market,Scheduled,Hydro,Water,Renewable,Run of River,KAREEYA2,21,22
+Stanwell Corporation Limited,Kareeya Power Station,QLD1,Generator,Market,Scheduled,Hydro,Water,Renewable,Run of River,KAREEYA3,18,22
+Stanwell Corporation Limited,Kareeya Power Station,QLD1,Generator,Market,Scheduled,Hydro,Water,Renewable,Run of River,KAREEYA4,21,22
+Stanwell Corporation Limited,Kareeya Power Station,QLD1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Run of River,KAREEYA5,7,7
+Stanwell Corporation Limited,Mackay Gas Turbine,QLD1,Generator,Market,Scheduled,Fossil,Diesel,Combustion,Open Cycle Gas turbines (OCGT),MACKAYGT,30,34
+Stanwell Corporation Limited,Stanwell Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,STAN-1,365,385
+Stanwell Corporation Limited,Stanwell Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,STAN-2,365,385
+Stanwell Corporation Limited,Stanwell Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,STAN-3,365,385
+Stanwell Corporation Limited,Stanwell Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,STAN-4,365,385
+Stanwell Corporation Limited,Swanbank B Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,SWAN_B_1,125,125
+Stanwell Corporation Limited,Swanbank B Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,SWAN_B_3,125,125
+Stanwell Corporation Limited,Swanbank E Gas Turbine,QLD1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Combined Cycle Gas Turbine (CCGT),SWAN_E,385,385
+Stanwell Corporation Limited,Tarong North Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Super Critical,TNPS1,443,480
+Stanwell Corporation Limited,Tarong Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,TARONG#1,350,385
+Stanwell Corporation Limited,Tarong Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,TARONG#2,350,385
+Stanwell Corporation Limited,Tarong Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,TARONG#3,350,385
+Stanwell Corporation Limited,Tarong Power Station,QLD1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,TARONG#4,350,385
+Stanwell Corporation Limited,Wivenhoe Small Hydro,QLD1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Run of River,WIVENSH,4.7,5
+Starfish Hill Wind Farm Pty Ltd ,Starfish Hill Wind Farm,SA1,Generator,Market,Non-Scheduled,Wind,Wind,Renewable,Wind - Onshore,STARHLWF,34.5,35
+Alcoa of Australia Limited,Anglesea Power Station,VIC1,Generator,Market,Non-Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,APS,165,165
+Synergen Power Pty Ltd,Dry Creek Gas Turbine Station,SA1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),DRYCGT1,52,57
+Synergen Power Pty Ltd,Dry Creek Gas Turbine Station,SA1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),DRYCGT2,52,57
+Synergen Power Pty Ltd,Dry Creek Gas Turbine Station,SA1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),DRYCGT3,52,57
+Synergen Power Pty Ltd,Mintaro Gas Turbine Station,SA1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),MINTARO,90,105
+Synergen Power Pty Ltd,Port Lincoln Gas Turbine,SA1,Generator,Market,Scheduled,Fossil,Diesel,Combustion,Open Cycle Gas turbines (OCGT),POR01,50,55
+Synergen Power Pty Ltd,Port Lincoln Gas Turbine,SA1,Generator,Market,Scheduled,Fossil,Diesel,Combustion,Open Cycle Gas turbines (OCGT),POR03,23.5,23
+Synergen Power Pty Ltd,Snuggery Power Station,SA1,Generator,Market,Scheduled,Fossil,Diesel,Combustion,Open Cycle Gas turbines (OCGT),SNUG1,63,69
+Toora Wind Farm Pty Ltd ,Toora Wind Farm,VIC1,Generator,Market,Non-Scheduled,Wind,Wind,Renewable,Wind - Onshore,TOORAWF,21,21
+EnergyAustralia Pty Ltd,Hallett Power Station,SA1,Generator,Market,Scheduled,Fossil,Natural Gas / Diesel,Combustion,Combined Cycle Gas Turbine (CCGT),AGLHAL,180,220
+EnergyAustralia Pty Ltd,Mornington Waste Disposal Facility,VIC1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Landfill Methane / Landfill Gas,Combustion,Compression Reciprocating Engine,MORNW,1,1
+EnergyAustralia Pty Ltd,Mt Piper Power Station,NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,MP1,700,700
+EnergyAustralia Pty Ltd,Mt Piper Power Station,NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,MP2,700,700
+EnergyAustralia Pty Ltd,Tallawarra Power Station,NSW1,Generator,Market,Scheduled,Fossil,Natural Gas,Combustion,Combined Cycle Gas Turbine (CCGT),TALWA1,460,460
+EnergyAustralia Pty Ltd,"Wallerawang ""C"" Power Station",NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,WW7,500,500
+EnergyAustralia Pty Ltd,"Wallerawang ""C"" Power Station",NSW1,Generator,Market,Scheduled,Fossil,Black Coal,Combustion,Steam Sub-Critical,WW8,500,500
+EnergyAustralia Pty Ltd,Waterloo Wind Farm,SA1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,WATERLWF,111,111
+EnergyAustralia Pty Ltd,Woodlawn Bioreactor Energy Generation Station,NSW1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Landfill Methane / Landfill Gas,Combustion,Compression Reciprocating Engine,WDLNGN01,7,7
+EnergyAustralia Pty Ltd,Wyndham Waste Disposal Facility,VIC1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Landfill Methane / Landfill Gas,Combustion,Compression Reciprocating Engine,WYNDW,1,1
+Origin Energy Electricity Limited,Longford Plant,VIC1,Generator,Market,Non-Scheduled,Fossil,Natural Gas,Combustion,Open Cycle Gas turbines (OCGT),LONGFORD,31,31.8
+EnergyAustralia Yallourn Pty Ltd,Yallourn W Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,YWPS1,360,395
+EnergyAustralia Yallourn Pty Ltd,Yallourn W Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,YWPS2,360,380
+EnergyAustralia Yallourn Pty Ltd,Yallourn W Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,YWPS3,380,405
+EnergyAustralia Yallourn Pty Ltd,Yallourn W Power Station,VIC1,Generator,Market,Scheduled,Fossil,Brown Coal,Combustion,Steam Sub-Critical,YWPS4,380,405
+Veolia Environmental Services (Australia) Pty Ltd,Veolia Ti Tree Bio Reactor,QLD1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Landfill Methane / Landfill Gas,Combustion,Compression Reciprocating Engine,TITREE,2,2
+Windy Hill Wind Farm Pty Ltd ,Windy Hill Wind Farm,QLD1,Generator,Market,Non-Scheduled,Wind,Wind,Renewable,Wind - Onshore,WHILL1,12,12
+Woodlawn Wind Pty Ltd,Woodlawn Wind Farm,NSW1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,WOODLWN1,48,48
+Canunda Power Pty Ltd,Canunda Wind Farm,SA1,,,,Wind,Wind,Renewable,Wind - Onshore,CNUNDAWF,46,46
+Wilmar Sugar Pty Ltd,Invicta Mill,QLD1,Generator,Non-Market,Non-Scheduled,Renewable/ Biomass / Waste,Bagasse,Combustion,Steam Sub-Critical,INVICTA,50,51
+Pacific Hydro Challicum Hills Pty Ltd,Challicum Hills Wind Farm,VIC1,,,,Wind,Wind,Renewable,Wind - Onshore,CHALLHWF,52.5,52.5
+Pacific Hydro Portland Wind Farm Pty Ltd,Portland Wind Farm,VIC1,,,,Wind,Wind,Renewable,Wind - Onshore,PORTWF,102,102
+Pioneer Sugar Mills Pty Ltd,Pioneer Sugar Mill,QLD1,,,,Biomass,Bagasse,Renewable,,PIONEER,68,68
+AGL Hydro Partnership,Clover Power Station,VIC1,,,,Hydro,Water,Renewable,,CLOVER,29,29
+AGL Hydro Partnership,Macarthur Wind Farm,VIC1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,MACARTH1,420,420
+Origin Energy Electricity Limited,Bendeela / Kangaroo Valley Power Station,NSW1,,,,Hydro,Water,Renewable,Hydro - Gravity,SHGEN,240,240
+Mortons Lane Windfarm Pty Limited,Mortons Lane Wind Farm,VIC1,Generator,Market,Non-Scheduled,Wind,Wind,Renewable,Wind - Onshore,MLWF1,20,20
+Hydro-Electric Corporation trading as Hydro Tasmania,Musselroe Wind Farm,TAS1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,MUSSELR1,168,168
+New Gullen Range Wind Farm Pty Ltd,Gullen Range Wind Farm,NSW1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,GULLRWF1,166,172
+AGL Hydro Partnership,Burrendong Hydro Power Station,NSW1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,BDONGHYD,19,19
+AGL Hydro Partnership,Copeton Hydro Power Station,NSW1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,COPTNHYD,24,24
+AGL Hydro Partnership,Glenbawn Hydro Power Station,NSW1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Hydro - Gravity,GLBWNHYD,5.8,5
+Energy Developments Limited (EDL),Lucas Heights 2 LFG Power Station,NSW1,Generator,Market,Non-Scheduled,Biomass,Landfill Methane / Landfill Gas,Combustion,Compression Reciprocating Engine,LUCASHGT,5,5
+Energy Developments Limited (EDL),Highbury Landfill Gas Power Station Unit 1,SA1,Generator,Market,Non-Scheduled,Biomass,Landfill Methane / Landfill Gas,Combustion,Spark Ignition Reciprocating Engine,HIGHBRY1,2,2
+Energy Developments Limited (EDL),Pedler Creek Landfill Gas Power Station Units 1-3,SA1,Generator,Market,Non-Scheduled,Biomass,Landfill Methane / Landfill Gas,Combustion,Spark Ignition Reciprocating Engine,PEDLER1,3,3
+Energy Developments Limited (EDL),Tea Tree Gully Landfill Gas Power Station Unit 1,SA1,Generator,Market,Non-Scheduled,Biomass,Landfill Methane / Landfill Gas,Combustion,Spark Ignition Reciprocating Engine,TEATREE1,1,1
+Energy Developments Limited (EDL),Wingfield 1 Landfill Gas Power Station Units 1-4,SA1,Generator,Market,Non-Scheduled,Biomass,Landfill Methane / Landfill Gas,Combustion,Spark Ignition Reciprocating Engine,WING1_1,5,5
+Energy Developments Limited (EDL),Wingfield 2 Landfill Gas Power Station Units 1-4,SA1,Generator,Market,Non-Scheduled,Biomass,Landfill Methane / Landfill Gas,Combustion,Spark Ignition Reciprocating Engine,WING2_1,5,5
+Lumo Energy Australia Pty Ltd,Wollert Renewable Energy Facility,VIC1,Generator,Market,Non-Scheduled,Biomass,Landfill Methane / Landfill Gas,Combustion,Spark Ignition Reciprocating Engine,WOLLERT1,6.738,7
+Lumo Energy Australia Pty Ltd,Hallam Road Renewable Energy Facility,VIC1,Generator,Market,Non-Scheduled,Biomass,Landfill Methane / Landfill Gas,Combustion,Spark Ignition Reciprocating Engine,HALLAMRD1,8.984,9
+NovaPower Pty Ltd,Taralgon Network Support Station,VIC1,Generator,Market,Non-Scheduled,Fossil,Natural Gas,Combustion,Spark Ignition Reciprocating Engine,TGNSS1,10,10
+Pacific Hydro Investments Pty Ltd,The Drop Hydro Unit 1,NSW1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Run of River,THEDROP1,3,3
+Energy Developments Limited (EDL),Claytons Landfill Gas Power Station,VIC1,Generator,Market,Non-Scheduled,Renewable,Landfill Gas,Combustion,Spark Ignition,CLAYTON,11,11
+Energy Developments Limited (EDL),Corio Landfill Gas Power Station,VIC1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Landfill Methane / Landfill Gas,Combustion,Spark Ignition Reciprocating Engine,CORIO1,1,1
+Energy Developments Limited (EDL),Springvale Landfill Gas Power Station,VIC1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Landfill Methane / Landfill Gas,Combustion,Spark Ignition Reciprocating Engine,SVALE1,4.2,4.2
+Infigen Energy  Holdings Pty Ltd,Capital East Solar Farm,NSW1,Generator,Market,Non-Scheduled,Solar,Solar PV,Renewable,PV - Panels,CESF1,1,1
+Mt Mercer Windfarm Pty Ltd,Mt Mercer Wind Farm,VIC1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,MERCER01,131,131
+Origin Energy Electricity Limited,Bendeela / Kangaroo Valley Power Station,NSW1,Generator ,Market,Scheduled,Hydro,Water,Renewable,Hydro - Gravity,SHGEN ,240,240
+Pacific Hydro Investments Pty Ltd,Eildon Pondage Hydro Power Station,VIC1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Run of River,EILDON3,4.5,5
+Pacific Hydro Investments Pty Ltd,Glenmaggie Hydro Power Station,VIC1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Run of River,GLENMAG1,3.8,4
+Pacific Hydro Investments Pty Ltd,William Hovell Hydro Power Station,VIC1,Generator,Market,Non-Scheduled,Hydro,Water,Renewable,Run of River,WILLHOV1,1.5,2
+Snowtown Wind Farm Pty Ltd,Snowtown Wind Farm 2 - Sth,SA1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,SNOWSTH1,126,126
+Snowtown Wind Farm Pty Ltd,Snowtown Wind Farm 2 - Nth,SA1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,SNOWNTH1,144,144
+AGL Hydro Partnership,Kincumber Landfill Site,NSW1,Generator,Market,Non-Scheduled,"Landfill, Biogas","Landfill, Biogas",Renewable,"Landfill, Biogas",KINCUM1,1.064,1
+AGL Hydro Partnership,Nyngan Solar Plant,NSW1,Generator,Market,Semi-Scheduled,Solar,Solar PV,Renewable,Photovoltaic Flat Panel,NYNGAN1,102,102
+AGL Hydro Partnership,Woy Woy Landfill Site,NSW1,Generator,Market,Non-Scheduled,Landfill / Biogas,Landfill / Biogas,Combustion,Compression Reciprocating Engine,WOYWOY1,1.064,1
+Alinta Energy Retail Sales Pty Ltd,SA Water Bolivar Waste Water Treatment (WWT) Plant,SA1,Generator,Market,Non-Scheduled,Sewerage,Waste Water,Renewable,Pump Storage,BOLIVAR1,9.9,9.9
+Boco Rock Wind Farm Pty Ltd,Boco Rock Wind Farm,NSW1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,BOCORWF1,113,113.9
+EDL LFG (Vic) Pty Ltd,Broadmeadows Landfill Gas Power Station,VIC1,Generator,Market,Non-Scheduled,Renewable/ Biomass / Waste,Landfill Methane / Landfill Gas,Combustion,Spark Ignition Reciprocating Engine,BROADMDW,5,5
+FRV Royalla Solar Farm Pty Ltd,Royalla Solar Farm,ACT1,Generator,Market,Non-Scheduled,Solar,Solar PV,Renewable,Photovoltaic Flat Panel,ROYALLA1,20,20
+SANTOS NSW (NARRABRI POWER) PTY LTD ,Wilga Park A Power Station,NSW1,Generator,Market,Non-Scheduled,Fossil,Coal Seam Methane,Combustion,Spark Ignition Reciprocating Engine,WILGAPK,10,10
+SANTOS NSW (NARRABRI POWER) PTY LTD ,Wilga Park B Power Station,NSW1,Generator,Market,Non-Scheduled,Fossil,Coal Seam Methane,Combustion,Spark Ignition Reciprocating Engine,WILGB01,6,6
+Taralga Wind Farm Nominees No 2 Pty Ltd (ATF Taralga Wind Farm Operating Trust),Taralga Wind Farm,NSW1,Generator,Market,Semi-Scheduled,Wind,Wind,Renewable,Wind - Onshore,TARALGA1,106.8,106.8
+Tasmanian Irrigation Pty Ltd,Midlands Power Station,TAS1,Generator,Non-Market,Non-Scheduled,Hydro,Hydro,Renewable,Hydro - Gravity,MIDLDPS1,6,7
