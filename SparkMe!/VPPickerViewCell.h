@@ -13,7 +13,8 @@
 typedef enum {
     PickerCellModePicker = 0,
     PickerCellModeDate = 1,
-    PickerCellModeDateTime = 2
+    PickerCellModeDateTime = 2,
+    PickerCellModeTime = 3 
 } PickerCellMode;
 
 @class VPPickerViewCell;

@@ -25,7 +25,6 @@
     return sharedManager;
 }
 
-
 + (void)showHUDonView:(UIView *)view title:(NSString *)title;
 {
     MBProgressHUD *hudUpdateUIView = [MBProgressHUD showHUDAddedTo:view  animated:YES];
@@ -114,6 +113,77 @@
 
     NSString *str =  [_currencyFormatter stringFromNumber:[NSNumber numberWithDouble:string.doubleValue]];
     return str;
+}
+
+#pragma mark String Size
++ (CGSize)sizeForAttributedString:(NSAttributedString *)attrString width:(float)width
+{
+    CGSize size = [attrString boundingRectWithSize:(CGSize) {width, CGFLOAT_MAX} options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
+    size.width = ceil(size.width);
+    size.height = ceil(size.height);
+    return size;
+}
+
++ (CGSize)sizeForString:(NSString *)string font:(UIFont *)font width:(float)width
+{
+    if (!font || !string) {
+        return CGSizeZero;
+    }
+    
+    CGSize size = [string boundingRectWithSize:(CGSize) {width, CGFLOAT_MAX} options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName : font} context:nil].size;
+    size.width = ceil(size.width);
+    size.height = ceil(size.height);
+    return size;
+}
+
++ (CGSize)sizeForAttributedString:(NSAttributedString *)attrString
+{
+    if (!attrString) {
+        return CGSizeZero;
+    }
+    
+    CGSize size = attrString.size;
+    size.width = ceil(size.width);
+    size.height = ceil(size.height);
+    return size;
+}
+
++ (CGSize)sizeForString:(NSString *)string font:(UIFont *)font
+{
+    if (!font || !string) {
+        return CGSizeZero;
+    }
+    
+    CGSize size = [string sizeWithAttributes:@{NSFontAttributeName : font}];
+    size.width = ceil(size.width);
+    size.height = ceil(size.height);
+    return size;
+}
+
+- (NSDateFormatter *)am_pm_formatter
+{
+    if (!_am_pm_formatter) {
+        _am_pm_formatter = [[NSDateFormatter alloc] init];
+        [_am_pm_formatter setTimeStyle:NSDateFormatterShortStyle];
+        [_am_pm_formatter setDateStyle:NSDateFormatterNoStyle];
+    }
+    return _am_pm_formatter;
+}
+
+- (NSDateFormatter *)time24formatter
+{
+    if (!_time24formatter) {
+        _time24formatter = [[NSDateFormatter alloc] init];
+        _time24formatter.dateFormat = @"HH:mm";
+    }
+    return _time24formatter;
+}
+
+- (NSString *)time24FromTimeString:(NSString *)am_pm_str
+{
+    NSDate *date = [self.am_pm_formatter dateFromString:am_pm_str];
+    NSString *string = [self.time24formatter stringFromDate:date];
+    return string;
 }
 
 @end

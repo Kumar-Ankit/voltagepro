@@ -18,40 +18,10 @@
 @implementation Chart30minViewController
 @synthesize chart, stateChartURL, scrollView, selState, imageData, aemo, webView1;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    
-    return self;
-}
-
-//- (void)loadPart1 {
-//    MBProgressHUD *hudUpdateUIView = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
-//    hudUpdateUIView.labelText = @"Loading...";
-//
-//    [self performSelector:@selector(loadPart2) withObject:nil afterDelay:0];
-//}
-//
-//
-//- (void)loadPart2 {
-//    NSLog(@"Graph loaded");
-//    imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:stateChartURL]];
-//    UIImage *image = [UIImage imageWithData:imageData];
-//    chart.image = image;
-//
-//     [MBProgressHUD hideHUDForView:self.view  animated:YES];
-//}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    //    [self loadPart1];
-    
+
     NSURL *url = [NSURL URLWithString: @"http://aemo.com.au/aemo/apps/visualisations/elec-priceanddemand.html"];
     
     //URL Requst Object
@@ -139,17 +109,12 @@
 
 -(IBAction)tweetTapped:(id)sender
 {
-    
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Select Sending Method"
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                          destructiveButtonTitle:nil
                                               otherButtonTitles:@"Email", @"Tweet", nil];
-    
-    // Show the sheet
     [sheet showInView:self.view];
-    
-    
 }
 
 //uiactionsheet delegate
@@ -272,8 +237,4 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
-
-
 @end
-
-

@@ -28,6 +28,7 @@
 #define RGB(x,y,z) RGBA(x,y,z,1.0)
 
 //Cells and TableView
+#define kDefaultCellImageHeight 20.0
 #define kDarkBlueGrayColor RGB(114, 124, 127)
 #define kGreenColor RGB(21, 180, 128)
 #define kButtonCancleColor GRAY(1)
@@ -66,6 +67,7 @@
 #define kDefaultInteritemPadding kTableViewSmallPadding
 #define kDefaultSidePadding 15.0
 #define IS_ALL_MUTE_KEY @"allMute"
+#define IS_SLEEP_KEY @"isSleep"
 
 @interface Utility : NSObject
 + (Utility *)shared;
@@ -82,4 +84,13 @@
 + (NSString *)password;
 - (NSString *)currencyStringFromString:(NSString *)string;
 
++ (CGSize)sizeForAttributedString:(NSAttributedString *)attrString width:(float)width;
++ (CGSize)sizeForString:(NSString *)string font:(UIFont *)font width:(float)width;
++ (CGSize)sizeForAttributedString:(NSAttributedString *)attrString;
++ (CGSize)sizeForString:(NSString *)string font:(UIFont *)font;
+
+- (NSString *)time24FromTimeString:(NSString *)am_pm_str;
+
+@property (nonatomic,strong) NSDateFormatter *am_pm_formatter;
+@property (nonatomic,strong) NSDateFormatter *time24formatter;
 @end

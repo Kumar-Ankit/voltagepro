@@ -43,6 +43,7 @@
         else if ([responseObject isKindOfClass:[NSDictionary class]]){
             
             [Utility saveData:responseObject[@"isAllMute"] forKey:IS_ALL_MUTE_KEY];
+            [Utility saveData:responseObject[@"isSleep"] forKey:IS_SLEEP_KEY];
             NSArray *responseData = responseObject[@"ResponseData"];
             NSError *mtlError;
             NSArray *settings = [MTLJSONAdapter modelsOfClass:[NotificationSettingsMTLModel class]
@@ -60,7 +61,7 @@
     }];
 }
 
-- (void)setNotificationSettings:(NSDictionary *)parameters completion:(void (^)(BOOL, NSError *))completionBlock
+- (void)setSettings:(NSDictionary *)parameters completion:(void (^)(BOOL, NSError *))completionBlock
 {
     if (!parameters) {
         if (completionBlock) {

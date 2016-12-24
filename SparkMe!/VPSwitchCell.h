@@ -8,6 +8,11 @@
 
 #import "VPTableViewCell.h"
 
+typedef enum{
+    VPSwitchCellModeMute,
+    VPSwitchCellModeSleep
+}VPSwitchCellMode;
+
 @class VPSwitchCell;
 
 @protocol VPSwitchCellDelegate <NSObject>
@@ -20,5 +25,5 @@
 @property (nonatomic, strong) NSIndexPath *previousIndexPath;
 @property (nonatomic, strong) UISwitch *prioritySwitch;
 @property (nonatomic, weak) id <VPSwitchCellDelegate> delegate;
-
+@property (nonatomic, assign) VPSwitchCellMode switchCellMode;
 @end

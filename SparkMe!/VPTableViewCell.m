@@ -29,7 +29,6 @@
 - (void)setup
 {
     self.backgroundColor = [UIColor whiteColor];
-    self.contentView.backgroundColor = [UIColor whiteColor];
     
     self.textLabel.font = kTableViewCellMainFont;
     self.detailTextLabel.font = kTableViewCellMainFont;

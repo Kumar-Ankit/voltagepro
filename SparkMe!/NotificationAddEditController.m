@@ -9,7 +9,6 @@
 #import "NotificationAddEditController.h"
 #import "VPDetailTextFieldCell.h"
 #import "VPPickerViewCell.h"
-#import "TwoButtonViewCell.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "VPDataManager.h"
 #import "Utility.h"
@@ -29,44 +28,45 @@
     self.view.backgroundColor = kAppBackgroundColor;
     self.regions = @[@"NSW",@"QLD",@"SA",@"TAS",@"VIC"];
     self.alerts = @[@"5 MIN",@"5 MIN PreDesp.",@"30 MIN PreDesp."];
-    self.sounds = @[@"Bird",@"Cat",@"Cashregister",@"Chewbacca",@"Chewy",@"Cow",@"Doh",@"Dolphin",@"Elephant",@"Frog",@"Gameover",@"Horse",@"Jaws",@"Pig",@"Raven"];
-    //Chewy
+    self.sounds = @[@"Bird",@"Cat",@"Cashregister",@"Chewbacca",@"Chewy",@"Cow",@"Doh",@"Dolphin",
+                    @"Elephant",@"Frog",@"Gameover",@"Horse",@"Jaws",@"Pig",@"Raven"];
+
     self.tableView.tableFooterView = [UIView new];
     self.invalidIndex = [[NSMutableIndexSet alloc] init];
-
-    if (_settingsType == NotificationSettingsTypeAdd) {
+    
+    if (_settingsType == NotificationSettingsTypeAdd)
+    {
         self.title = @"Add Notification";
         self.model = [[NotificationSettingsMTLModel alloc] init];
+        
+        UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
+                                                                                        target:self
+                                                                                        action:@selector(saveCellTapped:)];
+        self.navigationItem.rightBarButtonItem = rightBarButton;
+        
     }
-    else{
+    else
+    {
         self.title = @"Edit Notification";
+        UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Update" style:UIBarButtonItemStylePlain
+                                                                          target:self
+                                                                          action:@selector(saveCellTapped:)];
+        self.navigationItem.rightBarButtonItem = rightBarButton;
     }
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return (section == 0) ? 6 : 1;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    if (indexPath.section == 1) {
-        TwoButtonViewCell *bCell = [self twoBtnCellForID:@"saveCell"];
-        BOOL isLastCell = [self tableView:self.tableView numberOfRowsInSection:indexPath.section] -1 == indexPath.row;
-        bCell.isLastCell = isLastCell;
-        if (_settingsType == NotificationSettingsTypeAdd) {
-            [bCell updateLeftTitle:@"CANCEL" rightTitle:@"SAVE"];
-        }else{
-            [bCell updateLeftTitle:@"CANCEL" rightTitle:@"UPDATE"];
-        }
-        return bCell;
-    }
-    
     if (indexPath.row == 0)
     {
         VPPickerViewCell *cell = [self pickerCellForID:@"regionCell" path:indexPath tag:NotificationFieldTypeRegion titleText:@"Region" tfText:self.model.region pickerMode:PickerCellModePicker];
@@ -187,19 +187,6 @@
     cell.isLastCell = isLastCell;
     
     return cell;
-}
-
-- (TwoButtonViewCell *)twoBtnCellForID:(NSString *)indentifier
-{
-    TwoButtonViewCell *bCell = [self.tableView dequeueReusableCellWithIdentifier:indentifier];
-    if (!bCell) {
-        bCell = [[TwoButtonViewCell alloc] initWithReuseIdentifier:indentifier
-                                                                saveSel:@selector(saveCellTapped:)
-                                                                 delSel:@selector(cancelCellTapped:)
-                                                                 target:self];
-    }
-
-    return bCell;
 }
 
 
@@ -417,11 +404,6 @@
     }
 }
 
-- (void)cancelCellTapped:(id)sender{
-    [self.view endEditing:YES];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (void)makeSaveWebService
 {
     if (!_model.greater_than) {
@@ -456,15 +438,16 @@
                             @"less_than" : self.model.less_than,
                             @"sound" : self.model.sound};
     
+    __weak typeof(self)weakSelf = self;
     [Utility showHUDonView:self.view title:@"Saving ..."];
-    [[VPDataManager sharedManager] setNotificationSettings:parms completion:^(BOOL status, NSError *error) {
+    [[VPDataManager sharedManager] setSettings:parms completion:^(BOOL status, NSError *error) {
         [Utility hideHUDForView:self.view];
         if (error || !status) {
             [Utility showErrorAlertTitle:error.localizedFailureReason withMessage:error.localizedDescription];
         }else{
             if ([_delegate respondsToSelector:@selector(didDismissAddEditController:)]) {
                 [_delegate didDismissAddEditController:self];
-                [self dismissViewControllerAnimated:YES completion:nil];
+                [weakSelf.navigationController popViewControllerAnimated:YES];
             }   
         }
     }];

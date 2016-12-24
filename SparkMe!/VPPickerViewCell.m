@@ -119,7 +119,13 @@
     if (_mode != PickerCellModePicker) {
         UIDatePicker *datepickerView = [[UIDatePicker alloc] init];
         datepickerView.backgroundColor = kAppBackgroundColor;
-        datepickerView.datePickerMode = _mode == PickerCellModeDate ? UIDatePickerModeDate : UIDatePickerModeDateAndTime;
+        if (_mode == PickerCellModeDate ) {
+            datepickerView.datePickerMode = _mode == PickerCellModeDate;
+        }else if (_mode == PickerCellModeDateTime){
+            datepickerView.datePickerMode = UIDatePickerModeDateAndTime;
+        }else{
+            datepickerView.datePickerMode = UIDatePickerModeTime;
+        }
         
         if ([_delegate respondsToSelector:@selector(pickerViewMaximumDate:)]) {
             datepickerView.maximumDate = [_delegate pickerViewMaximumDate:self];

@@ -14,7 +14,7 @@
 - (void)getNotificationSettings:(NSDictionary *)parameters
                      completion:(void (^)(NSArray *response, NSError *error))completionBlock;
 
-- (void)setNotificationSettings:(NSDictionary *)parameters
+- (void)setSettings:(NSDictionary *)parameters
                      completion:(void (^)(BOOL status, NSError *error))completionBlock;
 
 @end

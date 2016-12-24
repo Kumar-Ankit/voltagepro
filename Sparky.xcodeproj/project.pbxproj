@@ -229,6 +229,8 @@
 		A08064EA1E067E8800BB9EF7 /* VPDetailTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A08064E91E067E8800BB9EF7 /* VPDetailTextFieldCell.m */; };
 		A08064ED1E06A72400BB9EF7 /* TwoButtonViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A08064EC1E06A72400BB9EF7 /* TwoButtonViewCell.m */; };
 		A08064F01E06CAA400BB9EF7 /* VPSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A08064EF1E06CAA400BB9EF7 /* VPSwitchCell.m */; };
+		A0C92C061E0EF15B0083DA7B /* SleepTimePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0C92C051E0EF15B0083DA7B /* SleepTimePickerController.m */; };
+		A0D0ADDB1E0ECFD2009C8067 /* VPSleepFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D0ADDA1E0ECFD2009C8067 /* VPSleepFooterView.m */; };
 		D0739CF41E0B654B00F39629 /* alert_new.png in Resources */ = {isa = PBXBuildFile; fileRef = D0739CF31E0B654B00F39629 /* alert_new.png */; };
 		D0739D021E0BB0B600F39629 /* Cashregister.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0739CF71E0BB0B500F39629 /* Cashregister.caf */; };
 		D0739D031E0BB0B600F39629 /* Chewbacca.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0739CF81E0BB0B500F39629 /* Chewbacca.caf */; };
@@ -541,6 +543,10 @@
 		A08064EC1E06A72400BB9EF7 /* TwoButtonViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoButtonViewCell.m; sourceTree = "<group>"; };
 		A08064EE1E06CAA400BB9EF7 /* VPSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSwitchCell.h; sourceTree = "<group>"; };
 		A08064EF1E06CAA400BB9EF7 /* VPSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPSwitchCell.m; sourceTree = "<group>"; };
+		A0C92C041E0EF15B0083DA7B /* SleepTimePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SleepTimePickerController.h; sourceTree = "<group>"; };
+		A0C92C051E0EF15B0083DA7B /* SleepTimePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SleepTimePickerController.m; sourceTree = "<group>"; };
+		A0D0ADD91E0ECFD2009C8067 /* VPSleepFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSleepFooterView.h; sourceTree = "<group>"; };
+		A0D0ADDA1E0ECFD2009C8067 /* VPSleepFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPSleepFooterView.m; sourceTree = "<group>"; };
 		B175BBDBB325AE11F3F10208 /* libPods-Sparky.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sparky.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7BC4D3D741F9FD5FB62279F /* Pods-Sparky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sparky.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sparky/Pods-Sparky.debug.xcconfig"; sourceTree = "<group>"; };
 		D0739CF31E0B654B00F39629 /* alert_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = alert_new.png; path = ../alert_new.png; sourceTree = "<group>"; };
@@ -981,6 +987,10 @@
 				A03262951E055B81003F234F /* NotificationSettingsController.m */,
 				A03262971E055FDC003F234F /* NotificationAddEditController.h */,
 				A03262981E055FDC003F234F /* NotificationAddEditController.m */,
+				A0C92C041E0EF15B0083DA7B /* SleepTimePickerController.h */,
+				A0C92C051E0EF15B0083DA7B /* SleepTimePickerController.m */,
+				A0D0ADD91E0ECFD2009C8067 /* VPSleepFooterView.h */,
+				A0D0ADDA1E0ECFD2009C8067 /* VPSleepFooterView.m */,
 				A08064F11E07F3DE00BB9EF7 /* TextField */,
 				A08064F21E07F3EB00BB9EF7 /* Cells */,
 			);
@@ -1325,6 +1335,7 @@
 				3C24D78815B0419700226F4E /* ViewController.m in Sources */,
 				3C24D79215B0426E00226F4E /* List5minViewController.m in Sources */,
 				3CE346941970D86C00D37D54 /* UAPushSettingsViewController.m in Sources */,
+				A0C92C061E0EF15B0083DA7B /* SleepTimePickerController.m in Sources */,
 				3C1E728F15B21511005CFE10 /* List30minViewController.m in Sources */,
 				A03DC76A1E066CE8001875AA /* VPDataManager.m in Sources */,
 				A032629F1E056875003F234F /* Utility.m in Sources */,
@@ -1370,6 +1381,7 @@
 				3C21E79816842AFA003A33D5 /* CustomCell5.m in Sources */,
 				A03262991E055FDC003F234F /* NotificationAddEditController.m in Sources */,
 				3C31ABA5184028F7005EDC03 /* zip.c in Sources */,
+				A0D0ADDB1E0ECFD2009C8067 /* VPSleepFooterView.m in Sources */,
 				3C31ABA6184028F7005EDC03 /* SSZipArchive.m in Sources */,
 				3C953745172D3677001459DA /* ECSlidingViewController.m in Sources */,
 				3C953746172D3677001459DA /* UIImage+ImageWithUIView.m in Sources */,
