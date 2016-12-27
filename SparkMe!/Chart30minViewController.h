@@ -39,4 +39,6 @@
 
 -(IBAction)tweetTapped:(id)sender;
 
+@property (nonatomic ,strong) NSString *chartURLStr;
+
 @end

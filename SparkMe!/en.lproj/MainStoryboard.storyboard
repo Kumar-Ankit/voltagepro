@@ -31,7 +31,7 @@
                                         <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QX4-Xy-bgi" id="Kwv-oR-8tS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.12781159579753876" green="0.9764636754989624" blue="0.32719117403030396" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -437,7 +437,7 @@
                                         <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Elc-Oj-wM7" id="xbb-C1-jsd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1784,7 +1784,7 @@
                                         <rect key="frame" x="0.0" y="22" width="375" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z3o-C6-H1h" id="W5T-fv-6bR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.12781159579753876" green="0.9764636754989624" blue="0.32719117403030396" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2217,7 +2217,7 @@ All NEM time displayed in Aust. Eastern Standard Time, AEST (GMT +10hrs).
                     <navigationItem key="navigationItem" id="sRA-0i-In5">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dXF-Ek-SZk">
-                            <rect key="frame" x="86" y="7" width="204" height="30"/>
+                            <rect key="frame" x="85.5" y="7" width="204" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="DUID"/>
@@ -3012,7 +3012,7 @@ All NEM time displayed in Aust. Eastern Standard Time, AEST (GMT +10hrs).
                                         <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M1e-bH-tet" id="Qc1-Df-mFK">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -3239,7 +3239,7 @@ All NEM time displayed in Aust. Eastern Standard Time, AEST (GMT +10hrs).
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NuB-dT-8Oa" id="ZDx-Ye-IUu">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -3439,7 +3439,7 @@ All NEM time displayed in Aust. Eastern Standard Time, AEST (GMT +10hrs).
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="1EW-Gz-ah6"/>
+        <segue reference="F1Y-BT-Ogy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.236784786" green="0.56655484440000003" blue="0.75983953479999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

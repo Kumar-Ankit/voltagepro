@@ -66,8 +66,6 @@
 #define kAppBackgroundColor RGB(242.0, 244.0, 245.0)
 #define kDefaultInteritemPadding kTableViewSmallPadding
 #define kDefaultSidePadding 15.0
-#define IS_ALL_MUTE_KEY @"allMute"
-#define IS_SLEEP_KEY @"isSleep"
 
 @interface Utility : NSObject
 + (Utility *)shared;

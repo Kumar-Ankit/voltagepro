@@ -11,7 +11,7 @@
 
 
 
-@interface Chart30minViewController ()
+@interface Chart30minViewController ()<UIWebViewDelegate>
 
 @end
 
@@ -21,15 +21,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    NSURL *url = [NSURL URLWithString: @"http://aemo.com.au/aemo/apps/visualisations/elec-priceanddemand.html"];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.webView1.delegate = self;
+    self.webView1.backgroundColor = [UIColor whiteColor];
+    self.webView1.scrollView.backgroundColor = [UIColor whiteColor];
     
-    //URL Requst Object
+    NSURL *url = [NSURL URLWithString:_chartURLStr];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-    
-    //Load the request in the UIWebView.
     [webView1 loadRequest:requestObj];
-    
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [[webView1 scrollView] setContentInset:UIEdgeInsetsMake(44, 0, 0, 0)];
 }
 
 - (void)viewDidUnload

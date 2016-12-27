@@ -219,7 +219,6 @@
             [Utility showErrorAlertTitle:error.localizedFailureReason withMessage:error.localizedDescription];
         }
         else{
-            [Utility saveData:parms[@"sleep"] forKey:IS_SLEEP_KEY];
             [weakSelf.navigationController popViewControllerAnimated:YES];
             if ([_delegate respondsToSelector:@selector(didDismissSleepTimePickerController:)]) {
                 [_delegate didDismissSleepTimePickerController:self];
