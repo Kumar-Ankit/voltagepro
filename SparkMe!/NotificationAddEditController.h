@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NotificationSettingsMTLModel.h"
+#import "NotificationMTLModel.h"
 
 typedef enum{
     NotificationSettingsTypeAdd,
@@ -22,7 +22,7 @@ typedef enum{
 
 @interface NotificationAddEditController : UITableViewController
 @property (nonatomic, assign) NotificationSettingsType settingsType;
-@property (nonatomic, strong) NotificationSettingsMTLModel *model;
+@property (nonatomic, strong) NotificationSettings *model;
 @property (nonatomic, weak) id<NotificationAddEditControllerDelegate> delegate;
 
 @end

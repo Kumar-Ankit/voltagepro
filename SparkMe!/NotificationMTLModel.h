@@ -8,7 +8,6 @@
 
 #import <Mantle/Mantle.h>
 
-
 typedef enum{
     NotificationFieldTypeNone,
     NotificationFieldTypeRegion,
@@ -19,8 +18,15 @@ typedef enum{
     NotificationFieldTypeSound
 }NotificationFieldType;
 
+@interface NotificationMTLModel : MTLModel<MTLJSONSerializing>
+@property (nonatomic, assign) BOOL isAllMute;
+@property (nonatomic, assign) BOOL isSleep;
+@property (nonatomic, strong) NSString *sleepEndTime;
+@property (nonatomic, strong) NSString *sleepStartTime;
+@property (nonatomic, strong) NSArray *settings;
+@end
 
-@interface NotificationSettingsMTLModel : MTLModel<MTLJSONSerializing>
+@interface NotificationSettings : MTLModel<MTLJSONSerializing>
 
 @property (nonatomic, strong) NSString *n_id;
 @property (nonatomic, strong) NSString *region;

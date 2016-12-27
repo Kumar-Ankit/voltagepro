@@ -37,7 +37,7 @@
     if (_settingsType == NotificationSettingsTypeAdd)
     {
         self.title = @"Add Notification";
-        self.model = [[NotificationSettingsMTLModel alloc] init];
+        self.model = [[NotificationSettings alloc] init];
         
         UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
                                                                                         target:self

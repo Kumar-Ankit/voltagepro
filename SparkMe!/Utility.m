@@ -186,4 +186,11 @@
     return string;
 }
 
+- (NSString *)timeAM_PMFromTimeString:(NSString *)time24
+{
+    NSDate *date = [self.time24formatter dateFromString:time24];
+    NSString *string = [self.am_pm_formatter stringFromDate:date];
+    return string;
+}
+
 @end

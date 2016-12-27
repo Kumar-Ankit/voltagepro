@@ -13,8 +13,6 @@
 
 @interface SleepTimePickerController ()<VPPickerViewCellDelegate>
 @property (nonatomic, strong) NSMutableIndexSet *invalidIndex;
-@property (nonatomic, strong) NSString *from;
-@property (nonatomic, strong) NSString *to;
 @end
 
 @implementation SleepTimePickerController
@@ -127,7 +125,13 @@
 }
 
 - (NSDate *)pickerViewSelectedDate:(VPPickerViewCell *)pickerCell{
-    return [NSDate date];
+    if (pickerCell.tag == SleepTimeTypeFrom) {
+        NSDate *date = [[[Utility shared] am_pm_formatter] dateFromString:self.from];
+        return date;
+    }else{
+        NSDate *date = [[[Utility shared] am_pm_formatter] dateFromString:self.to];
+        return date;
+    }
 }
 
 - (void)pickerViewCellLabelBecomeFirstResponder:(VPPickerViewCell *)pickerCell{

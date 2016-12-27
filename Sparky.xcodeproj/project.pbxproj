@@ -225,7 +225,7 @@
 		A03262AD1E056F73003F234F /* VPPickerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A03262AC1E056F73003F234F /* VPPickerLabel.m */; };
 		A03DC7671E066A01001875AA /* VPNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A03DC7661E066A01001875AA /* VPNetworkManager.m */; };
 		A03DC76A1E066CE8001875AA /* VPDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A03DC7691E066CE8001875AA /* VPDataManager.m */; };
-		A03DC7701E066F11001875AA /* NotificationSettingsMTLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A03DC76F1E066F11001875AA /* NotificationSettingsMTLModel.m */; };
+		A03DC7701E066F11001875AA /* NotificationMTLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A03DC76F1E066F11001875AA /* NotificationMTLModel.m */; };
 		A08064EA1E067E8800BB9EF7 /* VPDetailTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A08064E91E067E8800BB9EF7 /* VPDetailTextFieldCell.m */; };
 		A08064ED1E06A72400BB9EF7 /* TwoButtonViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A08064EC1E06A72400BB9EF7 /* TwoButtonViewCell.m */; };
 		A08064F01E06CAA400BB9EF7 /* VPSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A08064EF1E06CAA400BB9EF7 /* VPSwitchCell.m */; };
@@ -535,8 +535,8 @@
 		A03DC7661E066A01001875AA /* VPNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNetworkManager.m; sourceTree = "<group>"; };
 		A03DC7681E066CE8001875AA /* VPDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPDataManager.h; sourceTree = "<group>"; };
 		A03DC7691E066CE8001875AA /* VPDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPDataManager.m; sourceTree = "<group>"; };
-		A03DC76E1E066F11001875AA /* NotificationSettingsMTLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationSettingsMTLModel.h; sourceTree = "<group>"; };
-		A03DC76F1E066F11001875AA /* NotificationSettingsMTLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationSettingsMTLModel.m; sourceTree = "<group>"; };
+		A03DC76E1E066F11001875AA /* NotificationMTLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationMTLModel.h; sourceTree = "<group>"; };
+		A03DC76F1E066F11001875AA /* NotificationMTLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationMTLModel.m; sourceTree = "<group>"; };
 		A08064E81E067E8800BB9EF7 /* VPDetailTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPDetailTextFieldCell.h; sourceTree = "<group>"; };
 		A08064E91E067E8800BB9EF7 /* VPDetailTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPDetailTextFieldCell.m; sourceTree = "<group>"; };
 		A08064EB1E06A72400BB9EF7 /* TwoButtonViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoButtonViewCell.h; sourceTree = "<group>"; };
@@ -1018,8 +1018,8 @@
 		A03DC76D1E066EDB001875AA /* MTLModel */ = {
 			isa = PBXGroup;
 			children = (
-				A03DC76E1E066F11001875AA /* NotificationSettingsMTLModel.h */,
-				A03DC76F1E066F11001875AA /* NotificationSettingsMTLModel.m */,
+				A03DC76E1E066F11001875AA /* NotificationMTLModel.h */,
+				A03DC76F1E066F11001875AA /* NotificationMTLModel.m */,
 			);
 			name = MTLModel;
 			sourceTree = "<group>";
@@ -1358,7 +1358,7 @@
 				3C2AE59D15D9303300E2C71F /* DispPrice.m in Sources */,
 				3C2AE5A015D9318900E2C71F /* DispRegionSum.m in Sources */,
 				3C5B237915DA7D0E001824F1 /* IcFlows.m in Sources */,
-				A03DC7701E066F11001875AA /* NotificationSettingsMTLModel.m in Sources */,
+				A03DC7701E066F11001875AA /* NotificationMTLModel.m in Sources */,
 				3C630ACB15DF3B0000318D23 /* SubMenuViewController.m in Sources */,
 				3C5814EE15DFD598001A2836 /* NoticeDetailViewController.m in Sources */,
 				A03DC7671E066A01001875AA /* VPNetworkManager.m in Sources */,

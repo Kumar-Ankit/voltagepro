@@ -8,7 +8,6 @@
 
 #import "VPDataManager.h"
 #import "VPNetworkManager.h"
-#import "NotificationSettingsMTLModel.h"
 #import "Utility.h"
 
 @implementation VPDataManager
@@ -24,7 +23,7 @@
     return sharedManager;
 }
 
-- (void)getNotificationSettings:(NSDictionary *)parameters completion:(void (^)(NSArray *, NSError *))completionBlock
+- (void)getNotificationSettings:(NSDictionary *)parameters completion:(void (^)(NotificationMTLModel *, NSError *))completionBlock
 {
     if (!parameters) {
         if (completionBlock) {
@@ -42,12 +41,9 @@
         }
         else if ([responseObject isKindOfClass:[NSDictionary class]]){
             
-            [Utility saveData:responseObject[@"isAllMute"] forKey:IS_ALL_MUTE_KEY];
-            [Utility saveData:responseObject[@"isSleep"] forKey:IS_SLEEP_KEY];
-            NSArray *responseData = responseObject[@"ResponseData"];
             NSError *mtlError;
-            NSArray *settings = [MTLJSONAdapter modelsOfClass:[NotificationSettingsMTLModel class]
-                                                fromJSONArray:responseData error:&mtlError];
+            NotificationMTLModel *settings = [MTLJSONAdapter modelOfClass:[NotificationMTLModel class]
+                                                       fromJSONDictionary:responseObject error:&mtlError];
             if (completionBlock) {
                 completionBlock (settings , nil);
             }

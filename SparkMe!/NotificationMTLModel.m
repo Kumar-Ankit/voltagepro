@@ -6,9 +6,40 @@
 //
 //
 
-#import "NotificationSettingsMTLModel.h"
+#import "NotificationMTLModel.h"
 
-@implementation NotificationSettingsMTLModel
+@implementation NotificationMTLModel
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+    return @{@"isAllMute" : @"isAllMute",
+             @"isSleep" : @"isSleep",
+             @"sleepEndTime" : @"sleepEndTime",
+             @"sleepStartTime" : @"sleepStartTime",
+             @"settings": @"ResponseData"};
+}
+
++ (NSValueTransformer *)settingsJSONTransformer{
+    return [MTLJSONAdapter arrayTransformerWithModelClass:[NotificationSettings class]];
+}
+
+- (NSString *)sleepEndTime{
+    if (!_sleepEndTime.length) {
+        return @"07:00";
+    }
+    return _sleepEndTime;
+}
+
+- (NSString *)sleepStartTime{
+    if (!_sleepStartTime.length) {
+        return @"22:00";
+    }
+    return _sleepStartTime;
+}
+
+@end
+
+@implementation NotificationSettings
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{

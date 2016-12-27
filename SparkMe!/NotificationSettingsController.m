@@ -10,16 +10,14 @@
 #import "NotificationAddEditController.h"
 #import "Utility.h"
 #import "VPDataManager.h"
-#import "NotificationSettingsMTLModel.h"
+#import "NotificationMTLModel.h"
 #import "VPTableViewCell.h"
 #import "VPSwitchCell.h"
 #import "VPSleepFooterView.h"
 #import "SleepTimePickerController.h"
 
-@interface NotificationSettingsController ()<NotificationAddEditControllerDelegate,VPSwitchCellDelegate>
-@property (nonatomic, strong) NSArray *notifications;
-@property (nonatomic, assign) BOOL isAllMute;
-@property (nonatomic, assign) BOOL isSleep;
+@interface NotificationSettingsController ()<NotificationAddEditControllerDelegate,VPSwitchCellDelegate,SleepTimePickerControllerDelegate>
+@property (nonatomic, strong) NotificationMTLModel *notifications;
 @end
 
 @implementation NotificationSettingsController
@@ -56,22 +54,20 @@
                              };
     
     __weak typeof(self) weakSelf = self;
-    
+
     [Utility showHUDonView:self.view];
-    [[VPDataManager sharedManager] getNotificationSettings:params completion:^(NSArray *response, NSError *error) {
+    [[VPDataManager sharedManager] getNotificationSettings:params completion:^(NotificationMTLModel *response, NSError *error) {
         [Utility hideHUDForView:weakSelf.view];
         [weakSelf processData:response withError:error];
     }];
 }
 
-- (void)processData:(NSArray *)notifications withError:(NSError *)error{
+- (void)processData:(NotificationMTLModel *)response withError:(NSError *)error{
     
     if (error) {
         [Utility showErrorAlertTitle:error.localizedFailureReason withMessage:error.localizedDescription];
     }
-    self.notifications = notifications;
-    self.isAllMute = [[Utility dataForKey:IS_ALL_MUTE_KEY] boolValue];
-    self.isSleep = [[Utility dataForKey:IS_SLEEP_KEY] boolValue];
+    self.notifications = response;
     [self.tableView reloadData];
 }
 
@@ -89,7 +85,7 @@
 {
     NotificationAddEditController *controller = [[NotificationAddEditController alloc] initWithStyle:UITableViewStylePlain];
     if (type == NotificationSettingsTypeEdit) {
-        NotificationSettingsMTLModel *setting = self.notifications[indexPath.row];
+        NotificationSettings *setting = self.notifications.settings[indexPath.row];
         controller.model = setting;
         self.tableView.editing = NO;
     }
@@ -100,7 +96,7 @@
 
 - (void)muteActionForIndexPath:(NSIndexPath *)indexPath
 {
-    NotificationSettingsMTLModel *setting = self.notifications[indexPath.row];
+    NotificationSettings *setting = self.notifications.settings[indexPath.row];
     NSString *muteText;
     if (setting.is_mute.boolValue == YES) {
         muteText = @"0";
@@ -126,7 +122,7 @@
 
 - (void)deleteSettings:(NSIndexPath *)indexPath
 {
-    NotificationSettingsMTLModel *setting = self.notifications[indexPath.row];
+    NotificationSettings *setting = self.notifications.settings[indexPath.row];
     
     NSDictionary *parms = @{@"action" : @"deleteNotificationSetting",
                             @"id":  setting.n_id};
@@ -147,17 +143,20 @@
 - (void)editSleepTimingsTapped:(id)sender
 {
     SleepTimePickerController *sleep = [[SleepTimePickerController alloc] initWithStyle:UITableViewStylePlain];
+    sleep.from =  [[Utility shared] timeAM_PMFromTimeString:self.notifications.sleepStartTime];
+    sleep.to = [[Utility shared] timeAM_PMFromTimeString:self.notifications.sleepEndTime];
+    sleep.delegate = self;
     [self.navigationController pushViewController:sleep animated:YES];
 }
 
 #pragma mark Utils
 
-- (NSString *)labelText:(NotificationSettingsMTLModel *)setting{
+- (NSString *)labelText:(NotificationSettings *)setting{
     NSString *string = [NSString stringWithFormat:@"Region: %@ | %@",setting.region,setting.alert_for];
     return string;
 }
 
-- (NSString *)detailLabelText:(NotificationSettingsMTLModel *)setting
+- (NSString *)detailLabelText:(NotificationSettings *)setting
 {
     NSString *detailText = @"";
     
@@ -189,7 +188,7 @@
 
 #pragma mark - Table view data source
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    if (section == 2 && self.notifications.count) {
+    if (section == 2 && self.notifications.settings.count) {
         return @"Your Notification Settings";
     }
     return nil;
@@ -204,7 +203,10 @@
         }
         [footer.btnEdit addTarget:self action:@selector(editSleepTimingsTapped:)
                  forControlEvents:UIControlEventTouchUpInside];
-        [footer setFrom:@"10:00 PM" to:@"7:10 AM"];
+        
+        NSString *from = [[Utility shared] timeAM_PMFromTimeString:self.notifications.sleepStartTime];
+        NSString *to = [[Utility shared] timeAM_PMFromTimeString:self.notifications.sleepEndTime];
+        [footer setFrom:from to:to isSleep:self.notifications.isSleep];
         return footer;
     }
     return nil;
@@ -231,7 +233,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     if (section == 2) {
-        return self.notifications.count ? self.notifications.count : 1;
+        return self.notifications.settings.count ? self.notifications.settings.count : 1;
     }
     return 1;
 }
@@ -247,11 +249,11 @@
         cell.delegate = self;
         cell.currentIndexPath = indexPath;
         if (indexPath.section == 0) {
-            [cell.prioritySwitch setOn:self.isAllMute];
+            [cell.prioritySwitch setOn:self.notifications.isAllMute];
             cell.textLabel.text = @"Mute all notifications";
             cell.switchCellMode = VPSwitchCellModeMute;
         }else{
-            [cell.prioritySwitch setOn:self.isSleep];
+            [cell.prioritySwitch setOn:self.notifications.isSleep];
             cell.textLabel.text = @"Sleep";
             cell.switchCellMode = VPSwitchCellModeSleep;
         }
@@ -260,7 +262,7 @@
     else
     {
         // For NO data
-        if (!self.notifications.count) {
+        if (!self.notifications.settings.count) {
             static NSString *identifier = @"noDataCell";
             VPTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
             if (!cell) {
@@ -285,7 +287,7 @@
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
         
-        NotificationSettingsMTLModel *setting = self.notifications[indexPath.row];
+        NotificationSettings *setting = self.notifications.settings[indexPath.row];
         cell.textLabel.text = [self labelText:setting];
         cell.detailTextLabel.text = [self detailLabelText:setting];
         return cell;
@@ -294,7 +296,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 2 && self.notifications.count) {
+    if (indexPath.section == 2 && self.notifications.settings.count) {
         [self openAddEditController:NotificationSettingsTypeEdit withIndexPath:indexPath];
     }
 }
@@ -313,7 +315,7 @@
                                                                         }];
     
     NSString *muteText;
-    NotificationSettingsMTLModel *setting = self.notifications[indexPath.row];
+    NotificationSettings *setting = self.notifications.settings[indexPath.row];
     if (setting.is_mute.boolValue == YES) {
         muteText = @"Unmute";
     }else{
@@ -342,11 +344,11 @@
 #pragma mark VPSwitchCellDelegate
 - (void)switchButtonValueChangeWithCell:(VPSwitchCell *)cell{
     if (cell.switchCellMode == VPSwitchCellModeMute) {
-        self.isAllMute = cell.prioritySwitch.on;
+        self.notifications.isAllMute = cell.prioritySwitch.on;
         [self processMuteCellAction];
     }
     else if (cell.switchCellMode == VPSwitchCellModeSleep) {
-        self.isSleep = cell.prioritySwitch.on;
+        self.notifications.isSleep = cell.prioritySwitch.on;
         [self processSleepCellAction];
     }
 }
@@ -356,20 +358,19 @@
     NSDictionary *parms = @{@"action" : @"muteAllAction",
                             @"username" : [Utility userName],
                             @"password" : [Utility password],
-                            @"mute" : self.isAllMute ? @"1" : @"0"};
+                            @"mute" : self.notifications.isAllMute ? @"1" : @"0"};
     
     __weak typeof(self) weakSelf = self;
-    [Utility showHUDonView:self.view title:self.isAllMute ? @"Muting all notifications..." : @"Unmuting all notifications..."];
+    [Utility showHUDonView:self.view title:self.notifications.isAllMute ? @"Muting all notifications..." : @"Unmuting all notifications..."];
     [[VPDataManager sharedManager] setSettings:parms completion:^(BOOL status, NSError *error) {
         [Utility hideHUDForView:weakSelf.view];
         if (error || !status) {
             [Utility showErrorAlertTitle:error.localizedFailureReason withMessage:error.localizedDescription];
-            weakSelf.isAllMute = !weakSelf.isAllMute;
+            weakSelf.notifications.isAllMute = !weakSelf.notifications.isAllMute;
             [weakSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]
                                       withRowAnimation:UITableViewRowAnimationFade];
         }
         else{
-            [Utility saveData:parms[@"mute"] forKey:IS_ALL_MUTE_KEY];
             [weakSelf downloadData];
         }
     }];
@@ -380,26 +381,31 @@
     NSDictionary *parms = @{@"action" : @"sleepSettings",
                             @"username" : [Utility userName],
                             @"password" : [Utility password],
-                            @"sleep" : self.isSleep ? @"1" : @"0",
-                            @"sleep_start_time" : @"22:00",
-                            @"sleep_end_time" : @"07:00",
+                            @"sleep" : self.notifications.isSleep ? @"1" : @"0",
+                            @"sleep_start_time" : self.notifications.sleepStartTime,
+                            @"sleep_end_time" : self.notifications.sleepEndTime,
                             };
     
     __weak typeof(self) weakSelf = self;
-    [Utility showHUDonView:self.view title:self.isSleep ? @"Sleep On" : @"Sleep Off"];
+    [Utility showHUDonView:self.view title:self.notifications.isSleep ? @"Sleep On" : @"Sleep Off"];
     [[VPDataManager sharedManager] setSettings:parms completion:^(BOOL status, NSError *error) {
         [Utility hideHUDForView:weakSelf.view];
         if (error || !status) {
             [Utility showErrorAlertTitle:error.localizedFailureReason withMessage:error.localizedDescription];
-            weakSelf.isSleep = !weakSelf.isSleep;
+            weakSelf.notifications.isSleep = !weakSelf.notifications.isSleep;
             [weakSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:1]]
                                       withRowAnimation:UITableViewRowAnimationFade];
         }
         else{
-            [Utility saveData:parms[@"sleep"] forKey:IS_SLEEP_KEY];
             [weakSelf downloadData];
         }
     }];
 }
+
+#pragma mark SleepTimePickerControllerDelegate
+- (void)didDismissSleepTimePickerController:(SleepTimePickerController *)controller{
+    [self downloadData];
+}
+
 
 @end

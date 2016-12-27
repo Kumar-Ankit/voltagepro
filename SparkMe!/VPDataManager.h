@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NotificationMTLModel.h"
 
 @interface VPDataManager : NSObject
 + (VPDataManager *)sharedManager;
 
 - (void)getNotificationSettings:(NSDictionary *)parameters
-                     completion:(void (^)(NSArray *response, NSError *error))completionBlock;
+                     completion:(void (^)(NotificationMTLModel *response, NSError *error))completionBlock;
 
 - (void)setSettings:(NSDictionary *)parameters
                      completion:(void (^)(BOOL status, NSError *error))completionBlock;

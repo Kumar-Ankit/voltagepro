@@ -10,6 +10,6 @@
 
 @interface VPSleepFooterView : UITableViewHeaderFooterView
 @property (nonatomic, strong) UIButton *btnEdit;
-- (void)setFrom:(NSString *)from to:(NSString *)to;
+- (void)setFrom:(NSString *)from to:(NSString *)to isSleep:(BOOL)sleep;
 + (CGFloat)heightForWidth:(float)width;
 @end

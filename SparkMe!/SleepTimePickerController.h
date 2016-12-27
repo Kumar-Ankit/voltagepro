@@ -21,4 +21,6 @@ typedef enum{
 
 @interface SleepTimePickerController : UITableViewController
 @property (nonatomic, weak) id<SleepTimePickerControllerDelegate> delegate;
+@property (nonatomic, strong) NSString *from;
+@property (nonatomic, strong) NSString *to;
 @end

@@ -6,6 +6,8 @@
 //
 //
 
+//http://crimsonbeans.com/cbprojects/hvb/priceanddemand_5min_chart.html
+//http://crimsonbeans.com/cbprojects/hvb/priceanddemand_30min_chart.html
 #import "VPSleepFooterView.h"
 #import "Utility.h"
 #define kLableFont REGULAR(10.0)
@@ -63,8 +65,21 @@
     self.titleLabel.frame = (CGRect){x,y,tSize};
 }
 
-- (void)setFrom:(NSString *)from to:(NSString *)to{
-    self.titleLabel.text = [NSString stringWithFormat:@"Enabling Sleep will disable notifications from %@ to %@",from,to];
+- (void)setFrom:(NSString *)from to:(NSString *)to isSleep:(BOOL)sleep{
+    
+    if (!from) {
+        from = @"22:00";
+    }
+    
+    if (!to) {
+        to = @"07:00";
+    }
+    
+    if (sleep) {
+        self.titleLabel.text = [NSString stringWithFormat:@"Sleep mode is enabled, you will not receive notificaiton from %@ to %@",from,to];
+    }else{
+        self.titleLabel.text = [NSString stringWithFormat:@"Enabling Sleep will disable notifications from %@ to %@",from,to];
+    }
     [self setNeedsLayout];
 }
 
