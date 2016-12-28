@@ -77,7 +77,7 @@
         
         
         
-        NSURL *url = [NSURL URLWithString: @"http://phanalytics.com.au/products-2/sparky-pro/"];
+        NSURL *url = [NSURL URLWithString: @"http://hvbrokers.com.au"];
         
         //URL Requst Object
         NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
