@@ -437,7 +437,6 @@
                                         <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Elc-Oj-wM7" id="xbb-C1-jsd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1784,7 +1783,6 @@
                                         <rect key="frame" x="0.0" y="22" width="375" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z3o-C6-H1h" id="W5T-fv-6bR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.12781159579753876" green="0.9764636754989624" blue="0.32719117403030396" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3012,7 +3010,6 @@ All NEM time displayed in Aust. Eastern Standard Time, AEST (GMT +10hrs).
                                         <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M1e-bH-tet" id="Qc1-Df-mFK">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
