@@ -6,8 +6,6 @@
 //
 //
 
-//http://crimsonbeans.com/cbprojects/hvb/priceanddemand_5min_chart.html
-//http://crimsonbeans.com/cbprojects/hvb/priceanddemand_30min_chart.html
 #import "VPSleepFooterView.h"
 #import "Utility.h"
 #define kLableFont REGULAR(10.0)

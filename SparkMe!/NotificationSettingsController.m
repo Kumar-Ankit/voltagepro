@@ -18,6 +18,7 @@
 
 @interface NotificationSettingsController ()<NotificationAddEditControllerDelegate,VPSwitchCellDelegate,SleepTimePickerControllerDelegate>
 @property (nonatomic, strong) NotificationMTLModel *notifications;
+@property (nonatomic, assign) BOOL isLoading;
 @end
 
 @implementation NotificationSettingsController
@@ -55,6 +56,7 @@
     
     __weak typeof(self) weakSelf = self;
 
+    self.isLoading = YES;
     [Utility showHUDonView:self.view];
     [[VPDataManager sharedManager] getNotificationSettings:params completion:^(NotificationMTLModel *response, NSError *error) {
         [Utility hideHUDForView:weakSelf.view];
@@ -67,6 +69,7 @@
     if (error) {
         [Utility showErrorAlertTitle:error.localizedFailureReason withMessage:error.localizedDescription];
     }
+    self.isLoading = NO;
     self.notifications = response;
     [self.tableView reloadData];
 }
@@ -83,7 +86,7 @@
 
 - (void)openAddEditController:(NotificationSettingsType)type withIndexPath:(NSIndexPath *)indexPath
 {
-    NotificationAddEditController *controller = [[NotificationAddEditController alloc] initWithStyle:UITableViewStylePlain];
+    NotificationAddEditController *controller = [[NotificationAddEditController alloc] initWithStyle:UITableViewStyleGrouped];
     if (type == NotificationSettingsTypeEdit) {
         NotificationSettings *setting = self.notifications.settings[indexPath.row];
         controller.model = setting;
@@ -271,7 +274,7 @@
             cell.isDetailMode = YES;
             cell.backgroundColor = [UIColor clearColor];
             cell.contentView.backgroundColor = [UIColor clearColor];
-            cell.textLabel.text = @"Oops! You don't any notification settings.";
+            cell.textLabel.text = self.isLoading ? @"" : @"Oops! You don't any notification settings.";
             cell.textLabel.adjustsFontSizeToFitWidth = YES;
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
             tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -328,7 +331,7 @@
                                                                             [self muteActionForIndexPath:swipedIndexPath];
                                                                         }];
 
-    muteAction.backgroundColor = GRAY(0.85);
+    muteAction.backgroundColor = kLightBlueGrayColor;
     deleteAction.backgroundColor = kAppSelectionRedColor;
     editAction.backgroundColor = kAppSelectionBlueColor;
     return @[deleteAction,editAction,muteAction];

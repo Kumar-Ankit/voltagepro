@@ -26,12 +26,15 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = kAppBackgroundColor;
+    
     self.regions = @[@"NSW",@"QLD",@"SA",@"TAS",@"VIC"];
     self.alerts = @[@"5 MIN",@"5 MIN PreDesp.",@"30 MIN PreDesp."];
     self.sounds = @[@"Bird",@"Cat",@"Cashregister",@"Chewbacca",@"Chewy",@"Cow",@"Doh",@"Dolphin",
                     @"Elephant",@"Frog",@"Gameover",@"Horse",@"Jaws",@"Pig",@"Raven"];
 
     self.tableView.tableFooterView = [UIView new];
+    self.tableView.contentInset = (UIEdgeInsets) {-1.0, 0.0, 0.0, 0.0};;
+    
     self.invalidIndex = [[NSMutableIndexSet alloc] init];
     
     if (_settingsType == NotificationSettingsTypeAdd)
@@ -56,6 +59,14 @@
 }
 
 #pragma mark - Table view data source
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
+    return @"Your text here Your text here Your text here Your text here";
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0.5;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -121,7 +132,7 @@
     
     tfCell.currentIndexPath = indexPath;
     tfCell.delegate = self;
-    tfCell.textField.placeholder = @"Required";
+    tfCell.textField.placeholder = @"Price";
     tfCell.nextIndexPath = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section];
     tfCell.previousIndexPath = [NSIndexPath indexPathForRow:indexPath.row - 1 inSection:indexPath.section];
     tfCell.textField.tag = tag;
@@ -141,8 +152,9 @@
         tfCell.nextIndexPath = nil;
     }
     
-    tfCell.isLastCell = isLastCell;
-    
+    if (self.tableView.style == UITableViewStylePlain) {
+        tfCell.isLastCell = isLastCell;
+    }
     return tfCell;
 }
 
@@ -184,8 +196,9 @@
         cell.nextIndexPath = nil;
     }
     
-    cell.isLastCell = isLastCell;
-    
+    if (self.tableView.style == UITableViewStylePlain) {
+        cell.isLastCell = isLastCell;
+    }
     return cell;
 }
 
