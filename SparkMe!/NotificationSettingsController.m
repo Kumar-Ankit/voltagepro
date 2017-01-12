@@ -194,6 +194,9 @@
     if (section == 2 && self.notifications.settings.count) {
         return @"Your Notification Settings";
     }
+    
+    
+    
     return nil;
 }
 
@@ -274,7 +277,11 @@
             cell.isDetailMode = YES;
             cell.backgroundColor = [UIColor clearColor];
             cell.contentView.backgroundColor = [UIColor clearColor];
+<<<<<<< Updated upstream
             cell.textLabel.text = self.isLoading ? @"" : @"Oops! You don't any notification settings.";
+=======
+            cell.textLabel.text = @"No current notification saved, Please add.";
+>>>>>>> Stashed changes
             cell.textLabel.adjustsFontSizeToFitWidth = YES;
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
             tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

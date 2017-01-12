@@ -26,11 +26,15 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = kAppBackgroundColor;
+<<<<<<< Updated upstream
     
     self.regions = @[@"NSW",@"QLD",@"SA",@"TAS",@"VIC"];
+=======
+    self.regions = @[@"NSW",@"QLD",@"SA",@"TAS",@"VIC",@"ALL"];
+>>>>>>> Stashed changes
     self.alerts = @[@"5 MIN",@"5 MIN PreDesp.",@"30 MIN PreDesp."];
     self.sounds = @[@"Bird",@"Cat",@"Cashregister",@"Chewbacca",@"Chewy",@"Cow",@"Doh",@"Dolphin",
-                    @"Elephant",@"Frog",@"Gameover",@"Horse",@"Jaws",@"Pig",@"Raven"];
+                    @"Elephant",@"Frog",@"Gameover",@"Horse",@"Pig",@"Raven"];
 
     self.tableView.tableFooterView = [UIView new];
     self.tableView.contentInset = (UIEdgeInsets) {-1.0, 0.0, 0.0, 0.0};;
