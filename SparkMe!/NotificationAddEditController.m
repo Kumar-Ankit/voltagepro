@@ -26,15 +26,11 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = kAppBackgroundColor;
-<<<<<<< Updated upstream
-    
-    self.regions = @[@"NSW",@"QLD",@"SA",@"TAS",@"VIC"];
-=======
-    self.regions = @[@"NSW",@"QLD",@"SA",@"TAS",@"VIC",@"ALL"];
->>>>>>> Stashed changes
+
+
+    self.regions = @[@"ALL",@"NSW",@"QLD",@"SA",@"TAS",@"VIC"];
     self.alerts = @[@"5 MIN",@"5 MIN PreDesp.",@"30 MIN PreDesp."];
-    self.sounds = @[@"Bird",@"Cat",@"Cashregister",@"Chewbacca",@"Chewy",@"Cow",@"Doh",@"Dolphin",
-                    @"Elephant",@"Frog",@"Gameover",@"Horse",@"Pig",@"Raven"];
+    self.sounds = @[@"Default",@"Bird",@"Cat",@"Cashregister",@"Chewbacca",@"Cow",@"Doh",@"Dolphin",@"Demonstrative",@"Dwarf",@"Elephant",@"Fault",@"Frog",@"Frenzy",@"Friends",@"Inquisitiveness",@"Gameover",@"Horse",@"Oringz",@"Pig",@"Raven",@"Solemn",@"Surprise"];
 
     self.tableView.tableFooterView = [UIView new];
     self.tableView.contentInset = (UIEdgeInsets) {-1.0, 0.0, 0.0, 0.0};;
@@ -65,7 +61,7 @@
 #pragma mark - Table view data source
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
-    return @"Your text here Your text here Your text here Your text here";
+    return @"One value out of greater than, equals to and less than is mandatory to fill.";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

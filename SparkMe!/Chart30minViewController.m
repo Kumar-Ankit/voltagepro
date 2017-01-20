@@ -149,7 +149,7 @@
             [mailViewController setSubject:@"Traded and Predispatch electricity price & demand!"];
             [mailViewController addAttachmentData:imageData mimeType:@"image/jpg" fileName:@"PriceDemandChart.jpg"];
             
-            [mailViewController setMessageBody:@"\n\n\n===========================\nUsing Sparky Pro for iPhone.\nSource: (AEMO) Australian Energy Market Operator" isHTML:NO];
+            [mailViewController setMessageBody:@"\n\n\n===========================\nUsing VoltagePro for iPhone.\n" isHTML:NO];
             
             [self presentViewController:mailViewController animated:YES completion:nil];
             
@@ -194,7 +194,7 @@
                 }};
             
             [tweetSheet addImage:image];
-            [tweetSheet setInitialText:[@"Check out the current traded & pre-dispatch elec. price & demand!" stringByAppendingString:@"\nSparky Pro for iPhone."]];
+            [tweetSheet setInitialText:[@"Check out the current traded & pre-dispatch elec. price & demand!" stringByAppendingString:@"\VoltagePro for iPhone."]];
             [tweetSheet setCompletionHandler:completionHandler];
             [self presentViewController:tweetSheet animated:YES completion:nil];
         }
