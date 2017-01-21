@@ -247,6 +247,16 @@
 		D0739D131E0BB5C700F39629 /* Chewy.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0739D121E0BB5C700F39629 /* Chewy.caf */; };
 		D0739D151E0BB5D500F39629 /* Cow.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0739D141E0BB5D500F39629 /* Cow.caf */; };
 		D0739D171E0BB5DD00F39629 /* Frog.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0739D161E0BB5DD00F39629 /* Frog.caf */; };
+		D0D745751E2CA1D1006771BC /* Default.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0D7456B1E2CA1D0006771BC /* Default.caf */; };
+		D0D745761E2CA1D1006771BC /* Demonstrative.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0D7456C1E2CA1D0006771BC /* Demonstrative.caf */; };
+		D0D745771E2CA1D1006771BC /* Dwarf.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0D7456D1E2CA1D0006771BC /* Dwarf.caf */; };
+		D0D745781E2CA1D1006771BC /* Fault.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0D7456E1E2CA1D0006771BC /* Fault.caf */; };
+		D0D745791E2CA1D1006771BC /* Frenzy.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0D7456F1E2CA1D0006771BC /* Frenzy.caf */; };
+		D0D7457A1E2CA1D1006771BC /* Friends.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0D745701E2CA1D0006771BC /* Friends.caf */; };
+		D0D7457B1E2CA1D1006771BC /* Inquisitiveness.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0D745711E2CA1D0006771BC /* Inquisitiveness.caf */; };
+		D0D7457C1E2CA1D1006771BC /* Oringz.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0D745721E2CA1D1006771BC /* Oringz.caf */; };
+		D0D7457D1E2CA1D1006771BC /* Solemn.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0D745731E2CA1D1006771BC /* Solemn.caf */; };
+		D0D7457E1E2CA1D1006771BC /* Surprise.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0D745741E2CA1D1006771BC /* Surprise.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -566,6 +576,26 @@
 		D0739D121E0BB5C700F39629 /* Chewy.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Chewy.caf; path = ../Chewy.caf; sourceTree = "<group>"; };
 		D0739D141E0BB5D500F39629 /* Cow.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Cow.caf; path = ../Cow.caf; sourceTree = "<group>"; };
 		D0739D161E0BB5DD00F39629 /* Frog.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Frog.caf; path = ../Frog.caf; sourceTree = "<group>"; };
+		D0D745611E2CA027006771BC /* Default.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Default.caf; sourceTree = "<group>"; };
+		D0D745621E2CA062006771BC /* Demonstrative.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Demonstrative.caf; sourceTree = "<group>"; };
+		D0D745631E2CA062006771BC /* Dwarf.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dwarf.caf; sourceTree = "<group>"; };
+		D0D745641E2CA062006771BC /* Fault.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fault.caf; sourceTree = "<group>"; };
+		D0D745651E2CA062006771BC /* Frenzy.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Frenzy.caf; sourceTree = "<group>"; };
+		D0D745661E2CA062006771BC /* Friends.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Friends.caf; sourceTree = "<group>"; };
+		D0D745671E2CA062006771BC /* Inquisitiveness.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inquisitiveness.caf; sourceTree = "<group>"; };
+		D0D745681E2CA062006771BC /* Oringz.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Oringz.caf; sourceTree = "<group>"; };
+		D0D745691E2CA062006771BC /* Solemn.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Solemn.caf; sourceTree = "<group>"; };
+		D0D7456A1E2CA062006771BC /* Surprise.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Surprise.caf; sourceTree = "<group>"; };
+		D0D7456B1E2CA1D0006771BC /* Default.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Default.caf; sourceTree = "<group>"; };
+		D0D7456C1E2CA1D0006771BC /* Demonstrative.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Demonstrative.caf; sourceTree = "<group>"; };
+		D0D7456D1E2CA1D0006771BC /* Dwarf.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dwarf.caf; sourceTree = "<group>"; };
+		D0D7456E1E2CA1D0006771BC /* Fault.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fault.caf; sourceTree = "<group>"; };
+		D0D7456F1E2CA1D0006771BC /* Frenzy.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Frenzy.caf; sourceTree = "<group>"; };
+		D0D745701E2CA1D0006771BC /* Friends.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Friends.caf; sourceTree = "<group>"; };
+		D0D745711E2CA1D0006771BC /* Inquisitiveness.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inquisitiveness.caf; sourceTree = "<group>"; };
+		D0D745721E2CA1D1006771BC /* Oringz.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Oringz.caf; sourceTree = "<group>"; };
+		D0D745731E2CA1D1006771BC /* Solemn.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Solemn.caf; sourceTree = "<group>"; };
+		D0D745741E2CA1D1006771BC /* Surprise.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Surprise.caf; sourceTree = "<group>"; };
 		E5EB8646479620C8A7F21435 /* Pods-Sparky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sparky.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sparky/Pods-Sparky.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -605,6 +635,16 @@
 		3C24D76215B0419700226F4E = {
 			isa = PBXGroup;
 			children = (
+				D0D7456B1E2CA1D0006771BC /* Default.caf */,
+				D0D7456C1E2CA1D0006771BC /* Demonstrative.caf */,
+				D0D7456D1E2CA1D0006771BC /* Dwarf.caf */,
+				D0D7456E1E2CA1D0006771BC /* Fault.caf */,
+				D0D7456F1E2CA1D0006771BC /* Frenzy.caf */,
+				D0D745701E2CA1D0006771BC /* Friends.caf */,
+				D0D745711E2CA1D0006771BC /* Inquisitiveness.caf */,
+				D0D745721E2CA1D1006771BC /* Oringz.caf */,
+				D0D745731E2CA1D1006771BC /* Solemn.caf */,
+				D0D745741E2CA1D1006771BC /* Surprise.caf */,
 				D0739CF51E0B665900F39629 /* alert_new.png */,
 				A03262A31E056B94003F234F /* image.xcassets */,
 				3C00216B1611DDFC00A962FE /* Default-568h@2x.png */,
@@ -842,7 +882,17 @@
 		3CCED6D01DCC8F5E005156D7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D0D745621E2CA062006771BC /* Demonstrative.caf */,
+				D0D745631E2CA062006771BC /* Dwarf.caf */,
+				D0D745641E2CA062006771BC /* Fault.caf */,
+				D0D745651E2CA062006771BC /* Frenzy.caf */,
+				D0D745661E2CA062006771BC /* Friends.caf */,
+				D0D745671E2CA062006771BC /* Inquisitiveness.caf */,
+				D0D745681E2CA062006771BC /* Oringz.caf */,
+				D0D745691E2CA062006771BC /* Solemn.caf */,
+				D0D7456A1E2CA062006771BC /* Surprise.caf */,
 				D0739D161E0BB5DD00F39629 /* Frog.caf */,
+				D0D745611E2CA027006771BC /* Default.caf */,
 				D0739D141E0BB5D500F39629 /* Cow.caf */,
 				D0739D121E0BB5C700F39629 /* Chewy.caf */,
 				D0739D101E0BB5BD00F39629 /* Bird.caf */,
@@ -1120,6 +1170,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0D745751E2CA1D1006771BC /* Default.caf in Resources */,
+				D0D745761E2CA1D1006771BC /* Demonstrative.caf in Resources */,
+				D0D745771E2CA1D1006771BC /* Dwarf.caf in Resources */,
+				D0D745781E2CA1D1006771BC /* Fault.caf in Resources */,
+				D0D745791E2CA1D1006771BC /* Frenzy.caf in Resources */,
+				D0D7457A1E2CA1D1006771BC /* Friends.caf in Resources */,
+				D0D7457B1E2CA1D1006771BC /* Inquisitiveness.caf in Resources */,
+				D0D7457C1E2CA1D1006771BC /* Oringz.caf in Resources */,
+				D0D7457D1E2CA1D1006771BC /* Solemn.caf in Resources */,
+				D0D7457E1E2CA1D1006771BC /* Surprise.caf in Resources */,
 				3C263E1715C3347200C010A0 /* Sansation_Bold.ttf in Resources */,
 				D0739D021E0BB0B600F39629 /* Cashregister.caf in Resources */,
 				D0739D171E0BB5DD00F39629 /* Frog.caf in Resources */,

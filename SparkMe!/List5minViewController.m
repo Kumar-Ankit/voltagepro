@@ -761,7 +761,7 @@
     
     if ([[segue identifier] isEqualToString:@"pushChart5"]) {
         Chart30minViewController *Chart5minVC = [segue destinationViewController];
-        Chart5minVC.chartURLStr = @"http://crimsonbeans.com/cbprojects/hvb/priceanddemand_5min_chart.html";
+        Chart5minVC.chartURLStr = @"http://crimsonbeans.com/cbprojects/hvb/priceanddemand_5min_chart.php?region=QLD1";
         
         if(segVal.selectedSegmentIndex==0){
             Chart5minVC.stateChartURL=@"http://www.nemweb.com.au/mms.GRAPHS/GRAPHS/GRAPH_5NSW1.gif";
