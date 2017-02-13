@@ -211,10 +211,6 @@
                 
                 NSLog(@"PriceAlertFlag response is %@", responsePriceAlertFlag);
                 
-#warning remove it
-                [self loadPart3_Success];
-                return;
-                
                 if([responseActivate isEqualToString:@"0"] || [responseActivate isEqualToString:@"1"])
                 {
                     NSLog(@"Login SUCCESS with result %@", responseActivate);
