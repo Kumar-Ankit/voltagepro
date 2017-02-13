@@ -2537,8 +2537,9 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     
     headingbut1.layer.cornerRadius = 5;
     headingbut1.layer.borderWidth = 1;
-    headingbut1.layer.borderColor = [UIColor colorWithRed:0.0f green:0.4784f blue:1.0f alpha:1].CGColor;
+    //headingbut1.layer.borderColor = [UIColor colorWithRed:0.0f green:0.4784f blue:1.0f alpha:1].CGColor;
     
+    headingbut1.layer.borderColor = [UIColor blackColor].CGColor;
     priceLabel.layer.borderColor = [UIColor greenColor].CGColor;
     
     priceLabel.layer.borderWidth = 1.0;

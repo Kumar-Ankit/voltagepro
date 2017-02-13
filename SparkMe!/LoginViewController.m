@@ -174,7 +174,7 @@
             
             //            this returns 0 if successfull but not yet activated, 1 if successfull but activated, and 2 if unsuccessfull
             
-    NSURL *url=[NSURL URLWithString:@"http://crimsonbeans.com/cbprojects/pushnotification/VoltageProLoginV1.php"];
+    NSURL *url=[NSURL URLWithString:@"http://hvbpreproduction.azurewebsites.net/pushnotification/VoltageProLoginV1.php"];
             
             NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
             

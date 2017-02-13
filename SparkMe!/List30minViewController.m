@@ -518,7 +518,7 @@
 #pragma mark - Table view delegate
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-    NSString *chartURL = [NSString stringWithFormat:@"http://crimsonbeans.com/cbprojects/hvb/priceanddemand_30min_chart.php?region=%@",_activeRegion];
+    NSString *chartURL = [NSString stringWithFormat:@"http://hvbpreproduction.azurewebsites.net/priceanddemand_30min_chart.php?region=%@",_activeRegion];
 
     if ([[segue identifier] isEqualToString:@"pushChart3"]) {
         Chart30minViewController *Chart30minVC = [segue destinationViewController];
