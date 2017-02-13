@@ -13,7 +13,7 @@ typedef enum{
     NotificationFieldTypeRegion,
     NotificationFieldTypeAlertFor,
     NotificationFieldTypeGreaterThan,
-    NotificationFieldTypeEquals,
+   // NotificationFieldTypeEquals,
     NotificationFieldTypeLessThan,
     NotificationFieldTypeSound
 }NotificationFieldType;
@@ -32,7 +32,7 @@ typedef enum{
 @property (nonatomic, strong) NSString *region;
 @property (nonatomic, strong) NSString *alert_for;
 @property (nonatomic, strong) NSString *greater_than;
-@property (nonatomic, strong) NSString *equals_to;
+//@property (nonatomic, strong) NSString *equals_to;
 @property (nonatomic, strong) NSString *less_than;
 @property (nonatomic, strong) NSString *sound;
 @property (nonatomic, strong) NSString *is_mute;

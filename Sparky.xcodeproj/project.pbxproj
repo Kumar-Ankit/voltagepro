@@ -257,6 +257,7 @@
 		D0D7457C1E2CA1D1006771BC /* Oringz.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0D745721E2CA1D1006771BC /* Oringz.caf */; };
 		D0D7457D1E2CA1D1006771BC /* Solemn.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0D745731E2CA1D1006771BC /* Solemn.caf */; };
 		D0D7457E1E2CA1D1006771BC /* Surprise.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0D745741E2CA1D1006771BC /* Surprise.caf */; };
+		D0DDF1581E4B286C0044FFA8 /* Jawspower.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0DDF1571E4B286C0044FFA8 /* Jawspower.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -596,6 +597,7 @@
 		D0D745721E2CA1D1006771BC /* Oringz.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Oringz.caf; sourceTree = "<group>"; };
 		D0D745731E2CA1D1006771BC /* Solemn.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Solemn.caf; sourceTree = "<group>"; };
 		D0D745741E2CA1D1006771BC /* Surprise.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Surprise.caf; sourceTree = "<group>"; };
+		D0DDF1571E4B286C0044FFA8 /* Jawspower.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Jawspower.caf; sourceTree = "<group>"; };
 		E5EB8646479620C8A7F21435 /* Pods-Sparky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sparky.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sparky/Pods-Sparky.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -635,11 +637,13 @@
 		3C24D76215B0419700226F4E = {
 			isa = PBXGroup;
 			children = (
+				D0DDF1571E4B286C0044FFA8 /* Jawspower.caf */,
 				D0D7456B1E2CA1D0006771BC /* Default.caf */,
 				D0D7456C1E2CA1D0006771BC /* Demonstrative.caf */,
 				D0D7456D1E2CA1D0006771BC /* Dwarf.caf */,
 				D0D7456E1E2CA1D0006771BC /* Fault.caf */,
 				D0D7456F1E2CA1D0006771BC /* Frenzy.caf */,
+				3CA1C3F416132B7500A2C339 /* Icon-72@2x.png */,
 				D0D745701E2CA1D0006771BC /* Friends.caf */,
 				D0D745711E2CA1D0006771BC /* Inquisitiveness.caf */,
 				D0D745721E2CA1D1006771BC /* Oringz.caf */,
@@ -653,7 +657,6 @@
 				3C1E72A115B22897005CFE10 /* Spark_Icon@2x.png */,
 				3C1E729F15B22887005CFE10 /* Spark_Icon.png */,
 				3CA1C3F316132B7500A2C339 /* Icon-72.png */,
-				3CA1C3F416132B7500A2C339 /* Icon-72@2x.png */,
 				3C4C018817E3C54A00FA2842 /* Icon-120.png */,
 				3C4C018917E3C54A00FA2842 /* Icon-152.png */,
 				3CCA85C919A97B8B000B6B1D /* Icon-58.png */,
@@ -1192,6 +1195,7 @@
 				D0739D0F1E0BB5B600F39629 /* Pig.caf in Resources */,
 				D0739D0D1E0BB5B100F39629 /* Cat.caf in Resources */,
 				D0739D071E0BB0B600F39629 /* Elephant.caf in Resources */,
+				D0DDF1581E4B286C0044FFA8 /* Jawspower.caf in Resources */,
 				D0739D081E0BB0B600F39629 /* Gameover.caf in Resources */,
 				D0739D091E0BB0B600F39629 /* Horse.caf in Resources */,
 				D0739D0A1E0BB0B600F39629 /* Jaws.caf in Resources */,

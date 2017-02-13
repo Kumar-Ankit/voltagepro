@@ -9,7 +9,7 @@
 #import "VPNetworkManager.h"
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 
-#define kBaseUrl @"http://crimsonbeans.com/cbprojects/pushnotification/voltagepropushnotification.php"
+#define kBaseUrl @"http://hvbpreproduction.azurewebsites.net/pushnotification/voltagepropushnotification.php"
 #define kShowNetworkResponses 1
 
 

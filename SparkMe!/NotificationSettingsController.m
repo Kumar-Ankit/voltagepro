@@ -34,7 +34,9 @@
                                                            target:nil action:nil];
     self.navigationItem.backBarButtonItem = bBtn;
     
-    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+    //UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+    
+    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain
                                                                                target:self
                                                                                action:@selector(dismissView:)];
     self.navigationItem.leftBarButtonItem = leftBarButton;
@@ -167,14 +169,14 @@
         detailText = [detailText stringByAppendingString:[NSString stringWithFormat:@"Price < %@",[[Utility shared]                                                                                                   currencyStringFromString:setting.less_than]]];
     }
     
-    if (setting.equals_to.length) {
+    //if (setting.equals_to.length) {
         
-        if (detailText.length) {
-            detailText = [detailText stringByAppendingString:@" | "];
-        }
+      //  if (detailText.length) {
+        //    detailText = [detailText stringByAppendingString:@" | "];
+        //}
         
-        detailText = [detailText stringByAppendingString:[NSString stringWithFormat:@"Price = %@",[[Utility shared]                                                                                                   currencyStringFromString:setting.equals_to]]];
-    }
+       // detailText = [detailText stringByAppendingString:[NSString stringWithFormat:@"Price = %@",[[Utility shared]                                                                                                   currencyStringFromString:setting.equals_to]]];
+    //}
     
     if (setting.greater_than.length) {
         

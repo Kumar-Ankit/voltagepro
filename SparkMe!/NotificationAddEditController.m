@@ -30,7 +30,7 @@
 
     self.regions = @[@"ALL",@"NSW",@"QLD",@"SA",@"TAS",@"VIC"];
     self.alerts = @[@"5 MIN",@"5 MIN PreDesp.",@"30 MIN PreDesp."];
-    self.sounds = @[@"Default",@"Bird",@"Cat",@"Cashregister",@"Chewbacca",@"Cow",@"Doh",@"Dolphin",@"Demonstrative",@"Dwarf",@"Elephant",@"Fault",@"Frog",@"Frenzy",@"Friends",@"Inquisitiveness",@"Gameover",@"Horse",@"Oringz",@"Pig",@"Raven",@"Solemn",@"Surprise"];
+    self.sounds = @[@"Default",@"Bird",@"Cat",@"Chewbacca",@"Cow",@"Doh",@"Dolphin",@"Demonstrative",@"Dwarf",@"Elephant",@"Fault",@"Frog",@"Friends",@"Inquisitiveness",@"Gameover",@"Jaws",@"Jawspower",@"Horse",@"Oringz",@"Pig",@"Raven",@"Solemn",@"Surprise"];
 
     self.tableView.tableFooterView = [UIView new];
     self.tableView.contentInset = (UIEdgeInsets) {-1.0, 0.0, 0.0, 0.0};;
@@ -61,7 +61,7 @@
 #pragma mark - Table view data source
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
-    return @"One value out of greater than, equals to and less than is mandatory to fill.";
+    return @"One value out of greater than and less than is mandatory to fill.";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -73,7 +73,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 6;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -96,13 +96,13 @@
                                               titleText:@"Greater Than" tfText:self.model.greater_than tfMode:TextFieldModeRealNumber];
         return cell;
     }
+    //else if (indexPath.row == 3)
+    //{
+      //  VPDetailTextFieldCell *cell = [self tfCellForID:@"etCell" path:indexPath tag:NotificationFieldTypeEquals
+                                              //titleText:@"Equals To" tfText:self.model.equals_to tfMode:TextFieldModeRealNumber];
+        //return cell;
+    //}
     else if (indexPath.row == 3)
-    {
-        VPDetailTextFieldCell *cell = [self tfCellForID:@"etCell" path:indexPath tag:NotificationFieldTypeEquals
-                                              titleText:@"Equals To" tfText:self.model.equals_to tfMode:TextFieldModeRealNumber];
-        return cell;
-    }
-    else if (indexPath.row == 4)
     {
         VPDetailTextFieldCell *cell = [self tfCellForID:@"ltCell" path:indexPath tag:NotificationFieldTypeLessThan
                                               titleText:@"Less Than" tfText:self.model.less_than tfMode:TextFieldModeRealNumber];
@@ -390,9 +390,9 @@
         isValid = NO;
     }
     
-    if (!_model.greater_than.length && !_model.equals_to.length  && !_model.less_than.length ) {
+    if (!_model.greater_than.length  && !_model.less_than.length ) {
         [self.invalidIndex addIndex:NotificationFieldTypeGreaterThan];
-        [self.invalidIndex addIndex:NotificationFieldTypeEquals];
+       // [self.invalidIndex addIndex:NotificationFieldTypeEquals];
         [self.invalidIndex addIndex:NotificationFieldTypeLessThan];
         isValid = NO;
     }
@@ -423,9 +423,9 @@
         self.model.greater_than = @"";
     }
     
-    if (!_model.equals_to) {
-        self.model.equals_to = @"";
-    }
+   //if (!_model.equals_to) {
+      //  self.model.equals_to = @"";
+    //}
     
     if (!_model.less_than) {
         self.model.less_than = @"";
@@ -447,7 +447,7 @@
                             @"region" : self.model.region,
                             @"alert_for" : self.model.alert_for,
                             @"greater_than" : self.model.greater_than,
-                            @"equals_to" : self.model.equals_to,
+                            @"equals_to" : @"",
                             @"less_than" : self.model.less_than,
                             @"sound" : self.model.sound};
     

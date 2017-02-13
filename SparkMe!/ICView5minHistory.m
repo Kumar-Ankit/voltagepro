@@ -1801,7 +1801,7 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     periodStepper.value = [[NSUserDefaults standardUserDefaults] integerForKey:@"IndexValue5minHistory"];
     
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 7){
-        [periodStepper setTintColor:[UIColor greenColor]];
+        [periodStepper setTintColor:[UIColor blackColor]];
     } else{
         
         [periodStepper setTintColor:[UIColor colorWithRed:0.00f green:0.25f blue:0.0f alpha:0.05]];}
@@ -1836,7 +1836,7 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     
     headingbut1.layer.cornerRadius = 5;
     headingbut1.layer.borderWidth = 1;
-    headingbut1.layer.borderColor = [UIColor greenColor].CGColor;
+    headingbut1.layer.borderColor = [UIColor blackColor].CGColor;
     
     priceLabel.layer.borderColor = [UIColor greenColor].CGColor;
     
