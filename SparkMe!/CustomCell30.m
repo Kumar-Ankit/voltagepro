@@ -16,16 +16,18 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        [self setup];
     }
     return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
+- (void)awakeFromNib{
+    [super awakeFromNib];
+    [self setup];
+}
 
-    // Configure the view for the selected state
+- (void)setup{
+    self.dateLabel.adjustsFontSizeToFitWidth =  YES;;
 }
 
 @end
