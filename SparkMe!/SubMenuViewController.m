@@ -59,9 +59,8 @@
 - (void)loadPart2 {
     //    NSData *marketNotices = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.aemo.com.au/Electricity/NEM-Data/Market-Notices"]];
     
-    NSData *marketNotices = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.nemweb.com.au/Reports/CURRENT/Market_Notice/"]];
-    
-    
+    NSError *e;
+    NSData *marketNotices = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.nemweb.com.au/Reports/CURRENT/Market_Notice/"] options:0 error:&e];
     
     // 2
     TFHpple *htmlParser = [TFHpple hppleWithHTMLData:marketNotices];

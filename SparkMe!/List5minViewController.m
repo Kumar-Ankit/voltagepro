@@ -176,8 +176,7 @@
                                                         NSLog(@"This is the response!!! %@", httpResponse);
                                                         
                                                         NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                                                        
-                                                        
+
                                                         NSArray *jsonArray = [jsonDictionary objectForKey:@"5MIN"];
                                                         
                                                         priceArrayRaw = [[NSMutableArray alloc] init];

@@ -27,7 +27,7 @@
 }
 
 - (void)setup{
-    self.dateLabel.adjustsFontSizeToFitWidth =  YES;;
+    self.dateLabel.adjustsFontSizeToFitWidth =  YES;
 }
 
 @end

@@ -12,7 +12,6 @@
 #define kBaseUrl @"http://hvbpreproduction.azurewebsites.net/pushnotification/voltagepropushnotification.php"
 #define kShowNetworkResponses 1
 
-
 @implementation VPNetworkManager
 
 +(VPNetworkManager *)sharedManger
