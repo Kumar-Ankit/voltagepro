@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NotificationMTLModel.h"
+#import "Utility.h"
 
 @interface VPDataManager : NSObject
 + (VPDataManager *)sharedManager;
@@ -17,5 +18,10 @@
 
 - (void)setSettings:(NSDictionary *)parameters
                      completion:(void (^)(BOOL status, NSError *error))completionBlock;
+
+- (void)fetchAEMOData:(NSDictionary *)parameters
+           completion:(void (^)(NSDictionary* response, NSError *error))completionBlock;
+
+- (void)loadDataWithContentsOfURL:(NSString *)ulrStr withSelectedIndex:(NSInteger)index completion:(void (^)(NSData* response, NSError *error, NSInteger index))completionBlock;
 
 @end

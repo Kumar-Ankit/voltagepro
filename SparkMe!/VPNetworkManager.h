@@ -7,9 +7,11 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
+#define kBaseUrl @"http://hvbpreproduction.azurewebsites.net/pushnotification/voltagepropushnotification.php"
 
 @interface VPNetworkManager : AFHTTPSessionManager
 + (VPNetworkManager *)sharedManger;
++ (VPNetworkManager *)aemoManger;
 
 - (void)createPostRequestWithParameters:(NSDictionary *)parameters
                         withRequestPath:(NSString *)requestPath
@@ -28,7 +30,7 @@
                       withCompletionBlock:(void(^)(id responseObject, NSError *error))completionBlock;
 
 - (void)cancelAllTasks;
-- (void)updateHeaders;
+- (void)updateAEMOHeaders;
 + (NSError *)generalError;
 
 @end

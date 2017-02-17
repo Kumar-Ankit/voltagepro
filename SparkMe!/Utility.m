@@ -38,7 +38,7 @@
 }
 
 + (void)hideHUDForView:(UIView *)view{
-    [MBProgressHUD hideHUDForView:view  animated:YES];
+    [MBProgressHUD hideAllHUDsForView:view animated:YES];;
 }
 
 + (void)showErrorAlertTitle:(NSString *)title withMessage:(NSString *)message

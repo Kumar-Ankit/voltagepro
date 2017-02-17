@@ -13,6 +13,8 @@
 #import "MBProgressHUD.h"
 
 #import "URBSegmentedControl.h"
+#import "VPDataManager.h"
+#import "Utility.h"
 
 @interface GenDispGrpViewController ()
 
@@ -186,119 +188,115 @@
     
 }
 
+- (NSInteger)indexForWebCall
+{
+    if (segGenFilter.selectedSegmentIndex == 0)
+    {
+        if (segSortType.selectedSegmentIndex == 0)
+        {
+            return 0;
+        }
+        else if (segSortType.selectedSegmentIndex == 1)
+        {
+            return 1;
+        }
+        else
+        {
+            return 2;
+        }
+    }
+    else if (segGenFilter.selectedSegmentIndex == 1)
+    {
+        if (segSortType.selectedSegmentIndex == 0)
+        {
+            return 3;
+        }
+        else if (segSortType.selectedSegmentIndex == 1)
+        {
+            return 4;
+        }
+        else
+        {
+            return 5;
+        }
+    }
+    else if (segGenFilter.selectedSegmentIndex == 2)
+    {
+        if (segSortType.selectedSegmentIndex == 0)
+        {
+            return 6;
+        }
+        else if (segSortType.selectedSegmentIndex == 1)
+        {
+            return 7;
+        }
+        else
+        {
+            return 8;
+        }
+    }
+    else
+    {
+        if (segSortType.selectedSegmentIndex == 0)
+        {
+            return 9;
+        }
+        else if (segSortType.selectedSegmentIndex == 1)
+        {
+            return 10;
+        }
+        else
+        {
+            return 11;
+        }
+    }
+        
+}
 
-- (void)loadPart3_www {
-    
-    
-    
-    NSData *nemDispatch5min = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.nemweb.com.au/REPORTS/CURRENT/Dispatch_SCADA/"]];
-    
-    // 2
-    TFHpple *htmlParser = [TFHpple hppleWithHTMLData:nemDispatch5min];
-    
-    // 3
-    NSString *htmlXpathQueryString = @"//html/body/pre/a";
-    NSArray *htmlNodes = [htmlParser searchWithXPathQuery:htmlXpathQueryString];
-    
-    // 4
-    NSMutableArray *nemFiles = [[NSMutableArray alloc] init];
-    
-    for (TFHppleElement *element in htmlNodes) {
-        // 5
-        
-        [nemFiles addObject:[[element firstChild] content]];
-        
-        
-        // 7
-        //        tutorial.url = [element objectForKey:@"href"];
+- (void)process5minData2:(NSData *)fetchedData withError:(NSError *)error andSelecetedSegment:(NSInteger)index latestFileName:(NSString *)latestFileName
+{
+    if (index != [self indexForWebCall]) {
+        return;
     }
     
-    //    NSLog(@"%@",nemFiles);
-    //
-    //        NSLog(@"Items in file list array : %i", [nemFiles count]);
+    [Utility hideHUDForView:self.view];
     
-    
-    NSString *latestFileName = [nemFiles objectAtIndex:[nemFiles count]-1];
-    
-    //    NSLog(@"Last item in array : %@", latestFileName);
-    
-    //    Now fetch the file
-    
-    
-    urlString = [@"http://www.nemweb.com.au/REPORTS/CURRENT/Dispatch_SCADA/" stringByAppendingString:latestFileName];
+    if (error) {
+        [Utility showErrorAlertTitle:nil withMessage:error.localizedDescription];
+        return;
+    }
     
     NSFileManager *fileMgr = [NSFileManager defaultManager];
-    
-    //    copy zip file from www
-    NSData *fetchedData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
-    
+
     //    unzipped filename will be same as zip file but with csv extension
-    
     NSString *fileNameNoExt = [latestFileName substringToIndex:[latestFileName length] - 4];
-    
-    //    NSLog(@"filname is : %@", fileNameNoExt);
-    
     NSString *unzippedFileName = [fileNameNoExt stringByAppendingString:@".CSV"];
-    
-    //    NSLog(@"CSV filname is : %@", unzippedFileName);
-    
     NSString *dbPathCache = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject]stringByAppendingPathComponent:unzippedFileName];
     //    Generator reference lookup file
     NSString *dbPathRes = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:@"Generators.csv"];
     
     NSString *dbPathCacheLast = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject]stringByAppendingPathComponent:@"DISPATCH_SCADA.CSV"];
-    
     NSString *dbPathCacheZip = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject]stringByAppendingPathComponent:@"DISPATCHSCADA.zip"];
-    //
     NSString *zipPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-    //
-    //    //copy zip file
-    //
-    [fetchedData writeToFile:dbPathCacheZip atomically:YES];
-    //    NSLog(@"copy zip file successful from www to cache directory");
-    //
     
-    //
-    //    //    then unzip to folder
-    //
-    //
+    //copy zip file
+    [fetchedData writeToFile:dbPathCacheZip atomically:YES];
+    
+    //then unzip to folder
     [SSZipArchive unzipFileAtPath:dbPathCacheZip toDestination:zipPath];
-    //
-    //    NSLog(@"unzipping file successful");
-    //
-    //    //    delete zip file in cache directory
-    //
+    
+    //delete zip file in cache directory
     [fileMgr removeItemAtPath:dbPathCacheZip error:nil];
     
     //    generation info
-    
     NSString *dataStr = [NSString stringWithContentsOfFile:dbPathCache encoding:NSUTF8StringEncoding error:nil];
-    //
-    //    NSLog(@"%@", dataStr);
-    
-    //    NSString *dataStrStripped = [dataStr stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-    //    trim white space
-    
-    
     NSString *dataStrStripped2 = [dataStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
     //    generation config
-    
     NSString *dataGenStr = [NSString stringWithContentsOfFile:dbPathRes encoding:NSUTF8StringEncoding error:nil];
     NSString *dataGenStrStripped2 = [dataGenStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    
     NSArray *genInfoArray = [dataGenStrStripped2 componentsSeparatedByString:@"\n"];
-    //    NSLog(@"%@", [genInfoArray objectAtIndex:10]);
-    
-    
-    //    NSLog(@"%@", dataStrStripped2);
-    
-    
     NSArray *disp5min = [dataStrStripped2 componentsSeparatedByString:@"\n"];
-    
-    
-    //    vic5min = [dataStr componentsSeparatedByString: @","];
-    
     
     duidArray = [[NSMutableArray alloc] init];
     scadaArray = [[NSMutableArray alloc] init];
@@ -310,29 +308,6 @@
     maxCapArray = [[NSMutableArray alloc] init];
     stateArray = [[NSMutableArray alloc] init];
     primTechTypeArray = [[NSMutableArray alloc] init];
-    
-    //    NSMutableArray *icArray = [[NSMutableArray alloc] init];
-    
-    //    dispPrice = [[DispPrice alloc] init];
-    //    dispPrice.state = [[NSMutableArray alloc] init];
-    //    dispPrice.price = [[NSMutableArray alloc] init];
-    //
-    //    dispRegion = [[DispRegionSum alloc] init];
-    //    dispRegion.state = [[NSMutableArray alloc] init];
-    //    dispRegion.totDem = [[NSMutableArray alloc] init];
-    //    dispRegion.disGen = [[NSMutableArray alloc] init];
-    //    dispRegion.disLoad = [[NSMutableArray alloc] init];
-    //    dispRegion.netInchg = [[NSMutableArray alloc] init];
-    //
-    //    icFlows = [[IcFlows alloc] init];
-    //    icFlows.icID = [[NSMutableArray alloc] init];
-    //    icFlows.meterFlow = [[NSMutableArray alloc] init];
-    //    icFlows.mwFlow = [[NSMutableArray alloc] init];
-    //    icFlows.mwLosses = [[NSMutableArray alloc] init];
-    //    icFlows.exportLimit = [[NSMutableArray alloc] init];
-    //    icFlows.importLimit = [[NSMutableArray alloc] init];
-    
-    //
     
     NSMutableArray *windDuidArray =[[NSMutableArray alloc] init];
     NSMutableArray *hydroDuidArray =[[NSMutableArray alloc] init];
@@ -349,9 +324,6 @@
     
     NSMutableArray *stateGenArray = [[NSMutableArray alloc] init];
     NSMutableArray *primeTechGenArray = [[NSMutableArray alloc] init];
-    
-    
-    //    NSLog(@"List of gen info %@", genInfoArray);
     
     for(int y=1; y<[genInfoArray count]; y++){
         // split generator array into component columns
@@ -388,14 +360,7 @@
         }
     }
     
-    
-    
-    //    NSLog(@"duidgenarray value : %@  and desc: %@", duidGenArray, descGenArray);
-    
-    
     //    this section grabs the NEM time interval from the file
-    
-    
     NSArray *dateArray = [[disp5min objectAtIndex:2] componentsSeparatedByString:@","];
     
     NSMutableArray *icDateTime = [[NSMutableArray alloc] init];
@@ -479,7 +444,7 @@
         
         NSArray *components = [[duidScadaCombo objectAtIndex:i] componentsSeparatedByString:@","];
         
-        //        [priceArray addObject:[NSString stringWithFormat:@"%@ %@", [components objectAtIndex:6],[components objectAtIndex:9]]];
+        //        [priceArray addObject:[NSString stringWithForma   t:@"%@ %@", [components objectAtIndex:6],[components objectAtIndex:9]]];
         
         //        exclude idle generators
         
@@ -1105,7 +1070,7 @@
     //
     //    NSLog(@"combustion gen %.2f, renewable gen %.2f, total gen %.2f", combustionGen, renewableGen, totalGen);
     
-    NSError *error;
+    
     
     //    delete previous existing file
     
@@ -1180,10 +1145,53 @@
     //    NSLog(@"%@", ownerArray);
     
     [tableview1 reloadData];
+}
+
+
+- (void)prcocessData:(NSData *)nemDispatch5min withError:(NSError *)error index:(NSInteger)index
+{
+    if (index != [self indexForWebCall]) {
+        return;
+    }
+    
+    if (error) {
+        [Utility hideHUDForView:self.view];
+        [Utility showErrorAlertTitle:nil withMessage:error.localizedDescription];
+        return;
+    }
     
     
-    [MBProgressHUD hideHUDForView:self.view  animated:YES];
+    TFHpple *htmlParser = [TFHpple hppleWithHTMLData:nemDispatch5min];
     
+    NSString *htmlXpathQueryString = @"//html/body/pre/a";
+    NSArray *htmlNodes = [htmlParser searchWithXPathQuery:htmlXpathQueryString];
+    
+    NSMutableArray *nemFiles = [[NSMutableArray alloc] init];
+    
+    for (TFHppleElement *element in htmlNodes){
+        [nemFiles addObject:[[element firstChild] content]];
+    }
+    
+    NSString *latestFileName = [nemFiles objectAtIndex:[nemFiles count]-1];
+    
+    //    Now fetch the file
+    urlString = [@"http://www.nemweb.com.au/REPORTS/CURRENT/Dispatch_SCADA/" stringByAppendingString:latestFileName];
+    
+    //    copy zip file from www
+    __weak typeof(self)weakSelf = self;
+    [[VPDataManager sharedManager] loadDataWithContentsOfURL:urlString withSelectedIndex:index completion:^(NSData *response, NSError *error, NSInteger index) {
+        [weakSelf process5minData2:response withError:error andSelecetedSegment:index latestFileName:latestFileName];
+    }];
+}
+
+
+- (void)loadPart3_www {
+    __weak typeof(self)weakSelf = self;
+    NSString *path = @"http://www.nemweb.com.au/REPORTS/CURRENT/Dispatch_SCADA/";
+    NSInteger indexForCall = [self indexForWebCall];
+    [[VPDataManager sharedManager] loadDataWithContentsOfURL:path withSelectedIndex:indexForCall completion:^(NSData *response, NSError *error, NSInteger index) {
+        [weakSelf prcocessData:response withError:error index:index];
+    }];
 }
 
 

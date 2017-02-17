@@ -12,6 +12,8 @@
 #import "Reachability.h"
 #import "SettingsViewController.h"
 #import "CustomCell30.h"
+#import "VPDataManager.h"
+#import "Utility.h"
 
 @interface List30minViewController ()
 @property (nonatomic, strong) NSString *activeRegion;
@@ -182,150 +184,124 @@
     }
 }
 
--(void) loadPart2_www{
-    NSDictionary *headers = @{ @"origin": @"http://aemo.com.au",
-                               @"content-type": @"application/json",
-                               
-                               @"accept": @"*/*",
-                               
-                               @"referer": @"http://aemo.com.au/aemo/apps/visualisations/elec-priceanddemand.html",
-                               
-                               @"accept-encoding": @"gzip, deflate",
-                               
-                               @"accept-language": @"en-US,en;q=0.8",
-                               
-                               @"cache-control": @"no-cache"};
+- (void)processData:(NSDictionary *)response withError:(NSError *)error
+{
+    [Utility hideHUDForView:self.view];
+    if (error) {
+        [Utility showErrorAlertTitle:nil withMessage:error.localizedDescription];
+        return;
+    }
     
-    NSDictionary *parameters = @{ @"timeScale": @[ @"30MIN" ] };
+    {
+        
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+        
+        NSLog(@"This is the response!!! %@", httpResponse);
+        
+        NSArray *jsonArray = [response objectForKey:@"5MIN"];
+        
+        // save the array to file
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        dbPathCache = [documentsDirectory stringByAppendingPathComponent:@"GRAPH_30.csv"];
+        
+        [jsonArray writeToFile:dbPathCache atomically:YES];
+        
+        priceArrayRaw = [[NSMutableArray alloc] init];
+        timeArrayRaw = [[NSMutableArray alloc] init];
+        demandArrayRaw = [[NSMutableArray alloc] init];
+        typeArrayRaw = [[NSMutableArray alloc] init];
+        
+        if(segVal.selectedSegmentIndex==0){
+            stateSelected =@"NSW";
+        }
+        
+        NSDateFormatter *dtF = [[NSDateFormatter alloc] init];
+        [dtF setTimeZone:[NSTimeZone timeZoneWithName:@"Australia/Queensland"]];
+        [dtF setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+        
+        NSDateFormatter *dateFormatTrim = [[NSDateFormatter alloc] init];
+        [dateFormatTrim setTimeZone:[NSTimeZone timeZoneWithName:@"Australia/Queensland"]];
+        [dateFormatTrim setDateFormat:@"dd/MM/yy HH:mm"];
+        
+        minPrice = 0;
+        maxPrice = 0;
+        
+        for(int i=0; i<[jsonArray count]; i++){
+            
+            if ([[[jsonArray  objectAtIndex:i] objectForKey:@"REGIONID"] isEqualToString:[stateSelected stringByAppendingString:@"1"]]) {
+                
+                // convert crappy dates to normal dates
+                
+                NSDate *dTrim = [dtF dateFromString:[[jsonArray  objectAtIndex:i] objectForKey:@"SETTLEMENTDATE"]];
+                NSNumber *rrpNum = [[jsonArray  objectAtIndex:i] objectForKey:@"RRP"];
+                NSNumber *demandNum = [[jsonArray  objectAtIndex:i] objectForKey:@"TOTALDEMAND"];
+                
+                NSString *typeStr = nil;
+                
+                if ([[[jsonArray  objectAtIndex:i] objectForKey:@"PERIODTYPE"] isEqualToString:@"ACTUAL"]){
+                    typeStr = @"TRADE";
+                } else {
+                    typeStr = @"PD";
+                }
+                
+                [timeArrayRaw addObject:[dateFormatTrim stringFromDate:dTrim]];
+                [priceArrayRaw addObject:rrpNum];
+                [demandArrayRaw addObject:demandNum];
+                [typeArrayRaw addObject:typeStr];
+                NSNumber *curPrice = rrpNum;
+                
+                if([timeArrayRaw count]==1) {
+                    minPrice = curPrice;
+                }
+                
+                if (curPrice < minPrice)
+                    minPrice = curPrice;
+                else if (curPrice > maxPrice)
+                    maxPrice = curPrice;
+            }
+        }
+    }
     
-    NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://aemo.com.au/aemo/apps/api/report/5MIN"]
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:10.0];
+    NSLog(@"When is this run???");
+    [self reloadData];
     
-    [request setHTTPMethod:@"POST"];
-    [request setAllHTTPHeaderFields:headers];
-    [request setHTTPBody:postData];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [formatter setMaximumFractionDigits:2];
+    [formatter setMinimumFractionDigits:2];
+    [formatter setRoundingMode: NSNumberFormatterRoundUp];
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
-                                      
-                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                    
-                                                    if (error) {
-                                                        
-                                                        NSLog(@"%@", error);
-                                                        
-                                                    } else {
-                                                        
-                                                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-                                                        
-                                                        NSLog(@"This is the response!!! %@", httpResponse);
-                                                        
-                                                        NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                                                        
-                                                        NSArray *jsonArray = [jsonDictionary objectForKey:@"5MIN"];
-                                                        
-                                                        // save the array to file
-                                                        
-                                                        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                                                        NSString *documentsDirectory = [paths objectAtIndex:0];
-                                                        dbPathCache = [documentsDirectory stringByAppendingPathComponent:@"GRAPH_30.csv"];
-                                                        
-                                                        [jsonArray writeToFile:dbPathCache atomically:YES];
-                                                        
-                                                        priceArrayRaw = [[NSMutableArray alloc] init];
-                                                        timeArrayRaw = [[NSMutableArray alloc] init];
-                                                        demandArrayRaw = [[NSMutableArray alloc] init];
-                                                        typeArrayRaw = [[NSMutableArray alloc] init];
-                                                        
-                                                        if(segVal.selectedSegmentIndex==0){
-                                                            stateSelected =@"NSW";
-                                                        }
+    avgPrice = [priceArrayRaw valueForKeyPath:@"@avg.self"];
+    minPrice = [priceArrayRaw valueForKeyPath:@"@min.self"];
+    maxPrice = [priceArrayRaw valueForKeyPath:@"@max.self"];
+    
+    NSDateFormatter *dtF = [[NSDateFormatter alloc] init];
+    [dtF setTimeZone:[NSTimeZone timeZoneWithName:@"Australia/Queensland"]];
+    [dtF setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+    
+    NSDateFormatter *dateFormatTrim = [[NSDateFormatter alloc] init];
+    [dateFormatTrim setTimeZone:[NSTimeZone timeZoneWithName:@"Australia/Queensland"]];
+    [dateFormatTrim setDateFormat:@"dd/MM/yy HH:mm"];
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"Australia/Queensland"]];
+    [dateFormat setDateFormat:@"EEE, dd MMM yyyy HH:mm zzz"];
+    
+    settingsLabel.text=[NSString stringWithFormat:@"Red Highlight: Demand>=%.0f OR Price>=%.0f", [[NSUserDefaults standardUserDefaults] doubleForKey:@"myMaxDemand"],[[NSUserDefaults standardUserDefaults] doubleForKey:@"myMaxPrice"]];
+    
+    dateLastUpdated.text= [NSString stringWithFormat:@"NEM Period: %@", [dateFormat stringFromDate:[dateFormatTrim dateFromString:[timeArrayRaw objectAtIndex:47]]]];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[dateFormatTrim dateFromString:[timeArrayRaw objectAtIndex:[timeArrayRaw count]-1]] forKey:@"date30minLastUpdateSnapShot"];
+}
 
-                                                        NSDateFormatter *dtF = [[NSDateFormatter alloc] init];
-                                                        [dtF setTimeZone:[NSTimeZone timeZoneWithName:@"Australia/Queensland"]];
-                                                        [dtF setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
-                                                        
-                                                        NSDateFormatter *dateFormatTrim = [[NSDateFormatter alloc] init];
-                                                        [dateFormatTrim setTimeZone:[NSTimeZone timeZoneWithName:@"Australia/Queensland"]];
-                                                        [dateFormatTrim setDateFormat:@"dd/MM/yy HH:mm"];
-                                                        
-                                                        minPrice = 0;
-                                                        maxPrice = 0;
-                                                        
-                                                        for(int i=0; i<[jsonArray count]; i++){
-                                                            
-                                                            if ([[[jsonArray  objectAtIndex:i] objectForKey:@"REGIONID"] isEqualToString:[stateSelected stringByAppendingString:@"1"]]) {
-                                                                
-                                                                // convert crappy dates to normal dates
-                                                                
-                                                                NSDate *dTrim = [dtF dateFromString:[[jsonArray  objectAtIndex:i] objectForKey:@"SETTLEMENTDATE"]];
-                                                                NSNumber *rrpNum = [[jsonArray  objectAtIndex:i] objectForKey:@"RRP"];
-                                                                NSNumber *demandNum = [[jsonArray  objectAtIndex:i] objectForKey:@"TOTALDEMAND"];
-                                                                
-                                                                NSString *typeStr = nil;
-                                                                
-                                                                if ([[[jsonArray  objectAtIndex:i] objectForKey:@"PERIODTYPE"] isEqualToString:@"ACTUAL"]){
-                                                                    typeStr = @"TRADE";
-                                                                } else {
-                                                                    typeStr = @"PD";
-                                                                }
-                                                                
-                                                                [timeArrayRaw addObject:[dateFormatTrim stringFromDate:dTrim]];
-                                                                [priceArrayRaw addObject:rrpNum];
-                                                                [demandArrayRaw addObject:demandNum];
-                                                                [typeArrayRaw addObject:typeStr];
-                                                                NSNumber *curPrice = rrpNum;
-                                                                
-                                                                if([timeArrayRaw count]==1) {
-                                                                    minPrice = curPrice;
-                                                                }
-                                                                
-                                                                if (curPrice < minPrice)
-                                                                    minPrice = curPrice;
-                                                                else if (curPrice > maxPrice)
-                                                                    maxPrice = curPrice;
-                                                            }
-                                                        }
-                                                    }
-                                                    dispatch_async(dispatch_get_main_queue(), ^{
-                                                        
-                                                        NSLog(@"When is this run???");
-                                                        [self reloadData];
-                                                        
-                                                        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-                                                        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-                                                        [formatter setMaximumFractionDigits:2];
-                                                        [formatter setMinimumFractionDigits:2];
-                                                        [formatter setRoundingMode: NSNumberFormatterRoundUp];
-                                                        
-                                                        avgPrice = [priceArrayRaw valueForKeyPath:@"@avg.self"];
-                                                        minPrice = [priceArrayRaw valueForKeyPath:@"@min.self"];
-                                                        maxPrice = [priceArrayRaw valueForKeyPath:@"@max.self"];
-                                                        
-                                                        NSDateFormatter *dtF = [[NSDateFormatter alloc] init];
-                                                        [dtF setTimeZone:[NSTimeZone timeZoneWithName:@"Australia/Queensland"]];
-                                                        [dtF setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
-                                                        
-                                                        NSDateFormatter *dateFormatTrim = [[NSDateFormatter alloc] init];
-                                                        [dateFormatTrim setTimeZone:[NSTimeZone timeZoneWithName:@"Australia/Queensland"]];
-                                                        [dateFormatTrim setDateFormat:@"dd/MM/yy HH:mm"];
-                                                        
-                                                        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-                                                        [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"Australia/Queensland"]];
-                                                        [dateFormat setDateFormat:@"EEE, dd MMM yyyy HH:mm zzz"];
-                                                        
-                                                        settingsLabel.text=[NSString stringWithFormat:@"Red Highlight: Demand>=%.0f OR Price>=%.0f", [[NSUserDefaults standardUserDefaults] doubleForKey:@"myMaxDemand"],[[NSUserDefaults standardUserDefaults] doubleForKey:@"myMaxPrice"]];
-                                                        
-                                                        dateLastUpdated.text= [NSString stringWithFormat:@"NEM Period: %@", [dateFormat stringFromDate:[dateFormatTrim dateFromString:[timeArrayRaw objectAtIndex:47]]]];
-                                                        
-                                                        [[NSUserDefaults standardUserDefaults] setObject:[dateFormatTrim dateFromString:[timeArrayRaw objectAtIndex:[timeArrayRaw count]-1]] forKey:@"date30minLastUpdateSnapShot"];
-                                                        
-                                                        [MBProgressHUD hideHUDForView:self.view  animated:YES];
-                                                    });
-                                                }];
-    [dataTask resume];
+-(void) loadPart2_www{
+    __weak typeof(self) weakSelf = self;
+    NSDictionary *parameters = @{@"timeScale":@[@"30MIN"]};
+    [[VPDataManager sharedManager] fetchAEMOData:parameters completion:^(NSDictionary *response, NSError *error) {
+        [weakSelf processData:response withError:error];
+    }];
 }
 
 -(void) loadPart2_local{

@@ -11,7 +11,8 @@
 #import "SSZipArchive.h"
 #import "MBProgressHUD.h"
 #import "Reachability.h"
-
+#import "VPDataManager.h"
+#import "Utility.h"
 #import "DispPrice.h"
 #import "DispRegionSum.h"
 #import "IcFlows.h"
@@ -125,129 +126,48 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
         //        NSLog(@"Current time is less than NEM time minus 2mins (ADJ time) - USE LOCAL FILE");
         
         [self loadPart3_5_local];
+        [self loadPart4_arrows];
     }
     
-    [self loadPart4_arrows];
     
 }
 
-- (void)loadPart3_5_www {
-    
-    
-    NSData *nemDispatch5min = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.nemweb.com.au/REPORTS/CURRENT/DispatchIS_Reports/"]];
-    
-    // 2
-    TFHpple *htmlParser = [TFHpple hppleWithHTMLData:nemDispatch5min];
-    
-    // 3
-    NSString *htmlXpathQueryString = @"//html/body/pre/a";
-    NSArray *htmlNodes = [htmlParser searchWithXPathQuery:htmlXpathQueryString];
-    
-    // 4
-    NSMutableArray *nemFiles = [[NSMutableArray alloc] init];
-    
-    for (TFHppleElement *element in htmlNodes) {
-        // 5
-        
-        [nemFiles addObject:[[element firstChild] content]];
-        
-        
-        // 7
-        //        tutorial.url = [element objectForKey:@"href"];
+- (void)process5minData2:(NSData *)fetchedData withError:(NSError *)error andSelecetedSegment:(NSInteger)index latestFileName:(NSString *)latestFileName
+{
+    if (index != segTime.selectedSegmentIndex) {
+        return;
     }
     
-    //    NSLog(@"%@",nemFiles);
-    //
-    //    NSLog(@"Items in file list array : %i", [nemFiles count]);
+    [Utility hideHUDForView:self.view];
     
-    //    create an NSArray of NSMutableArray of nemFiles
-    
-    NSArray *nemFiles5m = [nemFiles copy];
-    
-    //    Store the array in NSUserDefaults value for use later in slider views
-    
-    [[NSUserDefaults standardUserDefaults] setObject:nemFiles5m forKey:@"nemFiles5mKey"];
-    
-    
-    NSString *latestFileName = [nemFiles objectAtIndex:[nemFiles count]-1];
-    
-    //    NSLog(@"Last item in array : %@", latestFileName);
-    
-    //    Now fetch the file
-    
-    
-    NSString *urlString = [@"http://www.nemweb.com.au/REPORTS/CURRENT/DispatchIS_Reports/" stringByAppendingString:latestFileName];
-    
-    NSFileManager *fileMgr = [NSFileManager defaultManager];
-    
-    //    copy zip file from www
-    NSData *fetchedData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
+    if (error) {
+        [Utility showErrorAlertTitle:nil withMessage:error.localizedDescription];
+        return;
+    }
+
     
     //    unzipped filename will be same as zip file but with csv extension
-    
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+
     NSString *fileNameNoExt = [latestFileName substringToIndex:[latestFileName length] - 4];
-    
-    //    NSLog(@"filname is : %@", fileNameNoExt);
-    
     NSString *unzippedFileName = [fileNameNoExt stringByAppendingString:@".CSV"];
-    
-    //    NSLog(@"CSV filname is : %@", unzippedFileName);
-    
     NSString *dbPathCache = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject]stringByAppendingPathComponent:unzippedFileName];
     
     //    location of renamed file for last Stored
-    
     NSString *dbPathCacheLast = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject]stringByAppendingPathComponent:@"DISPATCHIS5MIN.CSV"];
-    
     NSString *dbPathCacheZip = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject]stringByAppendingPathComponent:@"DISPATCHIS.zip"];
-    //
     NSString *zipPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-    //
-    //    //copy zip file
-    //
+    
+    //copy zip file
     [fetchedData writeToFile:dbPathCacheZip atomically:YES];
-    //    NSLog(@"copy zip file successful from www to cache directory");
     
-    
-    //
-    
-    //
-    //    //    then unzip to folder
-    //
-    //
+    //then unzip to folder
     [SSZipArchive unzipFileAtPath:dbPathCacheZip toDestination:zipPath];
-    //
-    //    NSLog(@"unzipping file successful");
-    //
-    //    //    delete zip file in cache directory
-    //
     [fileMgr removeItemAtPath:dbPathCacheZip error:nil];
     
-    
     NSString *dataStr = [NSString stringWithContentsOfFile:dbPathCache encoding:NSUTF8StringEncoding error:nil];
-    //
-    //    NSLog(@"%@", dataStr);
-    
-    //    NSString *dataStrStripped = [dataStr stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-    //    trim white space
-    
-    
     NSString *dataStrStripped2 = [dataStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    
-    
-    
-    //    NSLog(@"%@", dataStrStripped2);
-    
-    
     NSArray *disp5min = [dataStrStripped2 componentsSeparatedByString:@"\n"];
-    
-    
-    //    vic5min = [dataStr componentsSeparatedByString: @","];
-    
-    
-    //    NSMutableArray *priceArray = [[NSMutableArray alloc] init];
-    //    NSMutableArray *regionSumArray = [[NSMutableArray alloc] init];
-    //    NSMutableArray *icArray = [[NSMutableArray alloc] init];
     
     dispPrice = [[DispPrice alloc] init];
     dispPrice.state = [[NSMutableArray alloc] init];
@@ -272,13 +192,9 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     icFlows.importConId = [[NSMutableArray alloc] init];
     
     //    extract NEM time from cell in file
-    
-    
     NSMutableArray *icDateTime = [[NSMutableArray alloc] init];
     
     NSArray *components = [[disp5min objectAtIndex:2] componentsSeparatedByString:@","];
-    
-    //        [priceArray addObject:[NSString stringWithFormat:@"%@ %@", [components objectAtIndex:6],[components objectAtIndex:9]]];
     
     [icDateTime addObject:[components objectAtIndex:4]];
     
@@ -294,73 +210,39 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"Australia/Queensland"]];
     [dateFormat setDateFormat:@"EEE, dd MMM yyyy HH:mm zzz"];
-    //    NSString *st = [dateFormat stringFromDate:date5min];
-    //    NSLog(@"converted date time stamp from file is %@",st);
-    
     dateLastUpdated.text = [NSString stringWithFormat:@"%@", [dateFormat stringFromDate:date5min]];
     
-    
     //  determine where the PRICE rows start at
-    
-    
     for(int i=0; i<[disp5min count]; i++){
-        
         NSArray *components1 = [[disp5min objectAtIndex:i] componentsSeparatedByString:@","];
-        
-        //        [priceArray addObject:[NSString stringWithFormat:@"%@ %@", [components objectAtIndex:6],[components objectAtIndex:9]]];
-        
-        
         if([[components1 objectAtIndex:2] isEqualToString:@"PRICE"]){
-            
             priceIndex = i;
             break;
-            
         }
-        
-        
     }
     
-    
-    //NSLog(@"The value of the price row is %i", priceIndex);
-    
-    
-    for(NSInteger i=priceIndex; i< priceIndex + 6; i++){
-        
-        //        NSLog(@"Row number is : %i",i);
-        
+    for(NSInteger i=priceIndex; i< priceIndex + 6; i++)
+    {
         NSArray *components = [[disp5min objectAtIndex:i] componentsSeparatedByString:@","];
-        
-        //        [priceArray addObject:[NSString stringWithFormat:@"%@ %@", [components objectAtIndex:6],[components objectAtIndex:9]]];
         
         [dispPrice.state addObject:[components objectAtIndex:6]];
         [dispPrice.price addObject:[components objectAtIndex:9]];
-        
     }
     
-    for(NSInteger i=priceIndex + 6; i< priceIndex + 12; i++){
-        
-        //        NSLog(@"Row number is : %i",i);
-        
+    for(NSInteger i=priceIndex + 6; i< priceIndex + 12; i++)
+    {
         NSArray *components = [[disp5min objectAtIndex:i] componentsSeparatedByString:@","];
-        
-        //        [regionSumArray addObject:[NSString stringWithFormat:@"%@ %@", [components objectAtIndex:6],[components objectAtIndex:9]]];
         
         [dispRegion.state addObject: [components objectAtIndex:6]];
         [dispRegion.totDem addObject: [components objectAtIndex:9]];
         [dispRegion.disGen addObject: [components objectAtIndex:13]];
         [dispRegion.disLoad addObject: [components objectAtIndex:14]];
         [dispRegion.netInchg addObject: [components objectAtIndex:15]];
-        
-        
     }
     
-    for(NSInteger i=priceIndex + 12; i< priceIndex + 19; i++){
-        
-        //        NSLog(@"Row number is : %i",i);
-        
+    for(NSInteger i=priceIndex + 12; i< priceIndex + 19; i++)
+    {
         NSArray *components = [[disp5min objectAtIndex:i] componentsSeparatedByString:@","];
-        
-        //        [regionSumArray addObject:[NSString stringWithFormat:@"%@ %@", [components objectAtIndex:6],[components objectAtIndex:9]]];
         
         [icFlows.icID addObject: [components objectAtIndex:6]];
         [icFlows.meterFlow addObject: [components objectAtIndex:9]];
@@ -371,25 +253,7 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
         
         [icFlows.exportConId addObject: [components objectAtIndex:18]];
         [icFlows.importConId addObject: [components objectAtIndex:19]];
-        
-        
-        
-        
     }
-    
-    
-    //    NSLog(@"%@    %@", dispPrice.state, dispPrice.price);
-    //    NSLog(@"%@   %@     %@     %@     %@", dispRegion.state, dispRegion.totDem, dispRegion.disGen, dispRegion.disLoad, dispRegion.netInchg);
-    //
-    //    NSLog(@"%@   %@     %@     %@     %@     %@", icFlows.icID, icFlows.meterFlow, icFlows.mwFlow, icFlows.mwLosses, icFlows.exportLimit, icFlows.importLimit);
-    
-    //    before deleting, move/rename file to DISPATCHIS5MIN.CSV
-    
-    //    attempt the move
-    // For error information
-    NSError *error;
-    
-    //    delete previous existing file
     
     // Attempt to delete the last stored file DISPATCHIS5MIN.CSV
     if ([fileMgr removeItemAtPath:dbPathCacheLast error:&error] != YES)
@@ -402,50 +266,7 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
         NSLog(@"Unable to move file: %@", [error localizedDescription]);
     }
     
-    //    NSLog(@"unzipped %@ file renamed to DISPATCHIS5MIN.CSV", unzippedFileName);
-    
-    
-    //    now save date stamp of last stored file
-    
     [[NSUserDefaults standardUserDefaults] setObject:date5min forKey:@"date5minLastUpdate"];
-    
-    
-    
-    
-    //    no need for below section as it wastes resources calling file from online store just to get the date stamp of file plus it's not so accurate as it does not provide NEM time interval
-    
-    //    get file date
-    
-    //    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]
-    //                                                  cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
-    //
-    //    NSHTTPURLResponse *response;
-    //    [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-    //    if( [response respondsToSelector:@selector( allHeaderFields )] )
-    //    {
-    //        NSDictionary *metaData = [response allHeaderFields];
-    //
-    //
-    //        NSString *lastModifiedString = [metaData objectForKey:@"Last-Modified"];  //get
-    //
-    //
-    //        //        determine date and time of file
-    //
-    //        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //
-    //        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"Australia/Queensland"]];
-    //        [dateFormatter setDateFormat:@"EEE',' dd' 'MMM' 'yyyy HH':'mm':'ss zzz"];
-    //
-    //        NSDate *date_www = [dateFormatter dateFromString:lastModifiedString];
-    //        NSLog(@"Date in AEST format: %@", [dateFormatter stringFromDate:date_www]);
-    //
-    //        dateLastUpdated.text = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:date_www]];
-    //
-    //        //        for (id key in metaData) {
-    //        //            NSLog(@"key: %@, value: %@ \n", key, [metaData objectForKey:key]);
-    //        //        }
-    //    }
-    
     
     //    assign values to fields
     saDemand.text = [NSString stringWithFormat:@"%.0f MW",[[dispRegion.totDem objectAtIndex:3] floatValue]];
@@ -467,10 +288,6 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     tasDemand.text = [NSString stringWithFormat:@"%.0f MW",[[dispRegion.totDem objectAtIndex:4] floatValue]];
     tasGen.text = [NSString stringWithFormat:@"%.0f MW",[[dispRegion.disGen objectAtIndex:4] floatValue]];
     tasNetIC.text = [NSString stringWithFormat:@"%.0f MW",[[dispRegion.netInchg objectAtIndex:4] floatValue]];
-    
-    //    assign conditional formatting to NetIC values
-    
-    //    NSLog(@"pass 1");
     
     if([[dispRegion.netInchg objectAtIndex:3] floatValue] < 0){
         saNetIC.textColor = [UIColor redColor];
@@ -502,68 +319,87 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
         tasNetIC.textColor = [UIColor yellowColor];
     }
     
-    
-    //    NSLog(@"pass 2");
-    
-    //    add labels for state/region price
-    
-    //    NSLog(@"Index SA Price is %i",[dispPrice.state indexOfObject:@"SA1"]);
-    
     NSInteger indexSAPrice = [dispPrice.state indexOfObject:@"SA1"];
     NSString *indexSAPriceVal = [dispPrice.price objectAtIndex:indexSAPrice];
     saPrice.text= [NSString stringWithFormat:@"%.2f",[indexSAPriceVal floatValue]];
-    
     saPrice.layer.borderColor = [UIColor greenColor].CGColor;
-    
     saPrice.layer.borderWidth = 1.0;
-    
-    //    NSLog(@"pass 3a");
-    
     
     NSInteger indexVICPrice = [dispPrice.state indexOfObject:@"VIC1"];
     NSString *indexVICPriceVal = [dispPrice.price objectAtIndex:indexVICPrice];
     vicPrice.text= [NSString stringWithFormat:@"%.2f",[indexVICPriceVal floatValue]];
     
     vicPrice.layer.borderColor = [UIColor greenColor].CGColor;
-    
     vicPrice.layer.borderWidth = 1.0;
     
     NSInteger indexNSWPrice = [dispPrice.state indexOfObject:@"NSW1"];
     NSString *indexNSWPriceVal = [dispPrice.price objectAtIndex:indexNSWPrice];
     nswPrice.text= [NSString stringWithFormat:@"%.2f",[indexNSWPriceVal floatValue]];
-    
     nswPrice.layer.borderColor = [UIColor greenColor].CGColor;
-    
     nswPrice.layer.borderWidth = 1.0;
     
     NSInteger indexQLDPrice = [dispPrice.state indexOfObject:@"QLD1"];
     NSString *indexQLDPriceVal = [dispPrice.price objectAtIndex:indexQLDPrice];
     qldPrice.text= [NSString stringWithFormat:@"%.2f",[indexQLDPriceVal floatValue]];
-    
     qldPrice.layer.borderColor = [UIColor greenColor].CGColor;
-    
     qldPrice.layer.borderWidth = 1.0;
     
     NSInteger indexTASPrice = [dispPrice.state indexOfObject:@"TAS1"];
     NSString *indexTASPriceVal = [dispPrice.price objectAtIndex:indexTASPrice];
     tasPrice.text= [NSString stringWithFormat:@"%.2f",[indexTASPriceVal floatValue]];
-    
     tasPrice.layer.borderColor = [UIColor greenColor].CGColor;
-    
     tasPrice.layer.borderWidth = 1.0;
     
+    [self loadPart4_arrows];
+}
+
+
+- (void)process5minData:(NSData *)nemDispatch5min withError:(NSError *)error andSelecetedSegment:(NSInteger)index
+{
+    if (index != segTime.selectedSegmentIndex) {
+        return;
+    }
     
+    if (error) {
+        [Utility hideHUDForView:self.view];
+        [Utility showErrorAlertTitle:nil withMessage:error.localizedDescription];
+        return;
+    }
     
-    //    NSLog(@"pass 3");
+    TFHpple *htmlParser = [TFHpple hppleWithHTMLData:nemDispatch5min];
     
-    //    NSLog(@"SA region index is %i",indexSAPrice);
+    NSString *htmlXpathQueryString = @"//html/body/pre/a";
+    NSArray *htmlNodes = [htmlParser searchWithXPathQuery:htmlXpathQueryString];
     
-    //    NSLog(@"SA Price is %@",indexSAPriceVal);
+    NSMutableArray *nemFiles = [[NSMutableArray alloc] init];
+    for (TFHppleElement *element in htmlNodes) {
+        [nemFiles addObject:[[element firstChild] content]];
+    }
     
+    //    create an NSArray of NSMutableArray of nemFiles
+    NSArray *nemFiles5m = [nemFiles copy];
+    //    Store the array in NSUserDefaults value for use later in slider views
+    [[NSUserDefaults standardUserDefaults] setObject:nemFiles5m forKey:@"nemFiles5mKey"];
+    NSString *latestFileName = [nemFiles objectAtIndex:[nemFiles count] - 1];
     
+    //    Now fetch the file
+    NSString *urlString = [@"http://www.nemweb.com.au/REPORTS/CURRENT/DispatchIS_Reports/" stringByAppendingString:latestFileName];
     
-    [MBProgressHUD hideHUDForView:self.view  animated:YES];
+    //    copy zip file from www
+    __weak typeof(self) weakSelf = self;
+    [[VPDataManager sharedManager] loadDataWithContentsOfURL:urlString withSelectedIndex:segTime.selectedSegmentIndex completion:^(NSData *response, NSError *error, NSInteger index) {
+        [weakSelf process5minData2:response withError:error andSelecetedSegment:index latestFileName:latestFileName];
+    }];
+}
+
+- (void)loadPart3_5_www {
     
+    NSString *path = @"http://www.nemweb.com.au/REPORTS/CURRENT/DispatchIS_Reports/";
+    NSInteger index = segTime.selectedSegmentIndex;
+    __weak typeof(self) weakSelf = self;
+    [[VPDataManager sharedManager] loadDataWithContentsOfURL:path withSelectedIndex:index completion:^(NSData *response, NSError *error, NSInteger index) {
+        [weakSelf process5minData:response withError:error andSelecetedSegment:index];
+    }];
 }
 
 
@@ -852,7 +688,7 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     
     
     
-    [MBProgressHUD hideHUDForView:self.view  animated:YES];
+    [Utility hideHUDForView:self.view];
     
 }
 
@@ -919,123 +755,59 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
         NSLog(@"Current time is less than ADJ time - USE LOCAL FILE");
         
         [self loadPart3_30_local];
+        [self loadPart4_arrows];
     }
-    
-    [self loadPart4_arrows];
-    
     
 }
 
--(void) loadPart3_30_www {
-    
-    
-    
-    NSData *nemDispatch5min = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.nemweb.com.au/REPORTS/CURRENT/TradingIS_Reports/"]];
-    
-    // 2
-    TFHpple *htmlParser = [TFHpple hppleWithHTMLData:nemDispatch5min];
-    
-    // 3
-    NSString *htmlXpathQueryString = @"//html/body/pre/a";
-    NSArray *htmlNodes = [htmlParser searchWithXPathQuery:htmlXpathQueryString];
-    
-    // 4
-    NSMutableArray *nemFiles = [[NSMutableArray alloc] init];
-    
-    for (TFHppleElement *element in htmlNodes) {
-        // 5
-        
-        [nemFiles addObject:[[element firstChild] content]];
-        
-        
-        // 7
-        //        tutorial.url = [element objectForKey:@"href"];
+- (void)process30minData2:(NSData *)fetchedData withError:(NSError *)error andSelecetedSegment:(NSInteger)index latestFileName:(NSString *)latestFileName
+{
+    if (index != segTime.selectedSegmentIndex) {
+        return;
     }
     
-    //    NSLog(@"%@",nemFiles);
-    //
-    //    NSLog(@"Items in file list array : %i", [nemFiles count]);
+    [Utility hideHUDForView:self.view];
     
+    if (error) {
+        [Utility showErrorAlertTitle:nil withMessage:error.localizedDescription];
+        return;
+    }
+
     
-    NSString *latestFileName = [nemFiles objectAtIndex:[nemFiles count]-1];
-    
-    NSLog(@"Last item in array : %@", latestFileName);
-    
-    //    Now fetch the file
-    
-    
-    NSString *urlString = [@"http://www.nemweb.com.au/REPORTS/CURRENT/TradingIS_Reports/" stringByAppendingString:latestFileName];
-    
+    //copy zip file from www
     NSFileManager *fileMgr = [NSFileManager defaultManager];
-    
-    //    copy zip file from www
-    NSData *fetchedData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
-    
-    //    unzipped filename will be same as zip file but with csv extension
-    
+
+    //unzipped filename will be same as zip file but with csv extension
     NSString *fileNameNoExt = [latestFileName substringToIndex:[latestFileName length] - 4];
     
     NSLog(@"filname is : %@", fileNameNoExt);
-    
     NSString *unzippedFileName = [fileNameNoExt stringByAppendingString:@".CSV"];
     
     NSLog(@"CSV filname is : %@", unzippedFileName);
-    
     NSString *dbPathCache = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject]stringByAppendingPathComponent:unzippedFileName];
     
     //    location of renamed file for last Stored
-    
     NSString *dbPathCacheLast = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject]stringByAppendingPathComponent:@"TRADINGIS30MIN.CSV"];
     
     NSString *dbPathCacheZip = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject]stringByAppendingPathComponent:@"TRADINGIS.zip"];
     //
     NSString *zipPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-    //
-    //    //copy zip file
-    //
+    
+    //copy zip file
     [fetchedData writeToFile:dbPathCacheZip atomically:YES];
     NSLog(@"copy zip file successful from www to cache directory");
     
-    
-    //
-    
-    //
-    //    //    then unzip to folder
-    //
-    //
+    //then unzip to folder
     [SSZipArchive unzipFileAtPath:dbPathCacheZip toDestination:zipPath];
-    //
+    
     NSLog(@"unzipping file successful");
-    //
-    //    //    delete zip file in cache directory
-    //
+    //delete zip file in cache directory
+    
     [fileMgr removeItemAtPath:dbPathCacheZip error:nil];
     
-    
     NSString *dataStr = [NSString stringWithContentsOfFile:dbPathCache encoding:NSUTF8StringEncoding error:nil];
-    //
-    //    NSLog(@"%@", dataStr);
-    
-    //    NSString *dataStrStripped = [dataStr stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-    //    trim white space
-    
-    
     NSString *dataStrStripped2 = [dataStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    
-    
-    
-    //    NSLog(@"%@", dataStrStripped2);
-    
-    
     NSArray *disp30min = [dataStrStripped2 componentsSeparatedByString:@"\n"];
-    
-    
-    //    vic5min = [dataStr componentsSeparatedByString: @","];
-    
-    
-    //    NSMutableArray *priceArray = [[NSMutableArray alloc] init];
-    //    NSMutableArray *regionSumArray = [[NSMutableArray alloc] init];
-    //    NSMutableArray *icArray = [[NSMutableArray alloc] init];
     
     dispPrice = [[DispPrice alloc] init];
     dispPrice.state = [[NSMutableArray alloc] init];
@@ -1056,15 +828,10 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     icFlows.exportLimit = [[NSMutableArray alloc] init];
     icFlows.importLimit = [[NSMutableArray alloc] init];
     
-    //    extract NEM time from cell in file
-    
-    
+    //extract NEM time from cell in file
     NSMutableArray *icDateTime = [[NSMutableArray alloc] init];
     
     NSArray *components = [[disp30min objectAtIndex:2] componentsSeparatedByString:@","];
-    
-    //        [priceArray addObject:[NSString stringWithFormat:@"%@ %@", [components objectAtIndex:6],[components objectAtIndex:9]]];
-    
     [icDateTime addObject:[components objectAtIndex:4]];
     
     NSString *icDateTimeStripped = [[icDateTime objectAtIndex:0] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
@@ -1084,69 +851,32 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     
     dateLastUpdated.text = [NSString stringWithFormat:@"%@", [dateFormat stringFromDate:date30min]];
     
-    
-    for(int i=8; i<14; i++){
-        
+    for(int i = 8; i < 14; i++){
         NSArray *components = [[disp30min objectAtIndex:i] componentsSeparatedByString:@","];
-        
-        //        [priceArray addObject:[NSString stringWithFormat:@"%@ %@", [components objectAtIndex:6],[components objectAtIndex:9]]];
-        
         [dispPrice.state addObject:[components objectAtIndex:6]];
         [dispPrice.price addObject:[components objectAtIndex:8]];
-        
     }
     
-    for(int i=14; i<20; i++){
-        
+    for(int i = 14; i < 20; i++){
         NSArray *components = [[disp30min objectAtIndex:i] componentsSeparatedByString:@","];
-        
-        //        [regionSumArray addObject:[NSString stringWithFormat:@"%@ %@", [components objectAtIndex:6],[components objectAtIndex:9]]];
         
         [dispRegion.state addObject: [components objectAtIndex:6]];
         [dispRegion.totDem addObject: [components objectAtIndex:8]];
         [dispRegion.disGen addObject: [components objectAtIndex:12]];
         [dispRegion.disLoad addObject: [components objectAtIndex:13]];
         [dispRegion.netInchg addObject: [components objectAtIndex:14]];
-        
-        
     }
     
-    for(int i=1; i<8; i++){
-        
+    for(int i = 1; i < 8; i++){
         NSArray *components = [[disp30min objectAtIndex:i] componentsSeparatedByString:@","];
-        
-        //        [regionSumArray addObject:[NSString stringWithFormat:@"%@ %@", [components objectAtIndex:6],[components objectAtIndex:9]]];
-        
         [icFlows.icID addObject: [components objectAtIndex:6]];
         [icFlows.meterFlow addObject: [components objectAtIndex:8]];
         [icFlows.mwFlow addObject: [components objectAtIndex:9]];
         [icFlows.mwLosses addObject: [components objectAtIndex:10]];
-        
-        //        The below fields do not exist in the 30 min trading files
-        
-        //        [icFlows.exportLimit addObject: [components objectAtIndex:15]];
-        //        [icFlows.importLimit addObject: [components objectAtIndex:16]];
-        
-        
-        
-        
     }
     
-    
-    NSLog(@"%@    %@", dispPrice.state, dispPrice.price);
-    NSLog(@"%@   %@     %@     %@     %@", dispRegion.state, dispRegion.totDem, dispRegion.disGen, dispRegion.disLoad, dispRegion.netInchg);
-    
-    NSLog(@"%@   %@     %@     %@     %@     %@", icFlows.icID, icFlows.meterFlow, icFlows.mwFlow, icFlows.mwLosses, icFlows.exportLimit, icFlows.importLimit);
-    
-    
     //    before deleting, move/rename file to DISPATCHIS5MIN.CSV
-    
-    //    attempt the move
-    // For error information
-    NSError *error;
-    
     //    delete previous existing file
-    
     // Attempt to delete the last stored file TRADINGIS5MIN.CSV
     if ([fileMgr removeItemAtPath:dbPathCacheLast error:&error] != YES)
         NSLog(@"Unable to delete file: %@", [error localizedDescription]);
@@ -1160,46 +890,11 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     
     NSLog(@"unzipped %@ file renamed to TRADINGIS5MIN.CSV", unzippedFileName);
     
-    
     //    now save date stamp of last stored file
-    
     [[NSUserDefaults standardUserDefaults] setObject:date30min forKey:@"date30minLastUpdate"];
     
-    
-    
     //    no need for below section as it wastes resources calling file from online store just to get the date stamp of file plus it's not so accurate as it does not provide NEM time interval
-    
     //    get file date
-    
-    //    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]
-    //                                                  cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
-    //
-    //    NSHTTPURLResponse *response;
-    //    [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-    //    if( [response respondsToSelector:@selector( allHeaderFields )] )
-    //    {
-    //        NSDictionary *metaData = [response allHeaderFields];
-    //
-    //
-    //        NSString *lastModifiedString = [metaData objectForKey:@"Last-Modified"];  //get
-    //
-    //
-    //        //        determine date and time of file
-    //
-    //        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //
-    //        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"Australia/Queensland"]];
-    //        [dateFormatter setDateFormat:@"EEE',' dd' 'MMM' 'yyyy HH':'mm':'ss zzz"];
-    //
-    //        NSDate *date_www = [dateFormatter dateFromString:lastModifiedString];
-    //        NSLog(@"Date in AEST format: %@", [dateFormatter stringFromDate:date_www]);
-    //
-    //        dateLastUpdated.text = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:date_www]];
-    //
-    //        //        for (id key in metaData) {
-    //        //            NSLog(@"key: %@, value: %@ \n", key, [metaData objectForKey:key]);
-    //        //        }
-    //    }
     
     
     //    assign values to fields
@@ -1224,7 +919,6 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     tasNetIC.text = [NSString stringWithFormat:@"%.0f MW",[[dispRegion.netInchg objectAtIndex:4] floatValue]];
     
     //    assign conditional formatting to NetIC values
-    
     if([[dispRegion.netInchg objectAtIndex:3] floatValue] < 0){
         saNetIC.textColor = [UIColor redColor];
     } else {
@@ -1255,24 +949,17 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
         tasNetIC.textColor = [UIColor yellowColor];
     }
     
-    
     //    add labels for state/region price
-    
     NSInteger indexSAPrice = [dispPrice.state indexOfObject:@"SA1"];
     NSString *indexSAPriceVal = [dispPrice.price objectAtIndex:indexSAPrice];
     saPrice.text= [NSString stringWithFormat:@"%.2f",[indexSAPriceVal floatValue]];
-    
     saPrice.layer.borderColor = [UIColor greenColor].CGColor;
-    
     saPrice.layer.borderWidth = 1.0;
-    
     
     NSInteger indexVICPrice = [dispPrice.state indexOfObject:@"VIC1"];
     NSString *indexVICPriceVal = [dispPrice.price objectAtIndex:indexVICPrice];
     vicPrice.text= [NSString stringWithFormat:@"%.2f",[indexVICPriceVal floatValue]];
-    
     vicPrice.layer.borderColor = [UIColor greenColor].CGColor;
-    
     vicPrice.layer.borderWidth = 1.0;
     
     NSInteger indexNSWPrice = [dispPrice.state indexOfObject:@"NSW1"];
@@ -1280,35 +967,69 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     nswPrice.text= [NSString stringWithFormat:@"%.2f",[indexNSWPriceVal floatValue]];
     
     nswPrice.layer.borderColor = [UIColor greenColor].CGColor;
-    
     nswPrice.layer.borderWidth = 1.0;
     
     NSInteger indexQLDPrice = [dispPrice.state indexOfObject:@"QLD1"];
     NSString *indexQLDPriceVal = [dispPrice.price objectAtIndex:indexQLDPrice];
     qldPrice.text= [NSString stringWithFormat:@"%.2f",[indexQLDPriceVal floatValue]];
-    
     qldPrice.layer.borderColor = [UIColor greenColor].CGColor;
-    
     qldPrice.layer.borderWidth = 1.0;
     
     NSInteger indexTASPrice = [dispPrice.state indexOfObject:@"TAS1"];
     NSString *indexTASPriceVal = [dispPrice.price objectAtIndex:indexTASPrice];
     tasPrice.text= [NSString stringWithFormat:@"%.2f",[indexTASPriceVal floatValue]];
-    
     tasPrice.layer.borderColor = [UIColor greenColor].CGColor;
-    
     tasPrice.layer.borderWidth = 1.0;
     
-    
-    
     NSLog(@"SA region index is %li",(long)indexSAPrice);
-    
     NSLog(@"SA Price is %@",indexSAPriceVal);
     
+    [self loadPart4_arrows];
+}
+
+
+- (void)process30minData:(NSData *)nemDispatch5min withError:(NSError *)error andSelecetedSegment:(NSInteger)index
+{
+    if (index != segTime.selectedSegmentIndex) {
+        return;
+    }
+    
+    if (error) {
+        [Utility hideHUDForView:self.view];
+        [Utility showErrorAlertTitle:nil withMessage:error.localizedDescription];
+    }
+    
+    TFHpple *htmlParser = [TFHpple hppleWithHTMLData:nemDispatch5min];
+    
+    NSString *htmlXpathQueryString = @"//html/body/pre/a";
+    NSArray *htmlNodes = [htmlParser searchWithXPathQuery:htmlXpathQueryString];
+    
+    NSMutableArray *nemFiles = [[NSMutableArray alloc] init];
+    for (TFHppleElement *element in htmlNodes){
+        [nemFiles addObject:[[element firstChild] content]];
+    }
+    
+    NSString *latestFileName = [nemFiles objectAtIndex:[nemFiles count]-1];
+    NSLog(@"Last item in array : %@", latestFileName);
+    
+    //Now fetch the file
+    NSString *urlString = [@"http://www.nemweb.com.au/REPORTS/CURRENT/TradingIS_Reports/" stringByAppendingString:latestFileName];
     
     
-    [MBProgressHUD hideHUDForView:self.view  animated:YES];
-    
+    __weak typeof(self)weakSelf = self;
+    [[VPDataManager sharedManager] loadDataWithContentsOfURL:urlString withSelectedIndex:segTime.selectedSegmentIndex completion:^(NSData *response, NSError *error, NSInteger index) {
+        [weakSelf process30minData2:response withError:error andSelecetedSegment:index latestFileName:latestFileName];
+    }];
+}
+
+
+-(void) loadPart3_30_www {
+    NSString *path = @"http://www.nemweb.com.au/REPORTS/CURRENT/TradingIS_Reports/";
+    NSInteger index = segTime.selectedSegmentIndex;
+    __weak typeof(self) weakSelf = self;
+    [[VPDataManager sharedManager] loadDataWithContentsOfURL:path withSelectedIndex:index completion:^(NSData *response, NSError *error, NSInteger index) {
+        [weakSelf process30minData:response withError:error andSelecetedSegment:index];
+    }];
 }
 
 
@@ -1552,7 +1273,7 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     
     
     
-    [MBProgressHUD hideHUDForView:self.view  animated:YES];
+    [Utility hideHUDForView:self.view];
     
 }
 

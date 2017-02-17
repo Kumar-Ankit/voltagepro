@@ -1938,7 +1938,7 @@
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ByJ-lH-0JG">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="ByJ-lH-0JG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3335,7 +3335,7 @@ All NEM time displayed in Aust. Eastern Standard Time, AEST (GMT +10hrs).
             <objects>
                 <navigationController toolbarHidden="NO" id="6Rn-43-Zs9" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ecX-gr-mzV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ecX-gr-mzV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3358,7 +3358,7 @@ All NEM time displayed in Aust. Eastern Standard Time, AEST (GMT +10hrs).
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tdo-pM-nuJ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2xm-eO-TFF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2xm-eO-TFF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3376,7 +3376,7 @@ All NEM time displayed in Aust. Eastern Standard Time, AEST (GMT +10hrs).
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="t3Q-n8-s9q" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="A0p-1B-FpC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="A0p-1B-FpC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3394,7 +3394,7 @@ All NEM time displayed in Aust. Eastern Standard Time, AEST (GMT +10hrs).
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LP5-zZ-un3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wTA-D8-wdk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wTA-D8-wdk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3412,7 +3412,7 @@ All NEM time displayed in Aust. Eastern Standard Time, AEST (GMT +10hrs).
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MfN-p5-A1x" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kff-qe-0O3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kff-qe-0O3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

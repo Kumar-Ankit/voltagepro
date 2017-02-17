@@ -13,6 +13,7 @@
 #import "CustomCell5PD.h"
 #import "CustomCell5PD_IC.h"
 #import <QuartzCore/QuartzCore.h>
+#import "VPDataManager.h"
 
 @interface List5mPDViewController ()
 
@@ -316,50 +317,22 @@
     
 }
 
-- (void)loadPart3_Over_www {
-    
-    
-    NSData *nemDispatch5min = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.nemweb.com.au/REPORTS/CURRENT/P5_Reports/"]];
-    
-    // 2
-    TFHpple *htmlParser = [TFHpple hppleWithHTMLData:nemDispatch5min];
-    
-    // 3
-    NSString *htmlXpathQueryString = @"//html/body/pre/a";
-    NSArray *htmlNodes = [htmlParser searchWithXPathQuery:htmlXpathQueryString];
-    
-    // 4
-    NSMutableArray *nemFiles = [[NSMutableArray alloc] init];
-    
-    for (TFHppleElement *element in htmlNodes) {
-        // 5
-        
-        [nemFiles addObject:[[element firstChild] content]];
-        
-        
-        // 7
-        //        tutorial.url = [element objectForKey:@"href"];
+- (void)processOveriewData2:(NSData *)fetchedData withError:(NSError *)error andSelecetedSegment:(NSInteger)index latestFileName:(NSString *)latestFileName
+{
+    if (index != segVal.selectedSegmentIndex) {
+        return;
     }
     
-    //    NSLog(@"%@",nemFiles);
-    //
-    //    NSLog(@"Items in file list array : %i", [nemFiles count]);
+    [Utility hideHUDForView:self.view];
     
-    
-    NSString *latestFileName = [nemFiles objectAtIndex:[nemFiles count]-1];
-    
-    //    NSLog(@"Last item in array : %@", latestFileName);
-    
-    //    Now fetch the file
-    
-    
-    NSString *urlString = [@"http://www.nemweb.com.au/REPORTS/CURRENT/P5_Reports/" stringByAppendingString:latestFileName];
+    if (error) {
+        [Utility showErrorAlertTitle:nil withMessage:error.localizedDescription];
+        return;
+    }
     
     NSFileManager *fileMgr = [NSFileManager defaultManager];
     
     //    copy zip file from www
-    NSData *fetchedData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
-    
     //    unzipped filename will be same as zip file but with csv extension
     
     NSString *fileNameNoExt = [latestFileName substringToIndex:[latestFileName length] - 4];
@@ -517,7 +490,6 @@
     //    NSLog(@"state dataset returned is %@",stateArray);
     //        NSLog(@"price dataset returned is %@",priceArray);
     //        NSLog(@"demand dataset returned is %@",demandArray);
-    NSError *error;
     
     //    delete previous existing file
     
@@ -532,12 +504,69 @@
         NSLog(@"Unable to move file: %@", [error localizedDescription]);
     }
     
-    
-    [MBProgressHUD hideHUDForView:self.view  animated:YES];
-    
     [mytableView reloadData];
+}
+
+- (void)processOveriewData:(NSData *)nemDispatch5min withError:(NSError *)error index:(NSInteger)index
+{
+    if (index != segVal.selectedSegmentIndex) {
+        return;
+    }
+    
+    if (error || !nemDispatch5min) {
+        [Utility hideHUDForView:self.view];
+        [Utility showErrorAlertTitle:nil withMessage:error.localizedDescription];
+        return;
+    }
+    
+    // 2
+    TFHpple *htmlParser = [TFHpple hppleWithHTMLData:nemDispatch5min];
+    
+    // 3
+    NSString *htmlXpathQueryString = @"//html/body/pre/a";
+    NSArray *htmlNodes = [htmlParser searchWithXPathQuery:htmlXpathQueryString];
+    
+    // 4
+    NSMutableArray *nemFiles = [[NSMutableArray alloc] init];
+    
+    for (TFHppleElement *element in htmlNodes) {
+        // 5
+        
+        [nemFiles addObject:[[element firstChild] content]];
+        
+        
+        // 7
+        //        tutorial.url = [element objectForKey:@"href"];
+    }
+    
+    //    NSLog(@"%@",nemFiles);
+    //
+    //    NSLog(@"Items in file list array : %i", [nemFiles count]);
     
     
+    NSString *latestFileName = [nemFiles objectAtIndex:[nemFiles count]-1];
+    
+    //    NSLog(@"Last item in array : %@", latestFileName);
+    
+    //    Now fetch the file
+    
+    
+    NSString *urlString = [@"http://www.nemweb.com.au/REPORTS/CURRENT/P5_Reports/" stringByAppendingString:latestFileName];
+    
+    __weak typeof(self) weakSelf = self;
+    [[VPDataManager sharedManager] loadDataWithContentsOfURL:urlString withSelectedIndex:index completion:^(NSData *response, NSError *error, NSInteger index) {
+        [weakSelf processOveriewData2:response withError:error andSelecetedSegment:index latestFileName:latestFileName];
+    }];
+}
+
+- (void)loadPart3_Over_www {
+    
+    NSString *path = @"http://www.nemweb.com.au/REPORTS/CURRENT/P5_Reports/";
+    NSInteger active_index = segVal.selectedSegmentIndex;
+    __weak typeof(self) weakSelf = self;
+    [[VPDataManager sharedManager] loadDataWithContentsOfURL:path withSelectedIndex:active_index completion:^(NSData *response, NSError *error, NSInteger index) {
+        [weakSelf processOveriewData:response withError:error index:index];
+    }];
 }
 
 
@@ -758,50 +787,22 @@
     
 }
 
-- (void)loadPart3_IC_www {
-    
-    
-    NSData *nemDispatch5min = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.nemweb.com.au/REPORTS/CURRENT/P5_Reports/"]];
-    
-    // 2
-    TFHpple *htmlParser = [TFHpple hppleWithHTMLData:nemDispatch5min];
-    
-    // 3
-    NSString *htmlXpathQueryString = @"//html/body/pre/a";
-    NSArray *htmlNodes = [htmlParser searchWithXPathQuery:htmlXpathQueryString];
-    
-    // 4
-    NSMutableArray *nemFiles = [[NSMutableArray alloc] init];
-    
-    for (TFHppleElement *element in htmlNodes) {
-        // 5
-        
-        [nemFiles addObject:[[element firstChild] content]];
-        
-        
-        // 7
-        //        tutorial.url = [element objectForKey:@"href"];
+- (void)processICData2:(NSData *)fetchedData withError:(NSError *)error andSelecetedSegment:(NSInteger)index latestFileName:(NSString *)latestFileName
+{
+    if (index != segVal.selectedSegmentIndex) {
+        return;
     }
     
-    //    NSLog(@"%@",nemFiles);
-    //
-    //    NSLog(@"Items in file list array : %i", [nemFiles count]);
+    [Utility hideHUDForView:self.view];
     
-    
-    NSString *latestFileName = [nemFiles objectAtIndex:[nemFiles count]-1];
-    
-    //    NSLog(@"Last item in array : %@", latestFileName);
-    
-    //    Now fetch the file
-    
-    
-    NSString *urlString = [@"http://www.nemweb.com.au/REPORTS/CURRENT/P5_Reports/" stringByAppendingString:latestFileName];
+    if (error) {
+        [Utility showErrorAlertTitle:nil withMessage:error.localizedDescription];
+        return;
+    }
     
     NSFileManager *fileMgr = [NSFileManager defaultManager];
     
     //    copy zip file from www
-    NSData *fetchedData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
-    
     //    unzipped filename will be same as zip file but with csv extension
     
     NSString *fileNameNoExt = [latestFileName substringToIndex:[latestFileName length] - 4];
@@ -975,7 +976,6 @@
     //    NSLog(@"state dataset returned is %@",stateArray);
     //        NSLog(@"price dataset returned is %@",priceArray);
     //        NSLog(@"demand dataset returned is %@",demandArray);
-    NSError *error;
     
     //    delete previous existing file
     
@@ -989,13 +989,69 @@
     if ([fileMgr moveItemAtPath:dbPathCache toPath:dbPathCacheLast error:&error] != YES) {
         NSLog(@"Unable to move file: %@", [error localizedDescription]);
     }
-    
-    
-    [MBProgressHUD hideHUDForView:self.view  animated:YES];
-    
     [mytableView reloadData];
+}
+
+- (void)processICData:(NSData *)nemDispatch5min withError:(NSError *)error index:(NSInteger)index
+{
+    if (index != segVal.selectedSegmentIndex) {
+        return;
+    }
+    
+    if (error) {
+        [Utility hideHUDForView:self.view];
+        [Utility showErrorAlertTitle:nil withMessage:error.localizedDescription];
+        return;
+    }
     
     
+    // 2
+    TFHpple *htmlParser = [TFHpple hppleWithHTMLData:nemDispatch5min];
+    
+    // 3
+    NSString *htmlXpathQueryString = @"//html/body/pre/a";
+    NSArray *htmlNodes = [htmlParser searchWithXPathQuery:htmlXpathQueryString];
+    
+    // 4
+    NSMutableArray *nemFiles = [[NSMutableArray alloc] init];
+    
+    for (TFHppleElement *element in htmlNodes) {
+        // 5
+        
+        [nemFiles addObject:[[element firstChild] content]];
+        
+        
+        // 7
+        //        tutorial.url = [element objectForKey:@"href"];
+    }
+    
+    //    NSLog(@"%@",nemFiles);
+    //
+    //    NSLog(@"Items in file list array : %i", [nemFiles count]);
+    
+    
+    NSString *latestFileName = [nemFiles objectAtIndex:[nemFiles count]-1];
+    
+    //    NSLog(@"Last item in array : %@", latestFileName);
+    
+    //    Now fetch the file
+    
+    
+    __weak typeof(self) weakSelf =  self;
+    NSString *urlString = [@"http://www.nemweb.com.au/REPORTS/CURRENT/P5_Reports/" stringByAppendingString:latestFileName];
+    [[VPDataManager sharedManager] loadDataWithContentsOfURL:urlString withSelectedIndex:index completion:^(NSData *response, NSError *error, NSInteger index) {
+        [weakSelf processICData2:response withError:error andSelecetedSegment:index latestFileName:latestFileName];
+    }];
+}
+
+- (void)loadPart3_IC_www {
+    
+    NSString *path = @"http://www.nemweb.com.au/REPORTS/CURRENT/P5_Reports/";
+    NSInteger active_index = segVal.selectedSegmentIndex;
+    __weak typeof(self) weakSelf = self;
+    [[VPDataManager sharedManager] loadDataWithContentsOfURL:path withSelectedIndex:active_index completion:^(NSData *response, NSError *error, NSInteger index) {
+        [weakSelf processICData:response withError:error index:index];
+    }];
 }
 
 

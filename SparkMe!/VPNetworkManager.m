@@ -9,23 +9,42 @@
 #import "VPNetworkManager.h"
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 
-#define kBaseUrl @"http://hvbpreproduction.azurewebsites.net/pushnotification/voltagepropushnotification.php"
+#define AEMO_URL @"http://aemo.com.au/aemo/apps/api/report/5MIN"
 #define kShowNetworkResponses 1
+
+typedef enum{
+    VPNetworkManagerModeNotification,
+    VPNetworkManagerModeAEMO
+}VPNetworkManagerMode;
 
 @implementation VPNetworkManager
 
+// For hvbpreproduction.azurewebsites.net Network Call
 +(VPNetworkManager *)sharedManger
 {
     static dispatch_once_t onceToken;
     static VPNetworkManager *sharedManager = nil;
     dispatch_once(&onceToken, ^{
         NSURL *url = [[NSURL alloc] initWithString:kBaseUrl];
-        sharedManager = [[self alloc] initWithBaseURL:url];
+        sharedManager = [[self alloc] initWithBaseURL:url mode:VPNetworkManagerModeNotification];
     });
     return sharedManager;
 }
 
-- (instancetype)initWithBaseURL:(NSURL *)url
+// For aemo.com.au Network Call
++(VPNetworkManager *)aemoManger
+{
+    static dispatch_once_t onceToken;
+    static VPNetworkManager *sharedManager = nil;
+    dispatch_once(&onceToken, ^{
+        NSURL *url = [[NSURL alloc] initWithString:AEMO_URL];
+        sharedManager = [[self alloc] initWithBaseURL:url mode:VPNetworkManagerModeAEMO];
+        [sharedManager updateAEMOHeaders];
+    });
+    return sharedManager;
+}
+
+- (instancetype)initWithBaseURL:(NSURL *)url mode:(VPNetworkManagerMode)mode
 {
     self = [super initWithBaseURL:url];
     
@@ -33,11 +52,17 @@
     {
         [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
         
-        AFJSONResponseSerializer *responseSer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+        AFJSONResponseSerializer *responseSer = [AFJSONResponseSerializer serializer];
         responseSer.removesKeysWithNullValues = YES;
         responseSer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json", nil];
         self.responseSerializer = responseSer;
-        self.requestSerializer = [AFHTTPRequestSerializer serializer];
+        
+        if (mode == VPNetworkManagerModeAEMO) {
+            self.requestSerializer = [AFJSONRequestSerializer serializer];
+        }else{
+            self.requestSerializer = [AFHTTPRequestSerializer serializer];
+        }
+        
         [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     }
     return self;
@@ -48,11 +73,17 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)updateHeaders
+- (void)updateAEMOHeaders
 {
-    NSDictionary *dict = @{};
-    for (NSString *key in [dict allKeys]) {
-        NSString *value = dict[key];
+    NSDictionary *headers = @{ @"origin": @"http://aemo.com.au",
+                               @"accept": @"*/*",
+                               @"referer": @"http://aemo.com.au/aemo/apps/visualisations/elec-priceanddemand.html",
+                               @"accept-encoding": @"gzip, deflate",
+                               @"accept-language": @"en-US,en;q=0.8",
+                               @"cache-control": @"no-cache"};
+    
+    for (NSString *key in [headers allKeys]) {
+        NSString *value = headers[key];
         [self.requestSerializer setValue:value forHTTPHeaderField:key];
     }
 }

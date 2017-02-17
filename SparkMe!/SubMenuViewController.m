@@ -9,11 +9,10 @@
 #import "SubMenuViewController.h"
 #import "TFHpple.h"
 #import "Reachability.h"
-
 #import "NoticeDetailViewController.h"
 #import "MBProgressHUD.h"
-
-
+#import "VPDataManager.h"
+#import "Utility.h"
 
 @interface SubMenuViewController ()
 
@@ -56,67 +55,39 @@
     [self performSelector:@selector(loadPart2) withObject:nil afterDelay:0];
 }
 
-- (void)loadPart2 {
-    //    NSData *marketNotices = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.aemo.com.au/Electricity/NEM-Data/Market-Notices"]];
+- (void)processData:(NSData *)marketNotices withError:(NSError *)error
+{
+    [Utility hideHUDForView:self.view];
     
-    NSError *e;
-    NSData *marketNotices = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.nemweb.com.au/Reports/CURRENT/Market_Notice/"] options:0 error:&e];
-    
-    // 2
-    TFHpple *htmlParser = [TFHpple hppleWithHTMLData:marketNotices];
-    
-    // 3
-    //    NSString *htmlXpathQueryString = @"//tbody//td | //tbody//a | //tbody//a/@href";
-    NSString *htmlXpathQueryString = @"//body//a | //body//a/@href";
-    
-    NSArray *htmlNodes = [htmlParser searchWithXPathQuery:htmlXpathQueryString];
-    
-    // 4
-    NSMutableArray *Notices = [[NSMutableArray alloc] init];
-    
-    for (TFHppleElement *element in htmlNodes) {
-        // 5
-        if([[element firstChild] content]!=nil){
-            
-            [Notices addObject:[[element firstChild] content]];
-        }
-        
-        // 7
-        //        tutorial.url = [element objectForKey:@"href"];
+    if (error) {
+        [Utility showErrorAlertTitle:nil withMessage:error.localizedDescription];
+        return;
     }
     
-    //    NSLog(@"%@",nemFiles);
-    //
-    //    NSLog(@"Items in file list array : %i", [nemFiles count]);
+    TFHpple *htmlParser = [TFHpple hppleWithHTMLData:marketNotices];
     
+    //    NSString *htmlXpathQueryString = @"//tbody//td | //tbody//a | //tbody//a/@href";
+    NSString *htmlXpathQueryString = @"//body//a | //body//a/@href";
+    NSArray *htmlNodes = [htmlParser searchWithXPathQuery:htmlXpathQueryString];
     
-    //    NSString *latestFileName = [nemFiles objectAtIndex:[nemFiles count]-1];
-    
-    //    NSLog(@"Results in array : %@", Notices);
-    
+    NSMutableArray *Notices = [[NSMutableArray alloc] init];
+    for (TFHppleElement *element in htmlNodes) {
+        if([[element firstChild] content]!=nil){
+            [Notices addObject:[[element firstChild] content]];
+        }
+    }
     
     //extract each item
-    
-    
     descNoticeRaw = [[NSMutableArray alloc] init];
     hrefNoticeRaw = [[NSMutableArray alloc] init];
     
-    for(int i=0; i<[Notices count]; i= i+2){
-        
+    for(int i=0; i<[Notices count]; i= i+2)
+    {
         NSArray *descStrings = [[Notices objectAtIndex:i] componentsSeparatedByString:@","];
         NSArray *hrefStrings = [[Notices objectAtIndex:i+1] componentsSeparatedByString:@","];
-        
-        //        [priceArray addObject:[NSString stringWithFormat:@"%@ %@", [components objectAtIndex:6],[components objectAtIndex:9]]];
-        
-        
         [descNoticeRaw addObject:[descStrings objectAtIndex:0]];
-        
         [hrefNoticeRaw addObject:[hrefStrings objectAtIndex:0]];
-        
     }
-    
-
-    
     
     idNotice = [[NSMutableArray alloc] init];
     dateNotice = [[NSMutableArray alloc] init];
@@ -124,63 +95,48 @@
     descNotice = [[NSMutableArray alloc] init];
     hrefNotice = [[NSMutableArray alloc] init];
     
-
-    
-    
-    for (NSUInteger y=[hrefNoticeRaw count]-1; y>=[hrefNoticeRaw count]-25; y--){
-        
-        //        NSLog(@"y equals %lu", (unsigned long)y);
-        
+    __weak typeof(self) weakSelf = self;
+    for (NSUInteger y = [hrefNoticeRaw count] - 1; y >= [hrefNoticeRaw count] - 25; y--)
+    {
         [hrefNotice addObject:[hrefNoticeRaw objectAtIndex:y]];
-        
+     
+        NSString *path = [@"http://www.nemweb.com.au" stringByAppendingString:[hrefNoticeRaw objectAtIndex:y]];
+        [[VPDataManager sharedManager] loadDataWithContentsOfURL:path withSelectedIndex:y completion:^(NSData *response, NSError *error, NSInteger index) {
+            BOOL isLast = (y == ([hrefNoticeRaw count] - 25));
+            [weakSelf processNEWEBData:response isLastCall:isLast];
+        }];
+    }
+}
 
-        
-        NSURL *url = [NSURL URLWithString:[@"http://www.nemweb.com.au" stringByAppendingString:[hrefNoticeRaw objectAtIndex:y]]];
-        //URL Requst Object
-        
-        NSData *marketNoticesDetail = [NSData dataWithContentsOfURL:url];
-        NSString *marketNoticesDetailStr = [[NSString alloc] initWithData:marketNoticesDetail encoding:NSUTF8StringEncoding];
-        
-        // first, separate by new line
-        NSArray* allLinedStrings =
-        [marketNoticesDetailStr componentsSeparatedByCharactersInSet:
-         [NSCharacterSet newlineCharacterSet]];
-        
-//        if (y == [hrefNoticeRaw count]-1) {
-        
-//            for ( NSUInteger x = 1; x <=30; x++) {
-//                
-//                NSLog(@"print %lu,  allLinedStrings %@", x, [allLinedStrings objectAtIndex:x]);
-//
-//                
-//            }
-//                    }
-        
-        if ([[allLinedStrings objectAtIndex:20] substringFromIndex:34] != nil) {
-        
+- (void)processNEWEBData:(NSData *)marketNoticesDetail isLastCall:(BOOL)last
+{
+    NSString *marketNoticesDetailStr = [[NSString alloc] initWithData:marketNoticesDetail encoding:NSUTF8StringEncoding];
+    
+    // first, separate by new line
+    NSArray* allLinedStrings = [marketNoticesDetailStr componentsSeparatedByCharactersInSet: [NSCharacterSet newlineCharacterSet]];
+    
+    if ([[allLinedStrings objectAtIndex:20] substringFromIndex:34] != nil) {
         [idNotice addObject:[[allLinedStrings objectAtIndex:20] substringFromIndex:34]];
-        
         [dateNotice addObject:[[allLinedStrings objectAtIndex:26] substringFromIndex:34]];
         [catgyNotice addObject:[[allLinedStrings objectAtIndex:22] substringFromIndex:34]];
         [descNotice addObject:[[allLinedStrings objectAtIndex:28] substringFromIndex:34]];
-        
-        }
-        
-//                NSLog(@"print line 20 of file %@", [[allLinedStrings objectAtIndex:20] substringFromIndex:34]);
-//                NSLog(@"print line 22 of file %@", [[allLinedStrings objectAtIndex:22] substringFromIndex:34]);
-//                NSLog(@"print line 24 of file %@", [[allLinedStrings objectAtIndex:24] substringFromIndex:34]);
-//                NSLog(@"print line 26 of file %@", [[allLinedStrings objectAtIndex:26] substringFromIndex:34]);
-//                NSLog(@"print line 28 of file %@", [[allLinedStrings objectAtIndex:28] substringFromIndex:34]);
-        
+    }
+
+    if (last) {
+        [descNoticeRaw removeAllObjects];
+        [hrefNoticeRaw removeAllObjects];
     }
     
-    [descNoticeRaw removeAllObjects];
-    [hrefNoticeRaw removeAllObjects];
-    
     [tableview1 reloadData];
+}
+
+- (void)loadPart2 {
     
-    
-    [MBProgressHUD hideHUDForView:self.view  animated:YES];
+    __weak typeof(self) weakSelf = self;
+    NSString *path = @"http://www.nemweb.com.au/Reports/CURRENT/Market_Notice/";
+    [[VPDataManager sharedManager] loadDataWithContentsOfURL:path withSelectedIndex:0 completion:^(NSData *response, NSError *error, NSInteger index) {
+        [weakSelf processData:response withError:error];
+    }];
 }
 
 
