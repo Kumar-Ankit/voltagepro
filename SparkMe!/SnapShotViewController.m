@@ -696,7 +696,13 @@ timeArrayNSW, timeArrayQLD, timeArraySA, timeArrayTAS, timeArrayVIC;
     }];
 }
 
-- (void)process30minData:(NSDictionary *)response withError:(NSError *)error{
+- (void)process30minData:(NSDictionary *)response withError:(NSError *)error
+{
+    if (segTime.selectedSegmentIndex == 2) {
+        [self process30PDminData:response withError:error];
+        return;
+    }
+    
     [Utility hideHUDForView:self.view];
     if (!response || error) {
         [Utility showErrorAlertTitle:nil withMessage:error.localizedDescription];
@@ -1581,6 +1587,12 @@ timeArrayNSW, timeArrayQLD, timeArraySA, timeArrayTAS, timeArrayVIC;
 
 - (void)process30PDminData:(NSDictionary *)response withError:(NSError *)error
 {
+    if (segTime.selectedSegmentIndex == 1) {
+        [self process30minData:response withError:error];
+        return;
+    }
+    
+    
     [Utility hideHUDForView:self.view];
     
     if (!response || error) {
