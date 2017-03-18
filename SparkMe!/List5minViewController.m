@@ -317,7 +317,7 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-    NSString *chartURL = [NSString stringWithFormat:@"http://hvbpreproduction.azurewebsites.net/priceanddemand_5min_chart.php?region=%@",_activeRegion];
+    NSString *chartURL = [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/priceanddemand_5min_chart.php?region=%@",_activeRegion];
     
     if ([[segue identifier] isEqualToString:@"pushChart5"]) {
         Chart30minViewController *Chart5minVC = [segue destinationViewController];
