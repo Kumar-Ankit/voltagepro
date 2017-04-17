@@ -7,7 +7,7 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
-#define kBaseUrl @"http://hvbroker.azurewebsites.net/pushnotification/voltagepropushnotification.php"
+#define kBaseUrl @"http://hvbroker.azurewebsites.net/pushnotification/voltagepropushnotificationV2.php"
 
 @interface VPNetworkManager : AFHTTPSessionManager
 + (VPNetworkManager *)sharedManger;

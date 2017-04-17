@@ -165,6 +165,10 @@
         } else {
             
             
+            UAdevToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"UAdevToken"];
+            
+            NSLog(@"My Device token is again %@", UAdevToken);
+            
             NSString *post =[[NSString alloc] initWithFormat:@"username=%@&password=%@&appversion=%@&devtoken=%@&devicetype=%@&osversion=%@",[txtUsername text],[txtPassword text], appVersion, UAdevToken, DeviceType, OsVersion];
             //            NSLog(@"PostData: %@",post);
             
@@ -174,7 +178,7 @@
             
             //            this returns 0 if successfull but not yet activated, 1 if successfull but activated, and 2 if unsuccessfull
             
-    NSURL *url=[NSURL URLWithString:@"http://hvbroker.azurewebsites.net/pushnotification/VoltageProLoginV1.php"];
+    NSURL *url=[NSURL URLWithString:@"http://hvbroker.azurewebsites.net/pushnotification/VoltageProLoginV2.php"];
             
             NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
             
@@ -265,7 +269,7 @@
                             
                           [MBProgressHUD hideHUDForView:self.view  animated:YES];
                             
-                            [self alertStatus:@"Username & Password already used.  Contact voltagepro@hvbrokers.com.au for further info.":@"Connection Failed"];
+                            [self alertStatus:@"Username & Password already used.  Contact sb@hvbrokers.com.au for further info.":@"Connection Failed"];
                             
                             
                         } else {
@@ -288,7 +292,7 @@
                                 //                            if don't match then error message ( scenario - using different username and password that has already been activated )
                                 
                                 [MBProgressHUD hideHUDForView:self.view  animated:YES];
-                                [self alertStatus:@"Inconsistent Username & Password used.  Contact voltagepro@hvbrokers.com.au for further info.":@"Connection Failed"];
+                                [self alertStatus:@"Inconsistent Username & Password used.  Contact sb@hvbrokers.com.au for further info.":@"Connection Failed"];
                                 
                                 
                             }
@@ -363,7 +367,7 @@
 - (void)loadPart3_Fail {
     
     [MBProgressHUD hideHUDForView:self.view  animated:YES];
-    [self alertStatus:@"Please check username and password and try again.  Contact voltagepro@hvbrokers.com.au for further info.":@"Connection Failed"];
+    [self alertStatus:@"Please check username and password and try again.  Contact sb@hvbrokers.com.au for further info.":@"Connection Failed"];
 }
 
 - (IBAction)loginClicked:(id)sender {
