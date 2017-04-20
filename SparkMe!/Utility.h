@@ -90,6 +90,9 @@
 - (NSString *)time24FromTimeString:(NSString *)am_pm_str;
 - (NSString *)timeAM_PMFromTimeString:(NSString *)time24;
 
++ (void)sendTokenToServer:(NSString *)token;
++ (void)registerForPushNotifications;
+
 @property (nonatomic,strong) NSDateFormatter *am_pm_formatter;
 @property (nonatomic,strong) NSDateFormatter *time24formatter;
 @end
