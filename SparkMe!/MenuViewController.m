@@ -13,6 +13,7 @@
 #import "CompanyViewController.h"
 #import "NotificationSettingsController.h"
 #import "TFHpple.h"
+#import "Utility.h"
 
 //#import "UAPush.h"
 #import "UAPushSettingsViewController.h"
@@ -56,6 +57,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [Utility registerForPushNotifications];
+
     
     NSString *reqSysVer = @"6.0";
     NSString *currSysVer = [[UIDevice currentDevice] systemVersion];

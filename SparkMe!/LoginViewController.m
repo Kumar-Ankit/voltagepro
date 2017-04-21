@@ -144,11 +144,14 @@
 //}
 
 
-- (void)loadPart1 {
-    HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
-    HUD.yOffset = -100.f;
-    HUD.labelText = @"Authenticating";
-    
+- (void)loadPart1
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
+        HUD.yOffset = -100.f;
+        HUD.labelText = @"Authenticating";
+    });
+
     [self performSelector:@selector(loadPart2) withObject:nil afterDelay:0];
 }
 

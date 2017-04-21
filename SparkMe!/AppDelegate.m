@@ -14,6 +14,7 @@
 #import "TFHpple.h"
 
 #import <Parse/Parse.h>
+#import "Utility.h"
 
 @implementation AppDelegate
 
@@ -42,20 +43,6 @@
     //                  clientKey:@"qZ0wNsCq3iWXWeqpKrTpaGdoPUzliQ2UY5Mnrdrd"];
     
     // Register for Push Notitications, if running iOS 8
-    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-        UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
-                                                        UIUserNotificationTypeBadge |
-                                                        UIUserNotificationTypeSound);
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
-                                                                                 categories:nil];
-        [application registerUserNotificationSettings:settings];
-        [application registerForRemoteNotifications];
-    } else {
-        // Register for Push Notifications before iOS 8
-        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                         UIRemoteNotificationTypeAlert |
-                                                         UIRemoteNotificationTypeSound)];
-    }
     
     // add in parse analytics for tracking effect of push notifications
     
@@ -109,7 +96,12 @@
     
     [[NSUserDefaults standardUserDefaults] setObject:devToken forKey:@"UAdevToken"];
     
+    [Utility sendTokenToServer:devToken];
     //    [[UAPush shared] registerDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+    [Utility sendTokenToServer:nil];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {

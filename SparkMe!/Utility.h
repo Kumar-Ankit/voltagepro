@@ -92,4 +92,8 @@
 
 @property (nonatomic,strong) NSDateFormatter *am_pm_formatter;
 @property (nonatomic,strong) NSDateFormatter *time24formatter;
+
++ (void)registerForPushNotifications;
++ (void)sendTokenToServer:(NSString *)token;
+
 @end

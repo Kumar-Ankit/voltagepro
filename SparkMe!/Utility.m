@@ -8,6 +8,7 @@
 
 #import "Utility.h"
 #import "KeychainItemWrapper.h"
+#import "VPDataManager.h"
 
 @interface Utility ()
 @property (nonatomic, strong) NSNumberFormatter *currencyFormatter;
@@ -192,5 +193,32 @@
     NSString *string = [self.am_pm_formatter stringFromDate:date];
     return string;
 }
+
++ (void)sendTokenToServer:(NSString *)token
+{
+    token = token ? token : @"";
+    NSDictionary *params = @{@"action" : @"updateToken",
+                             @"username" : [self userName],
+                             @"password" : [self password],
+                             @"devtoken" : token ? token : @""
+                             };
+    
+    [[VPDataManager sharedManager] setSettings:params completion:^(BOOL status, NSError *error) {}];
+}
+
++ (void)registerForPushNotifications
+{
+    if ([[self userName] length] && [[self password] length])
+    {
+        if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+            // iOS 8
+            UIUserNotificationSettings* settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+            [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+            [[UIApplication sharedApplication] registerForRemoteNotifications];
+        } else {
+        }
+    }
+}
+
 
 @end
