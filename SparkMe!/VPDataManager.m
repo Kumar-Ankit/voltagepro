@@ -166,36 +166,5 @@
     });
 }
 
-- (void)postDataForPathWithParams:(NSDictionary *)parameters completion:(void (^)(BOOL, NSError *))completionBlock
-{
-    if (!parameters) {
-        if (completionBlock) {
-            completionBlock (NO, [VPNetworkManager generalError]);
-            return;
-        }
-    }
-    
-    [[VPNetworkManager sharedManger] createPostRequestWithParameters:parameters withRequestPath:@"" withCompletionBlock:^(id responseObject, NSError *error) {
-        
-        if (error){
-            if (completionBlock) {
-                completionBlock (NO ,error);
-            }
-        }
-        else if ([responseObject isKindOfClass:[NSDictionary class]]){
-            
-            NSString *code = responseObject[@"ResponseCode"];
-            if (completionBlock) {
-                completionBlock (!code.boolValue , nil);
-            }
-        }
-        else{
-            if (completionBlock) {
-                completionBlock (NO, [VPNetworkManager generalError]);
-                return;
-            }
-        }
-    }];
-}
 
 @end

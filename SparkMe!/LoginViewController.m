@@ -13,7 +13,6 @@
 #import "Reachability.h"
 
 #import "CompanyViewController.h"
-#import "Utility.h"
 
 
 
@@ -363,8 +362,6 @@
     [self performSegueWithIdentifier:@"toMenu" sender:self];
     
     [self dismissViewControllerAnimated:YES completion:Nil];
-    
-    [Utility registerForPushNotifications];
 }
 
 - (void)loadPart3_Fail {

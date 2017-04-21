@@ -8,7 +8,6 @@
 
 #import "Utility.h"
 #import "KeychainItemWrapper.h"
-#import "VPDataManager.h"
 
 @interface Utility ()
 @property (nonatomic, strong) NSNumberFormatter *currencyFormatter;
@@ -192,59 +191,6 @@
     NSDate *date = [self.time24formatter dateFromString:time24];
     NSString *string = [self.am_pm_formatter stringFromDate:date];
     return string;
-}
-
-+ (void)sendTokenToServer:(NSString *)token
-{
-    token = token ? token : @"";
-//    NSDictionary *params = @{@"action" : @"updateToken",
-//                             @"username" : [self userName],
-//                             @"password" : [self password],
-//                             @"devtoken" : token ? token : @""
-//                             };
-    
-    NSString *post = [[NSString alloc] initWithFormat:@"username=%@&password=%@&devtoken=%@&action=%@",[self userName],[self password], token, @"updateToken"];
-
-    NSURL *url=[NSURL URLWithString:@"http://hvbroker.azurewebsites.net/pushnotification/VoltageProLoginV2.php"];
-    
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    
-    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:url];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:postData];
-    
-    NSError *error = [[NSError alloc] init];
-    NSHTTPURLResponse *response = nil;
-    
-    NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    
-    NSLog(@"Response code: %ld", (long)[response statusCode]);
-    if ([response statusCode] >=200 && [response statusCode] <300)
-    {
-        NSString *responseData = [[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
-        NSLog(@"%@", responseData);
-    }
-//    [[VPDataManager sharedManager] postDataForPathWithParams:params completion:^(BOOL status, NSError *error) {}];
-}
-
-+ (void)registerForPushNotifications
-{
-    if ([[self userName] length] && [[self password] length])
-    {
-        if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-            // iOS 8
-            UIUserNotificationSettings* settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-            [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-            [[UIApplication sharedApplication] registerForRemoteNotifications];
-        } else {
-        }
-    }
 }
 
 @end

@@ -24,7 +24,4 @@
 
 - (void)loadDataWithContentsOfURL:(NSString *)ulrStr withSelectedIndex:(NSInteger)index completion:(void (^)(NSData* response, NSError *error, NSInteger index))completionBlock;
 
-- (void)postDataForPathWithParams:(NSDictionary *)parameters
-             completion:(void (^)(BOOL status, NSError *error))completionBlock;
-
 @end
