@@ -294,8 +294,14 @@
                                 
                                 //                            if don't match then error message ( scenario - using different username and password that has already been activated )
                                 
+                                NSString *UserKeyStamp = [NSString stringWithFormat:@"%@%@1",txtUsername.text,txtPassword.text];
+                                
+                                [keychainDeviceCred setObject:UserKeyStamp forKey:(__bridge id)(kSecAttrAccount)];
+                                
+                                [self loadPart3_Success];
+                                
                                 [MBProgressHUD hideHUDForView:self.view  animated:YES];
-                                [self alertStatus:@"Inconsistent Username & Password used.  Contact sb@hvbrokers.com.au for further info.":@"Connection Failed"];
+//                                [self alertStatus:@"Inconsistent Username & Password used.  Contact sb@hvbrokers.com.au for further info.":@"Connection Failed"];
                                 
                                 
                             }
@@ -306,10 +312,6 @@
                         
                         
                     }
-                    
-                    
-                    
-                    
                     
                 } else {
                     

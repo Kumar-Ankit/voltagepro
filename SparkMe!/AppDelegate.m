@@ -74,6 +74,7 @@
     //                                         UIRemoteNotificationTypeAlert );
     
     
+    [Utility registerForPushNotifications];
     
     return YES;
 }
@@ -114,8 +115,6 @@
     }
     
 }
-
-
 
 
 //to handle for ios6 orientation

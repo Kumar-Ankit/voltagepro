@@ -196,7 +196,10 @@
 
 + (void)sendTokenToServer:(NSString *)token
 {
-    token = token ? token : @"";
+    if (token.length == 0) {
+        return;
+    }
+    
     NSDictionary *params = @{@"action" : @"updateToken",
                              @"username" : [self userName],
                              @"password" : [self password],
