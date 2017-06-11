@@ -196,7 +196,7 @@
 
 + (void)sendTokenToServer:(NSString *)token
 {
-    if (token.length == 0) {
+    if (token.length == 0 || [[self userName] length] == 0 || [[self password] length] == 0) {
         return;
     }
     
