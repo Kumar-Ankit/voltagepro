@@ -108,8 +108,8 @@
     VPPASADataCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellData" forIndexPath:indexPath];
     VPPASAItem *pasa = self.pasaModel.pasaItems[indexPath.row];
     cell.labelDate.text = pasa.day;
-    cell.labelPASA.text = pasa.mt_pasa.stringValue;
-    cell.labelDelta.text = pasa.pasa_delta.stringValue;
+    cell.labelPASA.text = [[[Utility shared] numberFormatter] stringFromNumber:pasa.mt_pasa];
+    cell.labelDelta.text = [[[Utility shared] numberFormatter] stringFromNumber:pasa.pasa_delta];
     
     cell.backgroundColor = (indexPath.row % 2) ? kSeparatorColor : [UIColor whiteColor];
     

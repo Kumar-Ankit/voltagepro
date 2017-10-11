@@ -161,6 +161,18 @@
     return size;
 }
 
+- (NSNumberFormatter *)numberFormatter
+{
+    if (!_numberFormatter) {
+        _numberFormatter = [[NSNumberFormatter alloc] init];
+        [_numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        [_numberFormatter setGroupingSize:3];
+        [_numberFormatter setSecondaryGroupingSize:2];
+    }
+    
+    return _numberFormatter;
+}
+
 - (NSDateFormatter *)am_pm_formatter
 {
     if (!_am_pm_formatter) {

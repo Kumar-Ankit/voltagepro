@@ -96,6 +96,7 @@
 @property (nonatomic,strong) NSDateFormatter *time24formatter;
 @property (nonatomic,strong) NSDateFormatter *serverFormatter;
 @property (nonatomic,strong) NSDateFormatter *pasaFormatter;
+@property (nonatomic,strong) NSNumberFormatter *numberFormatter;
 
 + (void)registerForPushNotifications;
 + (void)sendTokenToServer:(NSString *)token;
