@@ -15,7 +15,19 @@
     self = [super initWithDictionary:dictionary];
     if (self) {
 
-        self.publish_date = dictionary[@"publish_date"];
+        NSString *rawPublishDate = dictionary[@"publish_date"];
+        rawPublishDate = [rawPublishDate stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+        
+        NSDateFormatter *serverPublishDateFormatter = [[NSDateFormatter alloc] init];
+        [serverPublishDateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
+
+        NSDateFormatter *publishDateFormatter = [[NSDateFormatter alloc] init];
+        [publishDateFormatter setDateFormat:@"HH:mm dd/MM/yyyy"];
+        
+        if (rawPublishDate) {
+            NSDate *date = [serverPublishDateFormatter dateFromString:rawPublishDate];
+            self.publish_date = [publishDateFormatter stringFromDate:date];
+        }
         
         NSMutableArray *temp = [NSMutableArray new];
         if ([dictionary[@"ResponseData"] isKindOfClass:[NSArray class]]) {
@@ -26,7 +38,6 @@
         }
         
         self.pasaItems = [NSArray arrayWithArray:temp];
-        
     }
     return self;
 }

@@ -205,7 +205,7 @@
 {
     if (!_pasaFormatter) {
         _pasaFormatter = [[NSDateFormatter alloc] init];
-        [_pasaFormatter setDateFormat:@"yyyy/MM/dd"];
+        [_pasaFormatter setDateFormat:@"dd/MM/yyyy"];
     }
     return _pasaFormatter;
 }
