@@ -217,6 +217,10 @@
 		A00065E31F8D34B0006F6CEE /* VPPASADataController.m in Sources */ = {isa = PBXBuildFile; fileRef = A00065E11F8D34B0006F6CEE /* VPPASADataController.m */; };
 		A00065E41F8D34B0006F6CEE /* VPPASADataController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A00065E21F8D34B0006F6CEE /* VPPASADataController.xib */; };
 		A00065E81F8D393F006F6CEE /* VPStateSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A00065E71F8D393F006F6CEE /* VPStateSegmentControl.m */; };
+		A02D67E61F8DCE7800058E93 /* VPPASADataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A02D67E41F8DCE7800058E93 /* VPPASADataCell.m */; };
+		A02D67E71F8DCE7800058E93 /* VPPASADataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A02D67E51F8DCE7800058E93 /* VPPASADataCell.xib */; };
+		A02D67F01F8E158400058E93 /* VPPASADataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A02D67EF1F8E158400058E93 /* VPPASADataModel.m */; };
+		A02D67F31F8E15C700058E93 /* VPWebServiceResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A02D67F21F8E15C700058E93 /* VPWebServiceResponseModel.m */; };
 		A03262961E055B81003F234F /* NotificationSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03262951E055B81003F234F /* NotificationSettingsController.m */; };
 		A03262991E055FDC003F234F /* NotificationAddEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03262981E055FDC003F234F /* NotificationAddEditController.m */; };
 		A032629C1E0567F8003F234F /* VPTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A032629B1E0567F8003F234F /* VPTextField.m */; };
@@ -535,6 +539,13 @@
 		A00065E21F8D34B0006F6CEE /* VPPASADataController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VPPASADataController.xib; sourceTree = "<group>"; };
 		A00065E71F8D393F006F6CEE /* VPStateSegmentControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPStateSegmentControl.m; sourceTree = "<group>"; };
 		A00065E91F8D3BB8006F6CEE /* VPStateSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPStateSegmentControl.h; sourceTree = "<group>"; };
+		A02D67E31F8DCE7800058E93 /* VPPASADataCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPPASADataCell.h; sourceTree = "<group>"; };
+		A02D67E41F8DCE7800058E93 /* VPPASADataCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPPASADataCell.m; sourceTree = "<group>"; };
+		A02D67E51F8DCE7800058E93 /* VPPASADataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VPPASADataCell.xib; sourceTree = "<group>"; };
+		A02D67EE1F8E158400058E93 /* VPPASADataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPPASADataModel.h; sourceTree = "<group>"; };
+		A02D67EF1F8E158400058E93 /* VPPASADataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPPASADataModel.m; sourceTree = "<group>"; };
+		A02D67F11F8E15C700058E93 /* VPWebServiceResponseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPWebServiceResponseModel.h; sourceTree = "<group>"; };
+		A02D67F21F8E15C700058E93 /* VPWebServiceResponseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPWebServiceResponseModel.m; sourceTree = "<group>"; };
 		A03262941E055B81003F234F /* NotificationSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationSettingsController.h; sourceTree = "<group>"; };
 		A03262951E055B81003F234F /* NotificationSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationSettingsController.m; sourceTree = "<group>"; };
 		A03262971E055FDC003F234F /* NotificationAddEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationAddEditController.h; sourceTree = "<group>"; };
@@ -1056,6 +1067,27 @@
 			path = StatesSegmentView;
 			sourceTree = "<group>";
 		};
+		A02D67E21F8DCE1B00058E93 /* DataCell */ = {
+			isa = PBXGroup;
+			children = (
+				A02D67E31F8DCE7800058E93 /* VPPASADataCell.h */,
+				A02D67E41F8DCE7800058E93 /* VPPASADataCell.m */,
+				A02D67E51F8DCE7800058E93 /* VPPASADataCell.xib */,
+			);
+			path = DataCell;
+			sourceTree = "<group>";
+		};
+		A02D67ED1F8E155E00058E93 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A02D67EE1F8E158400058E93 /* VPPASADataModel.h */,
+				A02D67EF1F8E158400058E93 /* VPPASADataModel.m */,
+				A02D67F11F8E15C700058E93 /* VPWebServiceResponseModel.h */,
+				A02D67F21F8E15C700058E93 /* VPWebServiceResponseModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A03262931E055B41003F234F /* NotificationSettings */ = {
 			isa = PBXGroup;
 			children = (
@@ -1142,6 +1174,8 @@
 		A0C5894E1F8BE2E1001AAFF8 /* PASA */ = {
 			isa = PBXGroup;
 			children = (
+				A02D67ED1F8E155E00058E93 /* Model */,
+				A02D67E21F8DCE1B00058E93 /* DataCell */,
 				A0C5894F1F8BE324001AAFF8 /* VPChartsController.h */,
 				A0C589501F8BE324001AAFF8 /* VPChartsController.m */,
 				A0C589511F8BE324001AAFF8 /* VPChartsController.xib */,
@@ -1300,6 +1334,7 @@
 				3C31879F1679C517000A8AD1 /* up-arrow-1.png in Resources */,
 				3C3187A01679C517000A8AD1 /* up-arrow-1@2x.png in Resources */,
 				3C3187A11679C517000A8AD1 /* up-arrow-2.png in Resources */,
+				A02D67E71F8DCE7800058E93 /* VPPASADataCell.xib in Resources */,
 				3C3187A21679C517000A8AD1 /* up-arrow-2@2x.png in Resources */,
 				3C3187A31679C517000A8AD1 /* up-arrow-3.png in Resources */,
 				3C3187A41679C517000A8AD1 /* up-arrow-3@2x.png in Resources */,
@@ -1459,7 +1494,9 @@
 				3C1E729615B21E95005CFE10 /* MenuViewController.m in Sources */,
 				A03262AA1E056E91003F234F /* VPPickerViewCell.m in Sources */,
 				A03262A71E056D31003F234F /* VPTableViewCell.m in Sources */,
+				A02D67F01F8E158400058E93 /* VPPASADataModel.m in Sources */,
 				3C1E72AD15B22C27005CFE10 /* Reachability.m in Sources */,
+				A02D67E61F8DCE7800058E93 /* VPPASADataCell.m in Sources */,
 				3C1E72B615B22F0F005CFE10 /* CompanyViewController.m in Sources */,
 				3CF0362C1970F714003B68EB /* ILTranslucentView.m in Sources */,
 				3C263E1E15C3429E00C010A0 /* SettingsViewController.m in Sources */,
@@ -1469,6 +1506,7 @@
 				A08064EA1E067E8800BB9EF7 /* VPDetailTextFieldCell.m in Sources */,
 				3C2AE54E15D90A3800E2C71F /* TFHppleElement.m in Sources */,
 				3C2AE54F15D90A3800E2C71F /* XPathQuery.m in Sources */,
+				A02D67F31F8E15C700058E93 /* VPWebServiceResponseModel.m in Sources */,
 				3C2AE59D15D9303300E2C71F /* DispPrice.m in Sources */,
 				3C2AE5A015D9318900E2C71F /* DispRegionSum.m in Sources */,
 				3C5B237915DA7D0E001824F1 /* IcFlows.m in Sources */,

@@ -180,6 +180,31 @@
     return _time24formatter;
 }
 
+- (NSDateFormatter *)serverFormatter
+{
+    if (!_serverFormatter) {
+        _serverFormatter = [[NSDateFormatter alloc] init];
+        [_serverFormatter setDateFormat:@"yyyy-MM-dd'T'hh:mm:ss"];
+    }
+    return _serverFormatter;
+}
+
+- (NSDateFormatter *)pasaFormatter
+{
+    if (!_pasaFormatter) {
+        _pasaFormatter = [[NSDateFormatter alloc] init];
+        [_pasaFormatter setDateFormat:@"yyyy/MM/dd"];
+    }
+    return _pasaFormatter;
+}
+
+- (NSString *)pasaDateFromServerDate:(NSString *)serverDateString
+{
+    NSDate *date = [self.serverFormatter dateFromString:serverDateString];
+    NSString *string = [self.pasaFormatter stringFromDate:date];
+    return string;
+}
+
 - (NSString *)time24FromTimeString:(NSString *)am_pm_str
 {
     NSDate *date = [self.am_pm_formatter dateFromString:am_pm_str];

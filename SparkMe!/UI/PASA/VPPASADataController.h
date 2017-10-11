@@ -8,5 +8,5 @@
 #import <UIKit/UIKit.h>
 
 @interface VPPASADataController : UIViewController
-
+@property (nonatomic, strong) NSString *stateName;
 @end

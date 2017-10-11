@@ -166,5 +166,49 @@
     });
 }
 
+- (void)fetchPASADataWithStateName:(NSString *)stateName withSelectedIndex:(NSInteger)index completion:(void (^)(VPPASADataModel *, NSError *, NSInteger))completionBlock
+{
+    if (!stateName) {
+        if (completionBlock) {
+            completionBlock (nil, [VPNetworkManager generalError], index);
+            return;
+        }
+    }
+    
+    NSString *keyUrl = [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/webservices/?type=hvbconroller&requestmethod=mtpassdata&node=%@1",stateName];
+    
+    if ([self.activeURLs containsObject:keyUrl]) {
+        return;
+    }else{
+        [self.activeURLs addObject:keyUrl];
+    }
+    
+    [[VPNetworkManager aemoManger] createPostRequestWithParameters:nil withRequestPath:keyUrl withCompletionBlock:^(id responseObject, NSError *error) {
+        
+        [self.activeURLs removeObject:keyUrl];
+        
+        if (error)
+        {
+            if (completionBlock) {
+                completionBlock (nil ,error, index);
+            }
+        }
+        else if ([responseObject isKindOfClass:[NSDictionary class]])
+        {
+            NSDictionary *data = responseObject[@"data"];
+            VPPASADataModel *dataModel = [[VPPASADataModel alloc] initWithDictionary:data];
+            if (completionBlock) {
+                completionBlock (dataModel , nil, index);
+            }
+        }
+        else
+        {
+            if (completionBlock) {
+                completionBlock (nil, [VPNetworkManager generalError], index);
+                return;
+            }
+        }
+    }];
+}
 
 @end

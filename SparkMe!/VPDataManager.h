@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NotificationMTLModel.h"
+#import "VPPASADataModel.h"
 #import "Utility.h"
 
 @interface VPDataManager : NSObject
@@ -23,5 +24,7 @@
            completion:(void (^)(NSDictionary* response, NSError *error))completionBlock;
 
 - (void)loadDataWithContentsOfURL:(NSString *)ulrStr withSelectedIndex:(NSInteger)index completion:(void (^)(NSData* response, NSError *error, NSInteger index))completionBlock;
+
+- (void)fetchPASADataWithStateName:(NSString *)stateName withSelectedIndex:(NSInteger)index completion:(void (^)(VPPASADataModel* response, NSError *error, NSInteger index))completionBlock;
 
 @end
