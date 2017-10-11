@@ -214,6 +214,9 @@
 		3CF98F3616B9359700B237B1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF98F3516B9359700B237B1 /* CoreLocation.framework */; };
 		3CF98F3816B935A500B237B1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF98F3716B935A500B237B1 /* MapKit.framework */; };
 		93B1C391256C2B27A0D97C05 /* libPods-Sparky.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B175BBDBB325AE11F3F10208 /* libPods-Sparky.a */; };
+		A00065E31F8D34B0006F6CEE /* VPPASADataController.m in Sources */ = {isa = PBXBuildFile; fileRef = A00065E11F8D34B0006F6CEE /* VPPASADataController.m */; };
+		A00065E41F8D34B0006F6CEE /* VPPASADataController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A00065E21F8D34B0006F6CEE /* VPPASADataController.xib */; };
+		A00065E81F8D393F006F6CEE /* VPStateSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A00065E71F8D393F006F6CEE /* VPStateSegmentControl.m */; };
 		A03262961E055B81003F234F /* NotificationSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03262951E055B81003F234F /* NotificationSettingsController.m */; };
 		A03262991E055FDC003F234F /* NotificationAddEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03262981E055FDC003F234F /* NotificationAddEditController.m */; };
 		A032629C1E0567F8003F234F /* VPTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A032629B1E0567F8003F234F /* VPTextField.m */; };
@@ -229,6 +232,8 @@
 		A08064EA1E067E8800BB9EF7 /* VPDetailTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A08064E91E067E8800BB9EF7 /* VPDetailTextFieldCell.m */; };
 		A08064ED1E06A72400BB9EF7 /* TwoButtonViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A08064EC1E06A72400BB9EF7 /* TwoButtonViewCell.m */; };
 		A08064F01E06CAA400BB9EF7 /* VPSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A08064EF1E06CAA400BB9EF7 /* VPSwitchCell.m */; };
+		A0C589521F8BE324001AAFF8 /* VPChartsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0C589501F8BE324001AAFF8 /* VPChartsController.m */; };
+		A0C589531F8BE324001AAFF8 /* VPChartsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0C589511F8BE324001AAFF8 /* VPChartsController.xib */; };
 		A0C92C061E0EF15B0083DA7B /* SleepTimePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0C92C051E0EF15B0083DA7B /* SleepTimePickerController.m */; };
 		A0D0ADDB1E0ECFD2009C8067 /* VPSleepFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D0ADDA1E0ECFD2009C8067 /* VPSleepFooterView.m */; };
 		D0739CF41E0B654B00F39629 /* alert_new.png in Resources */ = {isa = PBXBuildFile; fileRef = D0739CF31E0B654B00F39629 /* alert_new.png */; };
@@ -525,6 +530,11 @@
 		3CF98F3516B9359700B237B1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3CF98F3716B935A500B237B1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		68295D6D8CE399C592082255 /* Pods-Sparky.ad hoc distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sparky.ad hoc distribution.xcconfig"; path = "Pods/Target Support Files/Pods-Sparky/Pods-Sparky.ad hoc distribution.xcconfig"; sourceTree = "<group>"; };
+		A00065E01F8D34B0006F6CEE /* VPPASADataController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPPASADataController.h; sourceTree = "<group>"; };
+		A00065E11F8D34B0006F6CEE /* VPPASADataController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPPASADataController.m; sourceTree = "<group>"; };
+		A00065E21F8D34B0006F6CEE /* VPPASADataController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VPPASADataController.xib; sourceTree = "<group>"; };
+		A00065E71F8D393F006F6CEE /* VPStateSegmentControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPStateSegmentControl.m; sourceTree = "<group>"; };
+		A00065E91F8D3BB8006F6CEE /* VPStateSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPStateSegmentControl.h; sourceTree = "<group>"; };
 		A03262941E055B81003F234F /* NotificationSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationSettingsController.h; sourceTree = "<group>"; };
 		A03262951E055B81003F234F /* NotificationSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationSettingsController.m; sourceTree = "<group>"; };
 		A03262971E055FDC003F234F /* NotificationAddEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationAddEditController.h; sourceTree = "<group>"; };
@@ -554,6 +564,9 @@
 		A08064EC1E06A72400BB9EF7 /* TwoButtonViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoButtonViewCell.m; sourceTree = "<group>"; };
 		A08064EE1E06CAA400BB9EF7 /* VPSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSwitchCell.h; sourceTree = "<group>"; };
 		A08064EF1E06CAA400BB9EF7 /* VPSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPSwitchCell.m; sourceTree = "<group>"; };
+		A0C5894F1F8BE324001AAFF8 /* VPChartsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPChartsController.h; sourceTree = "<group>"; };
+		A0C589501F8BE324001AAFF8 /* VPChartsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPChartsController.m; sourceTree = "<group>"; };
+		A0C589511F8BE324001AAFF8 /* VPChartsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VPChartsController.xib; sourceTree = "<group>"; };
 		A0C92C041E0EF15B0083DA7B /* SleepTimePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SleepTimePickerController.h; sourceTree = "<group>"; };
 		A0C92C051E0EF15B0083DA7B /* SleepTimePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SleepTimePickerController.m; sourceTree = "<group>"; };
 		A0D0ADD91E0ECFD2009C8067 /* VPSleepFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSleepFooterView.h; sourceTree = "<group>"; };
@@ -712,6 +725,7 @@
 		3C24D77715B0419700226F4E /* Sparky */ = {
 			isa = PBXGroup;
 			children = (
+				A0C5894D1F8BE2AB001AAFF8 /* UI */,
 				A03DC76D1E066EDB001875AA /* MTLModel */,
 				A03DC76B1E066D0B001875AA /* DataManager */,
 				A03DC7641E0669E5001875AA /* NetworkManager */,
@@ -1033,6 +1047,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A00065E51F8D389C006F6CEE /* StatesSegmentView */ = {
+			isa = PBXGroup;
+			children = (
+				A00065E71F8D393F006F6CEE /* VPStateSegmentControl.m */,
+				A00065E91F8D3BB8006F6CEE /* VPStateSegmentControl.h */,
+			);
+			path = StatesSegmentView;
+			sourceTree = "<group>";
+		};
 		A03262931E055B41003F234F /* NotificationSettings */ = {
 			isa = PBXGroup;
 			children = (
@@ -1105,6 +1128,28 @@
 				A03262A91E056E91003F234F /* VPPickerViewCell.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		A0C5894D1F8BE2AB001AAFF8 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A00065E51F8D389C006F6CEE /* StatesSegmentView */,
+				A0C5894E1F8BE2E1001AAFF8 /* PASA */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		A0C5894E1F8BE2E1001AAFF8 /* PASA */ = {
+			isa = PBXGroup;
+			children = (
+				A0C5894F1F8BE324001AAFF8 /* VPChartsController.h */,
+				A0C589501F8BE324001AAFF8 /* VPChartsController.m */,
+				A0C589511F8BE324001AAFF8 /* VPChartsController.xib */,
+				A00065E01F8D34B0006F6CEE /* VPPASADataController.h */,
+				A00065E11F8D34B0006F6CEE /* VPPASADataController.m */,
+				A00065E21F8D34B0006F6CEE /* VPPASADataController.xib */,
+			);
+			path = PASA;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1248,6 +1293,7 @@
 				3C3187921679C507000A8AD1 /* down-arrow-1.png in Resources */,
 				3C3187931679C507000A8AD1 /* down-arrow-1@2x.png in Resources */,
 				3C3187941679C507000A8AD1 /* down-arrow-2.png in Resources */,
+				A0C589531F8BE324001AAFF8 /* VPChartsController.xib in Resources */,
 				3C3187951679C507000A8AD1 /* down-arrow-2@2x.png in Resources */,
 				3C3187961679C507000A8AD1 /* down-arrow-3.png in Resources */,
 				3C3187971679C507000A8AD1 /* down-arrow-3@2x.png in Resources */,
@@ -1335,6 +1381,7 @@
 				3CDE158F17D7D32E00A68B59 /* CustomCell5PD_IC.xib in Resources */,
 				3C4C018A17E3C54A00FA2842 /* Icon-120.png in Resources */,
 				3CCA85CC19A97B8B000B6B1D /* Icon-58@2x.png in Resources */,
+				A00065E41F8D34B0006F6CEE /* VPPASADataController.xib in Resources */,
 				3C4C018B17E3C54A00FA2842 /* Icon-152.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1404,9 +1451,11 @@
 				3C1E728F15B21511005CFE10 /* List30minViewController.m in Sources */,
 				A03DC76A1E066CE8001875AA /* VPDataManager.m in Sources */,
 				A032629F1E056875003F234F /* Utility.m in Sources */,
+				A0C589521F8BE324001AAFF8 /* VPChartsController.m in Sources */,
 				A03262961E055B81003F234F /* NotificationSettingsController.m in Sources */,
 				3C1E729315B2178C005CFE10 /* Chart30minViewController.m in Sources */,
 				3CE345CF1970D25D00D37D54 /* MBProgressHUD.m in Sources */,
+				A00065E81F8D393F006F6CEE /* VPStateSegmentControl.m in Sources */,
 				3C1E729615B21E95005CFE10 /* MenuViewController.m in Sources */,
 				A03262AA1E056E91003F234F /* VPPickerViewCell.m in Sources */,
 				A03262A71E056D31003F234F /* VPTableViewCell.m in Sources */,
@@ -1455,6 +1504,7 @@
 				3C95374F172D3E2B001459DA /* UnderRightViewController.m in Sources */,
 				3C6F9CAB1734D17E001652F2 /* ConstraintsHistViewController.m in Sources */,
 				3C9B48F017898467001C3221 /* MyUnitsViewController.m in Sources */,
+				A00065E31F8D34B0006F6CEE /* VPPASADataController.m in Sources */,
 				A03262A21E056A0D003F234F /* VPTextFieldCell.m in Sources */,
 				3C5EF2DA178E3C950028A4B3 /* List5mPDViewController.m in Sources */,
 				3C5EF2DF178E51BA0028A4B3 /* CustomCell5PD.m in Sources */,

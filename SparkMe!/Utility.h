@@ -63,6 +63,7 @@
 #define kPlaceholderColor kLightBlueGrayColor
 
 //globalDefs
+#define kAppTintColor RGB(52, 145, 190)
 #define kAppBackgroundColor RGB(242.0, 244.0, 245.0)
 #define kDefaultInteritemPadding kTableViewSmallPadding
 #define kDefaultSidePadding 15.0

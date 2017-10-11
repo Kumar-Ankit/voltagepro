@@ -194,7 +194,7 @@
                 }};
             
             [tweetSheet addImage:image];
-            [tweetSheet setInitialText:[@"Check out the current traded & pre-dispatch elec. price & demand!" stringByAppendingString:@"\VoltagePro for iPhone."]];
+            [tweetSheet setInitialText:[@"Check out the current traded & pre-dispatch elec. price & demand!" stringByAppendingString:@"\nVoltagePro for iPhone."]];
             [tweetSheet setCompletionHandler:completionHandler];
             [self presentViewController:tweetSheet animated:YES completion:nil];
         }

@@ -47,6 +47,7 @@
 @property(nonatomic,retain) IBOutlet UIButton *generatorLabel;
 
 @property(nonatomic,retain) IBOutlet UIButton *data5minPD;
+@property (weak, nonatomic) IBOutlet UIButton *buttonPASA;
 
 @property (strong, nonatomic) IBOutlet ILTranslucentView *blurView;
 

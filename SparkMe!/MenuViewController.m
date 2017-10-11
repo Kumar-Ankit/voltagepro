@@ -14,7 +14,7 @@
 #import "NotificationSettingsController.h"
 #import "TFHpple.h"
 #import "Utility.h"
-
+#import "VPChartsController.h"
 //#import "UAPush.h"
 #import "UAPushSettingsViewController.h"
 
@@ -96,157 +96,6 @@
     
     //    if price alerts flag is set to 1, then make icon visible, else make it invisible and ensure that push is set to off
     
-    
-    //    if([[[NSUserDefaults standardUserDefaults] stringForKey:@"PriceAlertFlag"] isEqualToString:@"1"]){
-    //        data5minPD.hidden = NO;
-    //        tradingData.hidden = NO;
-    //        last24Data.hidden = NO;
-    //        marketNotice.hidden = NO;
-    //        generatorLabel.hidden = NO;
-    //
-    //        pushSettings.hidden = NO;
-    //
-    //        if([UAPush shared].pushEnabled==NO){
-    //
-    //            [UAPush shared].pushEnabled = YES;
-    //
-    //            [[UAPush shared] updateRegistration];
-    //        }
-    //
-    //
-    //
-    //    } else {
-    //
-    ////        hide the icon, and turn off push at urban airship so the user no longer receives notifications although they may still have registered for channels
-    //
-    //        data5minPD.hidden = YES;
-    //        tradingData.hidden = YES;
-    //        last24Data.hidden = YES;
-    //        marketNotice.hidden = YES;
-    //        generatorLabel.hidden = YES;
-    //
-    //        pushSettings.hidden = YES;
-    //
-    //        if([UAPush shared].pushEnabled==YES){
-    //
-    //            [UAPush shared].pushEnabled = NO;
-    //
-    //            [[UAPush shared] updateRegistration];
-    //        }
-    //
-    //
-    //        CGRect marketBtFrame = marketSnapshot.frame;
-    //        marketBtFrame.origin.x = 87;
-    //        marketBtFrame.origin.y = 370;
-    //        marketSnapshot.frame = marketBtFrame;
-    //
-    //
-    //        CGRect icBtFrame = interConnect.frame;
-    //        icBtFrame.origin.x = 87;
-    //        icBtFrame.origin.y = 300;
-    //        interConnect.frame = icBtFrame;
-    //
-    //
-    //
-    //
-    //    }
-    
-    
-    
-    //set button colours and gradient
-    //        UIColor *yellowOp = [UIColor yellowColor];
-    //        UIColor *orangeOp = [UIColor orangeColor];
-    
-    
-    //    UIColor *DarkGreyOp = [UIColor whiteColor];
-    //    UIColor *LightGreyOp = [UIColor lightGrayColor];
-    //
-    //    CAGradientLayer *gradient = [CAGradientLayer layer];
-    //    gradient.frame = [[marketSnapshot layer] bounds];
-    //    gradient.cornerRadius = 8;
-    //    gradient.colors = [NSArray arrayWithObjects:
-    //                       (id)DarkGreyOp.CGColor,
-    //                       (id)LightGreyOp.CGColor,
-    //                       nil];
-    //    gradient.locations = [NSArray arrayWithObjects:
-    //                          [NSNumber numberWithFloat:0.0f],
-    //                          [NSNumber numberWithFloat:0.7],
-    //                          nil];
-    //
-    //    CAGradientLayer *gradient1 = [CAGradientLayer layer];
-    //    gradient1.frame = [[tradingData layer] bounds];
-    //    gradient1.cornerRadius = 8;
-    //    gradient1.colors = [NSArray arrayWithObjects:
-    //                        (id)DarkGreyOp.CGColor,
-    //                        (id)LightGreyOp.CGColor,
-    //                        nil];
-    //    gradient1.locations = [NSArray arrayWithObjects:
-    //                           [NSNumber numberWithFloat:0.0f],
-    //                           [NSNumber numberWithFloat:0.7],
-    //                           nil];
-    //
-    //    CAGradientLayer *gradient2 = [CAGradientLayer layer];
-    //    gradient2.frame = [[last24Data layer] bounds];
-    //    gradient2.cornerRadius = 8;
-    //    gradient2.colors = [NSArray arrayWithObjects:
-    //                        (id)DarkGreyOp.CGColor,
-    //                        (id)LightGreyOp.CGColor,
-    //                        nil];
-    //    gradient2.locations = [NSArray arrayWithObjects:
-    //                           [NSNumber numberWithFloat:0.0f],
-    //                           [NSNumber numberWithFloat:0.7],
-    //                           nil];
-    //
-    //    CAGradientLayer *gradient3 = [CAGradientLayer layer];
-    //    gradient3.frame = [[interConnect layer] bounds];
-    //    gradient3.cornerRadius = 8;
-    //    gradient3.colors = [NSArray arrayWithObjects:
-    //                        (id)DarkGreyOp.CGColor,
-    //                        (id)LightGreyOp.CGColor,
-    //                        nil];
-    //    gradient3.locations = [NSArray arrayWithObjects:
-    //                           [NSNumber numberWithFloat:0.0f],
-    //                           [NSNumber numberWithFloat:0.7],
-    //                           nil];
-    //
-    //    CAGradientLayer *gradient4 = [CAGradientLayer layer];
-    //    gradient4.frame = [[marketNotice layer] bounds];
-    //    gradient4.cornerRadius = 8;
-    //    gradient4.colors = [NSArray arrayWithObjects:
-    //                        (id)DarkGreyOp.CGColor,
-    //                        (id)LightGreyOp.CGColor,
-    //                        nil];
-    //    gradient4.locations = [NSArray arrayWithObjects:
-    //                           [NSNumber numberWithFloat:0.0f],
-    //                           [NSNumber numberWithFloat:0.7],
-    //                           nil];
-    //
-    //
-    //
-    //    CAGradientLayer *gradient5 = [CAGradientLayer layer];
-    //    gradient5.frame = [[generatorLabel layer] bounds];
-    //    gradient5.cornerRadius = 8;
-    //    gradient5.colors = [NSArray arrayWithObjects:
-    //                        (id)DarkGreyOp.CGColor,
-    //                        (id)LightGreyOp.CGColor,
-    //                        nil];
-    //    gradient5.locations = [NSArray arrayWithObjects:
-    //                           [NSNumber numberWithFloat:0.0f],
-    //                           [NSNumber numberWithFloat:0.7],
-    //                           nil];
-    //
-    //    CAGradientLayer *gradient6 = [CAGradientLayer layer];
-    //    gradient6.frame = [[data5minPD layer] bounds];
-    //    gradient6.cornerRadius = 8;
-    //    gradient6.colors = [NSArray arrayWithObjects:
-    //                        (id)DarkGreyOp.CGColor,
-    //                        (id)LightGreyOp.CGColor,
-    //                        nil];
-    //    gradient6.locations = [NSArray arrayWithObjects:
-    //                           [NSNumber numberWithFloat:0.0f],
-    //                           [NSNumber numberWithFloat:0.7],
-    //                           nil];
-    
     //    [[marketSnapshot layer] insertSublayer:gradient atIndex:gradIndex];
     marketSnapshot.layer.cornerRadius = 8.0f;
     marketSnapshot.layer.borderWidth = 1.0f;
@@ -274,6 +123,10 @@
     data5minPD.layer.cornerRadius = 8.0f;
     data5minPD.layer.borderWidth = 1.0f;
     data5minPD.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    
+    _buttonPASA.layer.cornerRadius = 8.0f;
+    _buttonPASA.layer.borderWidth = 1.0f;
+    _buttonPASA.layer.borderColor = [UIColor lightGrayColor].CGColor;
     
     //    [[marketNotice layer] insertSublayer:gradient4 atIndex:gradIndex];
     marketNotice.layer.cornerRadius = 8.0f;
@@ -532,6 +385,12 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)pasaTapped:(id)sender {
+    VPChartsController *charts = [[VPChartsController alloc] initWithNibName:@"VPChartsController" bundle:nil];
+    charts.mtPASAURL = @"http://hvbroker.azurewebsites.net/mtpasa_chart.php?region=NSW1";
+    [self.navigationController pushViewController:charts animated:YES];
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
     
@@ -578,30 +437,13 @@
         
     }
     if ([[segue identifier] isEqualToString:@"push5PD"]) {
-        
-        //        [self.navigationController setNavigationBarHidden:NO animated:NO];
-        
+                
         [self.navigationController setToolbarHidden:YES animated:NO];
         
     }
     
     
 }
-
-//- (IBAction)goToSubview:(id)sender{
-//    
-////    SubMenuViewController * viewController = [[SubMenuViewController alloc] initWithNibName:nil bundle:nil];
-//    [UIView transitionWithView:self.view.window
-//                      duration:1.0f
-//                       options:UIViewAnimationOptionTransitionCurlUp
-//                    animations:^{
-//                        [self performSegueWithIdentifier:@"toSubMenu" sender:self];
-//                    }
-//                    completion:NULL];
-//    
-//}
-
-
 
 - (void) viewWillAppear:(BOOL)animated
 {
@@ -616,7 +458,6 @@
 {
     
     [self.navigationController setNavigationBarHidden:NO animated:animated];
-    //    [self.navigationController setToolbarHidden:NO animated:YES];
     [super viewWillDisappear:animated];
 }
 
