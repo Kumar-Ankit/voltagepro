@@ -5,8 +5,9 @@
 //  Created by Shivam Jaiswal on 10/10/17.
 //
 
-#import <UIKit/UIKit.h>
+#import "VPViewController.h"
+@class VPPASATimeCompareModel;
 
-@interface VPPASADataController : UIViewController
-@property (nonatomic, strong) NSString *stateName;
+@interface VPPASADataController : VPViewController
+@property (nonatomic, strong) VPPASATimeCompareModel *timeModel;
 @end

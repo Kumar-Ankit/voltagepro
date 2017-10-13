@@ -68,6 +68,10 @@
 #define kDefaultInteritemPadding kTableViewSmallPadding
 #define kDefaultSidePadding 15.0
 
+//WebContants and Path
+#define kMTPASAChartURL(time_id) [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/mtpasa_chart.php?region=NSW1&id=%@",time_id]
+#define kMTPASATimePath @"http://hvbroker.azurewebsites.net/webservices/?type=hvbconroller&requestmethod=mtpassdataTimeIdList"
+
 @interface Utility : NSObject
 + (Utility *)shared;
 
@@ -79,8 +83,10 @@
 + (void)removeDataforKey:(NSString *)key;
 + (void)saveData:(id)data forKey:(NSString *)key;
 + (id)dataForKey:(NSString *)key;
+
 + (NSString *)userName;
 + (NSString *)password;
+
 - (NSString *)currencyStringFromString:(NSString *)string;
 
 + (CGSize)sizeForAttributedString:(NSAttributedString *)attrString width:(float)width;

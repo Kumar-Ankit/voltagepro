@@ -6,8 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VPViewController.h"
 
-@interface VPChartsController : UIViewController
+@interface VPPASAChartsController : VPViewController
 @property (nonatomic, strong) NSString *mtPASAURL;
 @property (nonatomic, strong) NSString *stPASAURL;
 @end

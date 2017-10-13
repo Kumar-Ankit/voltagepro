@@ -11,6 +11,7 @@
 #import "VPDataManager.h"
 #import "VPPASADataModel.h"
 #import "Utility.h"
+#import "VPPASATimeCompareModel.h"
 
 @interface VPPASADataController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) VPStateSegmentControl *segmentControl;
@@ -47,10 +48,10 @@
 {
     [Utility showHUDonView:self.view];
     
-    NSString *stateName = [self selectedStateName];
     NSInteger index = self.segmentControl.selectedSegmentIndex;
     __weak typeof(self)weakSelf = self;
-    [[VPDataManager sharedManager] fetchPASADataWithStateName:stateName withSelectedIndex:index completion:^(VPPASADataModel *response, NSError *error, NSInteger index) {
+
+    [[VPDataManager sharedManager] fetchPASADataWithPath:[self requestPath] withSelectedIndex:index completion:^(VPPASADataModel *response, NSError *error, NSInteger index) {
         [weakSelf processResponse:response error:error index:index];
     }];
 }
@@ -71,6 +72,24 @@
     self.pasaModel = model;
     self.publishDate.text = [NSString stringWithFormat:@"Publish Date : %@",model.publish_date];
     [self.tableView reloadData];
+}
+
+- (NSString *)requestPath
+{
+    NSString *stateName = [self selectedStateName];
+    NSString *keyUrl = [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/webservices/?type=hvbconroller&requestmethod=mtpassdata&node=%@1&id=%@",stateName,self.timeModel.time_id];
+    
+    return keyUrl;
+}
+
+- (VPPASATimeCompareModel *)timeModel{
+    
+    if (!_timeModel) {
+        _timeModel = [VPPASATimeCompareModel new];
+        _timeModel.time_id = @"0";
+    }
+    
+    return _timeModel;
 }
 
 - (NSString *)selectedStateName

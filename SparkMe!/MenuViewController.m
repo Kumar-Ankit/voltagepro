@@ -14,7 +14,7 @@
 #import "NotificationSettingsController.h"
 #import "TFHpple.h"
 #import "Utility.h"
-#import "VPChartsController.h"
+#import "VPPASAChartsController.h"
 //#import "UAPush.h"
 #import "UAPushSettingsViewController.h"
 
@@ -386,8 +386,8 @@
 }
 
 - (IBAction)pasaTapped:(id)sender {
-    VPChartsController *charts = [[VPChartsController alloc] initWithNibName:@"VPChartsController" bundle:nil];
-    charts.mtPASAURL = @"http://hvbroker.azurewebsites.net/mtpasa_chart.php?region=NSW1";
+    VPPASAChartsController *charts = [[VPPASAChartsController alloc] initFromNib];
+    charts.mtPASAURL = kMTPASAChartURL(@"0");
     [self.navigationController pushViewController:charts animated:YES];
 }
 

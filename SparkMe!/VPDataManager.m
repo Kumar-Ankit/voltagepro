@@ -8,8 +8,9 @@
 
 #import "VPDataManager.h"
 #import "VPNetworkManager.h"
-#import "Utility.h"
-
+#import "VPPASADataModel.h"
+#import "NotificationMTLModel.h"
+#import "VPPASATimeCompareModel.h"
 @interface VPDataManager ()
 @property (nonatomic, strong) NSMutableArray *activeURLs;
 @end
@@ -166,26 +167,24 @@
     });
 }
 
-- (void)fetchPASADataWithStateName:(NSString *)stateName withSelectedIndex:(NSInteger)index completion:(void (^)(VPPASADataModel *, NSError *, NSInteger))completionBlock
+- (void)fetchPASADataWithPath:(NSString *)path withSelectedIndex:(NSInteger)index completion:(void (^)(VPPASADataModel *, NSError *, NSInteger))completionBlock
 {
-    if (!stateName) {
+    if (!path) {
         if (completionBlock) {
             completionBlock (nil, [VPNetworkManager generalError], index);
             return;
         }
     }
     
-    NSString *keyUrl = [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/webservices/?type=hvbconroller&requestmethod=mtpassdata&node=%@1",stateName];
-    
-    if ([self.activeURLs containsObject:keyUrl]) {
+    if ([self.activeURLs containsObject:path]) {
         return;
     }else{
-        [self.activeURLs addObject:keyUrl];
+        [self.activeURLs addObject:path];
     }
     
-    [[VPNetworkManager aemoManger] createPostRequestWithParameters:nil withRequestPath:keyUrl withCompletionBlock:^(id responseObject, NSError *error) {
+    [[VPNetworkManager sharedManger] createPostRequestWithParameters:nil withRequestPath:path withCompletionBlock:^(id responseObject, NSError *error) {
         
-        [self.activeURLs removeObject:keyUrl];
+        [self.activeURLs removeObject:path];
         
         if (error)
         {
@@ -205,6 +204,56 @@
         {
             if (completionBlock) {
                 completionBlock (nil, [VPNetworkManager generalError], index);
+                return;
+            }
+        }
+    }];
+}
+
+- (void)fetchPASATimes:(NSString *)path completion:(void (^)(NSArray *, NSError *))completionBlock
+{
+    if (!path) {
+        if (completionBlock) {
+            completionBlock (nil, [VPNetworkManager generalError]);
+            return;
+        }
+    }
+    
+    [[VPNetworkManager sharedManger] createGetRequestWithParameters:nil withRequestPath:path withCompletionBlock:^(id responseObject, NSError *error) {
+        
+        if (error)
+        {
+            if (completionBlock) {
+                completionBlock (nil ,error);
+            }
+        }
+        else if ([responseObject isKindOfClass:[NSDictionary class]])
+        {
+            NSArray *rawTimes = responseObject[@"data"];
+            if ([rawTimes isKindOfClass:[NSArray class]])
+            {
+                NSMutableArray *temp = [NSMutableArray new];
+                for (NSDictionary *dict in rawTimes) {
+                    VPPASATimeCompareModel *time = [[VPPASATimeCompareModel alloc] initWithDictionary:dict];
+                    [temp addObject:time];
+                }
+                
+                if (completionBlock) {
+                    completionBlock ([temp copy] , nil);
+                }
+            }
+            else
+            {
+                if (completionBlock) {
+                    completionBlock (nil, [VPNetworkManager generalError]);
+                    return;
+                }
+            }
+        }
+        else
+        {
+            if (completionBlock) {
+                completionBlock (nil, [VPNetworkManager generalError]);
                 return;
             }
         }

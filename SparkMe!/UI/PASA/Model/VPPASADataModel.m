@@ -22,7 +22,7 @@
         [serverPublishDateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
 
         NSDateFormatter *publishDateFormatter = [[NSDateFormatter alloc] init];
-        [publishDateFormatter setDateFormat:@"HH:mm dd/MM/yyyy"];
+        [publishDateFormatter setDateFormat:@"HH:mm:ss dd/MM/yyyy"];
         
         if (rawPublishDate) {
             NSDate *date = [serverPublishDateFormatter dateFromString:rawPublishDate];

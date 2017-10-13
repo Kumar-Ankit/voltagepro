@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NotificationMTLModel.h"
-#import "VPPASADataModel.h"
 #import "Utility.h"
+
+@class VPPASADataModel,NotificationMTLModel;
 
 @interface VPDataManager : NSObject
 + (VPDataManager *)sharedManager;
@@ -23,8 +23,13 @@
 - (void)fetchAEMOData:(NSDictionary *)parameters
            completion:(void (^)(NSDictionary* response, NSError *error))completionBlock;
 
-- (void)loadDataWithContentsOfURL:(NSString *)ulrStr withSelectedIndex:(NSInteger)index completion:(void (^)(NSData* response, NSError *error, NSInteger index))completionBlock;
+- (void)loadDataWithContentsOfURL:(NSString *)ulrStr withSelectedIndex:(NSInteger)index
+                       completion:(void (^)(NSData* response, NSError *error, NSInteger index))completionBlock;
 
-- (void)fetchPASADataWithStateName:(NSString *)stateName withSelectedIndex:(NSInteger)index completion:(void (^)(VPPASADataModel* response, NSError *error, NSInteger index))completionBlock;
+- (void)fetchPASADataWithPath:(NSString *)path withSelectedIndex:(NSInteger)index
+                        completion:(void (^)(VPPASADataModel* response, NSError *error, NSInteger index))completionBlock;
+
+- (void)fetchPASATimes:(NSString *)path completion:(void (^)(NSArray* times, NSError *error))completionBlock;
+
 
 @end

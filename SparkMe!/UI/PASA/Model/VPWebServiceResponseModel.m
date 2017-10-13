@@ -10,6 +10,10 @@
 @implementation VPWebServiceResponseModel
 - (id)initWithDictionary:(NSDictionary *)dictionary
 {
+    if (![dictionary isKindOfClass:[NSDictionary class]]) {
+        return nil;
+    }
+    
     self = [super init];
     if (self) {
         
