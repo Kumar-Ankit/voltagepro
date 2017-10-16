@@ -68,9 +68,20 @@
 #define kDefaultInteritemPadding kTableViewSmallPadding
 #define kDefaultSidePadding 15.0
 
+//enums
+typedef enum{
+    MTPASA,
+    STPASA
+}PASAType;
+
+
 //WebContants and Path
 #define kMTPASAChartURL(time_id) [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/mtpasa_chart.php?region=NSW1&id=%@",time_id]
+#define kSTPASAChartURL(time_id) [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/stpasa_chart.php?region=NSW1&id=%@",time_id]
+
 #define kMTPASATimePath @"http://hvbroker.azurewebsites.net/webservices/?type=hvbconroller&requestmethod=mtpassdataTimeIdList"
+
+#define kSTPASATimePath @"http://hvbroker.azurewebsites.net/webservices/?type=hvbconroller&requestmethod=stpassdataTimeIdList"
 
 @interface Utility : NSObject
 + (Utility *)shared;

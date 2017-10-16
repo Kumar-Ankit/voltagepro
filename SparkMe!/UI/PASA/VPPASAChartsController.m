@@ -34,6 +34,8 @@
 {
     VPTimeSelectionController *time = [[VPTimeSelectionController alloc] init];
     time.delegate = self;
+    time.controllerType = [self controllerType];
+
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:time];
     [self presentViewController:nav animated:YES completion:nil];
 }
@@ -42,7 +44,24 @@
 {
     VPPASADataController *pasaData = [[VPPASADataController alloc] initFromNib];
     pasaData.timeModel = self.selectedTimeModel;
+    pasaData.controllerType = [self controllerType];
     [self.navigationController pushViewController:pasaData animated:YES];
+}
+
+- (PASAType)controllerType{
+    switch (self.segmentControl.selectedSegmentIndex) {
+        case 0:
+            return MTPASA;
+            break;
+        
+        case 1:
+            return STPASA;
+            break;
+            
+        default:
+            return MTPASA;
+            break;
+    }
 }
 
 - (IBAction)segmentButtonTapped:(UISegmentedControl *)segmentControl
@@ -97,10 +116,6 @@
     [Utility hideHUDForView:self.view];
 }
 
-- (void)webViewDidStartLoad:(UIWebView *)webView{
-    NSLog(@"webViewDidStartLoad : %@",webView.request.URL.absoluteString);
-}
-
 #pragma mark - VPTimeSelectionControllerDelagate
 - (void)timeSelectionController:(VPTimeSelectionController *)controller didSelcectTime:(VPPASATimeCompareModel *)time
 {
@@ -113,6 +128,11 @@
             case 0:
                 self.mtPASAURL = kMTPASAChartURL(time.time_id);
                 [self loadMTPASAChart];
+                break;
+            
+            case 1:
+                self.stPASAURL = kSTPASAChartURL(time.time_id);
+                [self loadSTPASAChart];
                 break;
                 
             default:

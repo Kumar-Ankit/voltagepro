@@ -77,7 +77,19 @@
 - (NSString *)requestPath
 {
     NSString *stateName = [self selectedStateName];
-    NSString *keyUrl = [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/webservices/?type=hvbconroller&requestmethod=mtpassdata&node=%@1&id=%@",stateName,self.timeModel.time_id];
+    NSString *keyUrl;
+    switch (self.controllerType) {
+        case MTPASA:
+            keyUrl = [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/webservices/?type=hvbconroller&requestmethod=mtpassdata&node=%@1&id=%@",stateName,self.timeModel.time_id];
+            break;
+            
+        case STPASA:
+            keyUrl = [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/webservices/?type=hvbconroller&requestmethod=stpassdata&node=%@1&id=%@",stateName,self.timeModel.time_id];
+            break;
+            
+        default:
+            break;
+    }
     
     return keyUrl;
 }

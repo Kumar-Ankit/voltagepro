@@ -388,6 +388,7 @@
 - (IBAction)pasaTapped:(id)sender {
     VPPASAChartsController *charts = [[VPPASAChartsController alloc] initFromNib];
     charts.mtPASAURL = kMTPASAChartURL(@"0");
+    charts.stPASAURL = kSTPASAChartURL(@"0");
     [self.navigationController pushViewController:charts animated:YES];
 }
 

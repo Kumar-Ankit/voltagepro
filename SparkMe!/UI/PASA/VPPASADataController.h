@@ -8,6 +8,8 @@
 #import "VPViewController.h"
 @class VPPASATimeCompareModel;
 
+
 @interface VPPASADataController : VPViewController
 @property (nonatomic, strong) VPPASATimeCompareModel *timeModel;
+@property (nonatomic, assign) PASAType controllerType;
 @end

@@ -49,9 +49,26 @@
 {
     [Utility showHUDonView:self.view];
     __weak typeof(self)weakSelf = self;
-    [[VPDataManager sharedManager] fetchPASATimes:kMTPASATimePath completion:^(NSArray *times, NSError *error) {
+    [[VPDataManager sharedManager] fetchPASATimes:[self requestPath] completion:^(NSArray *times, NSError *error) {
         [weakSelf processTimes:times error:error];
     }];
+}
+
+- (NSString *)requestPath
+{
+    switch (self.controllerType) {
+        case MTPASA:
+            return kMTPASATimePath;
+            break;
+            
+        case STPASA:
+            return kSTPASATimePath;
+            break;
+            
+        default:
+            return nil;
+            break;
+    }
 }
 
 - (void)processTimes:(NSArray *)times error:(NSError *)error

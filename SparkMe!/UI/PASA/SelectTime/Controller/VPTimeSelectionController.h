@@ -15,4 +15,6 @@
 
 @interface VPTimeSelectionController : VPViewController
 @property (nonatomic, weak) id <VPTimeSelectionControllerDelegate> delegate;
+@property (nonatomic, assign) PASAType controllerType;
+
 @end
