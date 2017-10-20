@@ -60,6 +60,7 @@
 
 - (void)handleForeground{
     [self allocTimer];
+    [self refreshData];
 }
 
 - (void)allocTimer{
