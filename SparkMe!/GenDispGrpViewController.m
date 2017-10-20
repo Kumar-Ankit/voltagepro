@@ -2436,6 +2436,11 @@
     
 }
 
+- (void)refreshData{
+    [super refreshData];
+    [self refreshData:nil];
+}
+
 -(IBAction)refreshData:(id)sender{
     
     

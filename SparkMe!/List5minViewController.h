@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "VPAutoDownloadViewController.h"
 
-@interface List5minViewController : UIViewController{
+@interface List5minViewController : VPAutoDownloadViewController{
     NSArray *nem5min;
     
     NSMutableArray *tableViewLabel;

@@ -131,6 +131,11 @@
     }
 }
 
+- (void)refreshData{
+    [super refreshData];
+    [self refreshData:nil];
+}
+
 - (void)loadPart1 {
     MBProgressHUD *hudUpdateUIView = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
     hudUpdateUIView.labelText = @"Loading...";

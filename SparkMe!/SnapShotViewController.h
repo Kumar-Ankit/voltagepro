@@ -6,10 +6,10 @@
 //
 //
 
-#import <UIKit/UIKit.h>
+#import "VPAutoDownloadViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface SnapShotViewController : UIViewController{
+@interface SnapShotViewController : VPAutoDownloadViewController{
     
     
     UIButton *headingbut1;

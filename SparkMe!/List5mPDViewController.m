@@ -72,7 +72,10 @@
 }
 
 
-
+- (void)refreshData{
+    [super refreshData];
+    [self refreshData:nil];
+}
 
 - (void)viewDidLoad
 {

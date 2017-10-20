@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
+#import "VPAutoDownloadViewController.h"
 
 
-
-@interface List30minViewController : UIViewController<MBProgressHUDDelegate>{
+@interface List30minViewController : VPAutoDownloadViewController<MBProgressHUDDelegate>{
     NSArray *nem5min;
     
     NSMutableArray *priceArray;

@@ -199,6 +199,11 @@ timeArrayNSW, timeArrayQLD, timeArraySA, timeArrayTAS, timeArrayVIC;
     [self setup];
 }
 
+- (void)refreshData{
+    [super refreshData];
+    [self refreshData:nil];
+}
+
 -(IBAction)segmentControlTap:(UISegmentedControl *)sender
 {
     switch (sender.selectedSegmentIndex)

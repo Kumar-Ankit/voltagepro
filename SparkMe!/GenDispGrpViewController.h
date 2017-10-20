@@ -6,11 +6,11 @@
 //
 //
 
-#import <UIKit/UIKit.h>
+#import "VPAutoDownloadViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "URBSegmentedControl.h"
 
-@interface GenDispGrpViewController : UIViewController{
+@interface GenDispGrpViewController : VPAutoDownloadViewController{
     NSMutableArray *duidArray;
     NSMutableArray *scadaArray;
     NSMutableArray *descArray;

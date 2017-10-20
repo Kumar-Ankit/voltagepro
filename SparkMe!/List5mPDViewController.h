@@ -6,9 +6,9 @@
 //
 //
 
-#import <UIKit/UIKit.h>
+#import "VPAutoDownloadViewController.h"
 
-@interface List5mPDViewController : UIViewController{
+@interface List5mPDViewController : VPAutoDownloadViewController{
     
     UILabel *dateLastUpdated;
     UILabel *headerLabels;

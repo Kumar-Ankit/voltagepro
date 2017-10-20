@@ -44,6 +44,11 @@
     [self downloadData];
 }
 
+- (void)refreshData{
+    [super refreshData];
+    [self downloadData];
+}
+
 - (void)downloadData
 {
     [Utility showHUDonView:self.view];

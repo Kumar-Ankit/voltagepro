@@ -236,6 +236,7 @@
 		A03DC7671E066A01001875AA /* VPNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A03DC7661E066A01001875AA /* VPNetworkManager.m */; };
 		A03DC76A1E066CE8001875AA /* VPDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A03DC7691E066CE8001875AA /* VPDataManager.m */; };
 		A03DC7701E066F11001875AA /* NotificationMTLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A03DC76F1E066F11001875AA /* NotificationMTLModel.m */; };
+		A04BCBDE1F99ED2500AAFEAF /* VPAutoDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A04BCBDD1F99ED2500AAFEAF /* VPAutoDownloadViewController.m */; };
 		A08064EA1E067E8800BB9EF7 /* VPDetailTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A08064E91E067E8800BB9EF7 /* VPDetailTextFieldCell.m */; };
 		A08064ED1E06A72400BB9EF7 /* TwoButtonViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A08064EC1E06A72400BB9EF7 /* TwoButtonViewCell.m */; };
 		A08064F01E06CAA400BB9EF7 /* VPSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A08064EF1E06CAA400BB9EF7 /* VPSwitchCell.m */; };
@@ -578,6 +579,8 @@
 		A03DC7691E066CE8001875AA /* VPDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPDataManager.m; sourceTree = "<group>"; };
 		A03DC76E1E066F11001875AA /* NotificationMTLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationMTLModel.h; sourceTree = "<group>"; };
 		A03DC76F1E066F11001875AA /* NotificationMTLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationMTLModel.m; sourceTree = "<group>"; };
+		A04BCBDC1F99ED2500AAFEAF /* VPAutoDownloadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPAutoDownloadViewController.h; sourceTree = "<group>"; };
+		A04BCBDD1F99ED2500AAFEAF /* VPAutoDownloadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPAutoDownloadViewController.m; sourceTree = "<group>"; };
 		A08064E81E067E8800BB9EF7 /* VPDetailTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPDetailTextFieldCell.h; sourceTree = "<group>"; };
 		A08064E91E067E8800BB9EF7 /* VPDetailTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPDetailTextFieldCell.m; sourceTree = "<group>"; };
 		A08064EB1E06A72400BB9EF7 /* TwoButtonViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoButtonViewCell.h; sourceTree = "<group>"; };
@@ -1089,6 +1092,8 @@
 			children = (
 				A00D4A721F91490900570E7B /* VPViewController.h */,
 				A00D4A731F91490900570E7B /* VPViewController.m */,
+				A04BCBDC1F99ED2500AAFEAF /* VPAutoDownloadViewController.h */,
+				A04BCBDD1F99ED2500AAFEAF /* VPAutoDownloadViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1570,6 +1575,7 @@
 				3C630ACB15DF3B0000318D23 /* SubMenuViewController.m in Sources */,
 				3C5814EE15DFD598001A2836 /* NoticeDetailViewController.m in Sources */,
 				A03DC7671E066A01001875AA /* VPNetworkManager.m in Sources */,
+				A04BCBDE1F99ED2500AAFEAF /* VPAutoDownloadViewController.m in Sources */,
 				A00D4A7B1F914C5200570E7B /* VPPASATimeCompareModel.m in Sources */,
 				3C31ABA2184028F7005EDC03 /* ioapi.c in Sources */,
 				A00D4A7F1F914CEE00570E7B /* VPTimeSelectionController.m in Sources */,

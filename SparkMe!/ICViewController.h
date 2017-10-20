@@ -6,13 +6,13 @@
 //
 //
 
-#import <UIKit/UIKit.h>
+#import "VPAutoDownloadViewController.h"
 #import "DispPrice.h"
 #import "DispRegionSum.h"
 #import "IcFlows.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface ICViewController : UIViewController{
+@interface ICViewController : VPAutoDownloadViewController{
     UILabel *dateLastUpdated;
     
     UILabel *saDemand;
