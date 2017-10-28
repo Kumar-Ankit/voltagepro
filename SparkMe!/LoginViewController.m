@@ -11,7 +11,7 @@
 #import "MBProgressHUD.h"
 #import "KeychainItemWrapper.h"
 #import "Reachability.h"
-
+#import "Utility.h"
 #import "CompanyViewController.h"
 
 
@@ -146,12 +146,12 @@
 
 - (void)loadPart1
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
-        HUD.yOffset = -100.f;
-        HUD.labelText = @"Authenticating";
-    });
-
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
+//        HUD.yOffset = -100.f;
+//        HUD.labelText = @"Authenticating";
+//    });
+    [Utility showHUDonView:self.view];
     [self performSelector:@selector(loadPart2) withObject:nil afterDelay:0];
 }
 
@@ -411,11 +411,10 @@
         
     } else {
         
-        [self loadPart1];
-        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self loadPart1];
+        });
     }
-    
-    
 }
 
 //- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
@@ -499,10 +498,21 @@
 {
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self.navigationController setToolbarHidden:YES animated:NO];
-    
-    //    [super viewWillAppear:animated];
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self handelAutoLogin];
+}
+
+- (void)handelAutoLogin
+{
+    if (txtPassword.text.length && txtUsername.text.length) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self loginClicked:nil];
+        });
+    }
+}
 
 
 - (void) viewWillDisappear:(BOOL)animated
