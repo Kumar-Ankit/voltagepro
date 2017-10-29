@@ -6,10 +6,11 @@
 //
 
 #import "VPAutoDownloadViewController.h"
-@class VPPASATimeCompareModel;
+@class PASAModel;
 
 
 @interface VPPASADataController : VPAutoDownloadViewController
-@property (nonatomic, strong) VPPASATimeCompareModel *timeModel;
+@property (nonatomic, strong) PASAModel *pasa;
 @property (nonatomic, assign) PASAType controllerType;
+@property (nonatomic, assign) NSInteger defaultStateIndex;
 @end

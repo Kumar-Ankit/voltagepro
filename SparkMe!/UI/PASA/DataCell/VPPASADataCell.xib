@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-10-19" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="La8-b9-V2X">
@@ -30,7 +30,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PASA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnN-Tq-cIs">
-                        <rect key="frame" x="145" y="15" width="30.5" height="14"/>
+                        <rect key="frame" x="100" y="15" width="30.5" height="14"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -41,20 +41,30 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Params" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okJ-W9-T1g">
+                        <rect key="frame" x="184.5" y="15" width="41" height="14"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="La8-b9-V2X" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2mQ-fA-Ykp"/>
-                    <constraint firstItem="TnN-Tq-cIs" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="OiK-8k-h48"/>
+                    <constraint firstItem="okJ-W9-T1g" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="IC0-k7-XXy"/>
+                    <constraint firstItem="TnN-Tq-cIs" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="-45" id="OiK-8k-h48"/>
                     <constraint firstAttribute="trailing" secondItem="KaF-cJ-tTb" secondAttribute="trailing" constant="12" id="elr-R8-ljp"/>
                     <constraint firstItem="KaF-cJ-tTb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hk8-Gb-DMQ"/>
                     <constraint firstItem="La8-b9-V2X" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="i43-rC-78q"/>
                     <constraint firstItem="TnN-Tq-cIs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lQn-aA-ycI"/>
+                    <constraint firstItem="okJ-W9-T1g" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="45" id="sfK-mO-Hf0"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="labelDate" destination="La8-b9-V2X" id="GoO-uN-JtG"/>
                 <outlet property="labelDelta" destination="KaF-cJ-tTb" id="2b4-On-Psx"/>
                 <outlet property="labelPASA" destination="TnN-Tq-cIs" id="cZI-EI-VMc"/>
+                <outlet property="labelParams" destination="okJ-W9-T1g" id="448-wz-HfR"/>
+                <outlet property="pasaLayout" destination="OiK-8k-h48" id="Mzm-Dh-Fel"/>
             </connections>
             <point key="canvasLocation" x="-91" y="87"/>
         </tableViewCell>

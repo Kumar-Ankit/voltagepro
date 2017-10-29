@@ -11,7 +11,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *labelDate;
 @property (weak, nonatomic) IBOutlet UILabel *labelPASA;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *pasaLayout;
 @property (weak, nonatomic) IBOutlet UILabel *labelDelta;
+@property (weak, nonatomic) IBOutlet UILabel *labelParams;
 
 + (CGFloat)height;
 + (UINib *)cellNib;

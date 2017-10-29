@@ -244,6 +244,7 @@
 		A0C589531F8BE324001AAFF8 /* VPPASAChartsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0C589511F8BE324001AAFF8 /* VPPASAChartsController.xib */; };
 		A0C92C061E0EF15B0083DA7B /* SleepTimePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0C92C051E0EF15B0083DA7B /* SleepTimePickerController.m */; };
 		A0D0ADDB1E0ECFD2009C8067 /* VPSleepFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D0ADDA1E0ECFD2009C8067 /* VPSleepFooterView.m */; };
+		A0DAE5ED1FA658DE00AD6F1C /* PASAModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DAE5EC1FA658DE00AD6F1C /* PASAModel.m */; };
 		D0739CF41E0B654B00F39629 /* alert_new.png in Resources */ = {isa = PBXBuildFile; fileRef = D0739CF31E0B654B00F39629 /* alert_new.png */; };
 		D0739D021E0BB0B600F39629 /* Cashregister.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0739CF71E0BB0B500F39629 /* Cashregister.caf */; };
 		D0739D031E0BB0B600F39629 /* Chewbacca.caf in Resources */ = {isa = PBXBuildFile; fileRef = D0739CF81E0BB0B500F39629 /* Chewbacca.caf */; };
@@ -594,6 +595,8 @@
 		A0C92C051E0EF15B0083DA7B /* SleepTimePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SleepTimePickerController.m; sourceTree = "<group>"; };
 		A0D0ADD91E0ECFD2009C8067 /* VPSleepFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSleepFooterView.h; sourceTree = "<group>"; };
 		A0D0ADDA1E0ECFD2009C8067 /* VPSleepFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPSleepFooterView.m; sourceTree = "<group>"; };
+		A0DAE5EB1FA658DE00AD6F1C /* PASAModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PASAModel.h; sourceTree = "<group>"; };
+		A0DAE5EC1FA658DE00AD6F1C /* PASAModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PASAModel.m; sourceTree = "<group>"; };
 		B175BBDBB325AE11F3F10208 /* libPods-Sparky.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sparky.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7BC4D3D741F9FD5FB62279F /* Pods-Sparky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sparky.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sparky/Pods-Sparky.debug.xcconfig"; sourceTree = "<group>"; };
 		D0739CF31E0B654B00F39629 /* alert_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = alert_new.png; path = ../alert_new.png; sourceTree = "<group>"; };
@@ -1142,6 +1145,8 @@
 				A02D67EF1F8E158400058E93 /* VPPASADataModel.m */,
 				A02D67F11F8E15C700058E93 /* VPWebServiceResponseModel.h */,
 				A02D67F21F8E15C700058E93 /* VPWebServiceResponseModel.m */,
+				A0DAE5EB1FA658DE00AD6F1C /* PASAModel.h */,
+				A0DAE5EC1FA658DE00AD6F1C /* PASAModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1606,6 +1611,7 @@
 				3C95374F172D3E2B001459DA /* UnderRightViewController.m in Sources */,
 				3C6F9CAB1734D17E001652F2 /* ConstraintsHistViewController.m in Sources */,
 				3C9B48F017898467001C3221 /* MyUnitsViewController.m in Sources */,
+				A0DAE5ED1FA658DE00AD6F1C /* PASAModel.m in Sources */,
 				A00065E31F8D34B0006F6CEE /* VPPASADataController.m in Sources */,
 				A03262A21E056A0D003F234F /* VPTextFieldCell.m in Sources */,
 				3C5EF2DA178E3C950028A4B3 /* List5mPDViewController.m in Sources */,

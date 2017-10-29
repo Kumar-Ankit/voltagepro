@@ -52,12 +52,16 @@
     if (self) {
         
         self.mt_pasa = [self numberValue:dictionary[@"mt_pasa"]];
+        self.st_pasa = [self numberValue:dictionary[@"st_pasa"]];
+        
         self.pasa_delta = [self numberValue:dictionary[@"pasa_delta"]];
         
         NSString *dateTime = dictionary[@"day"];
         if (dateTime.length) {
             self.day = [[Utility shared] pasaDateFromServerDate:dateTime];
         }
+        
+        self.rawDict = dictionary;
     }
     return self;
 }

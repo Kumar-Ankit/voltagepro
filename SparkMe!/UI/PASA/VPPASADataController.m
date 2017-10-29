@@ -12,11 +12,14 @@
 #import "VPPASADataModel.h"
 #import "Utility.h"
 #import "VPPASATimeCompareModel.h"
+#import "PASAModel.h"
 
 @interface VPPASADataController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) VPStateSegmentControl *segmentControl;
 @property (weak, nonatomic) IBOutlet UILabel *publishDate;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *pasaTrailing;
+@property (weak, nonatomic) IBOutlet UILabel *labelParams;
 @property (nonatomic, strong) VPPASADataModel *pasaModel;
 @end
 
@@ -28,6 +31,7 @@
     
     self.segmentControl = [[VPStateSegmentControl alloc] init];
     [self.segmentControl addTarget:self action:@selector(segmentControlTapped:) forControlEvents:UIControlEventValueChanged];
+    self.segmentControl.selectedSegmentIndex = self.defaultStateIndex;
     self.navigationItem.titleView = self.segmentControl;
     [self.navigationItem.titleView sizeToFit];
     
@@ -39,9 +43,28 @@
     
     self.tableView.tableFooterView = [UIView new];
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, kTableViewSmallPadding, 0, 0)];
-    [self.tableView registerNib:[VPPASADataCell cellNib] forCellReuseIdentifier:@"cellHeader"];
     [self.tableView registerNib:[VPPASADataCell cellNib] forCellReuseIdentifier:@"cellData"];
     [self downloadData];
+    
+    [self handelUI];
+}
+
+- (void)handelUI{
+    
+    switch (self.controllerType) {
+        case MTPASA:
+            self.pasaTrailing.constant = 0;
+            self.labelParams.text = @"";
+            break;
+            
+        case STPASA:
+            self.labelParams.text = [PASAModel shortNameForParamId:self.pasa.paramId];
+            break;
+            
+        default:
+            break;
+    }
+    
 }
 
 - (void)refreshData{
@@ -85,11 +108,11 @@
     NSString *keyUrl;
     switch (self.controllerType) {
         case MTPASA:
-            keyUrl = [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/webservices/?type=hvbconroller&requestmethod=mtpassdata&node=%@1&id=%@",stateName,self.timeModel.time_id];
+            keyUrl = [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/webservices/?type=hvbconroller&requestmethod=mtpassdata&node=%@1&id=%@",stateName,self.pasa.timeId];
             break;
             
         case STPASA:
-            keyUrl = [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/webservices/?type=hvbconroller&requestmethod=stpassdata&node=%@1&id=%@",stateName,self.timeModel.time_id];
+            keyUrl = [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/webservices/?type=hvbconroller&requestmethod=stpassdata&node=%@1&id=%@&id1=%@",stateName,self.pasa.timeId,self.pasa.paramId];
             break;
             
         default:
@@ -97,16 +120,6 @@
     }
     
     return keyUrl;
-}
-
-- (VPPASATimeCompareModel *)timeModel{
-    
-    if (!_timeModel) {
-        _timeModel = [VPPASATimeCompareModel new];
-        _timeModel.time_id = @"0";
-    }
-    
-    return _timeModel;
 }
 
 - (NSString *)selectedStateName
@@ -142,10 +155,23 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
  
     VPPASADataCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellData" forIndexPath:indexPath];
+    cell.pasaLayout.constant = self.pasaTrailing.constant;
+    
     VPPASAItem *pasa = self.pasaModel.pasaItems[indexPath.row];
     cell.labelDate.text = pasa.day;
-    cell.labelPASA.text = [[[Utility shared] numberFormatter] stringFromNumber:pasa.mt_pasa];
     cell.labelDelta.text = [[[Utility shared] numberFormatter] stringFromNumber:pasa.pasa_delta];
+    
+    if (pasa.st_pasa) {
+        NSString *prm = pasa.rawDict[self.pasa.paramId];
+        prm = prm ? prm : @"";
+        cell.labelParams.text = [[[Utility shared] numberFormatter] stringFromNumber:@([prm doubleValue])];
+        cell.labelPASA.text = [[[Utility shared] numberFormatter] stringFromNumber:pasa.st_pasa];
+    }
+    else if (pasa.mt_pasa)
+    {
+        cell.labelParams.text = @"";
+        cell.labelPASA.text = [[[Utility shared] numberFormatter] stringFromNumber:pasa.mt_pasa];
+    }
     
     cell.backgroundColor = (indexPath.row % 2) ? kSeparatorColor : [UIColor whiteColor];
     

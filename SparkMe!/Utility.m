@@ -196,7 +196,7 @@
 {
     if (!_serverFormatter) {
         _serverFormatter = [[NSDateFormatter alloc] init];
-        [_serverFormatter setDateFormat:@"yyyy-MM-dd'T'hh:mm:ss"];
+        [_serverFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
     }
     return _serverFormatter;
 }
@@ -213,7 +213,15 @@
 - (NSString *)pasaDateFromServerDate:(NSString *)serverDateString
 {
     NSDate *date = [self.serverFormatter dateFromString:serverDateString];
+    if (!date) {
+        NSLog(@"");
+    }
+    
     NSString *string = [self.pasaFormatter stringFromDate:date];
+    if (!string) {
+        return @"";
+    }
+    
     return string;
 }
 

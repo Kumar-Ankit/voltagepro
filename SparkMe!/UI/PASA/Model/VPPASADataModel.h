@@ -16,6 +16,9 @@
 
 @interface VPPASAItem : VPWebServiceResponseModel
 @property (nonatomic, strong) NSNumber *mt_pasa;
+@property (nonatomic, strong) NSNumber *st_pasa;
 @property (nonatomic, strong) NSString *day;
 @property (nonatomic, strong) NSNumber *pasa_delta;
+@property (nonatomic, strong) NSDictionary *rawDict;
+
 @end

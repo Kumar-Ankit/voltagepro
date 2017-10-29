@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -16,6 +16,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VPPASADataController">
             <connections>
+                <outlet property="labelParams" destination="cfd-Py-0ys" id="ZKr-Ms-qe3"/>
+                <outlet property="pasaTrailing" destination="xt6-uM-PAH" id="itd-fP-Att"/>
                 <outlet property="publishDate" destination="ecm-77-NkG" id="zlv-I2-iRz"/>
                 <outlet property="tableView" destination="rV4-0p-bKO" id="myP-WK-U5T"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -40,7 +42,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PASA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kx9-dH-7Eb">
-                            <rect key="frame" x="172.5" y="4" width="30.5" height="14"/>
+                            <rect key="frame" x="127.5" y="4" width="30.5" height="14"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Params" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfd-Py-0ys">
+                            <rect key="frame" x="212" y="3" width="41" height="14"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -59,8 +67,10 @@
                         <constraint firstItem="ved-qR-Z8H" firstAttribute="centerY" secondItem="9yT-ej-rZd" secondAttribute="centerY" id="5FB-UW-fB4"/>
                         <constraint firstAttribute="height" constant="21" id="RMs-YE-6m6"/>
                         <constraint firstItem="kx9-dH-7Eb" firstAttribute="centerY" secondItem="9yT-ej-rZd" secondAttribute="centerY" id="TOX-es-RPt"/>
+                        <constraint firstItem="cfd-Py-0ys" firstAttribute="centerX" secondItem="9yT-ej-rZd" secondAttribute="centerX" constant="45" id="atQ-p7-d0k"/>
                         <constraint firstAttribute="trailing" secondItem="ved-qR-Z8H" secondAttribute="trailing" constant="12" id="dxU-UU-zc4"/>
-                        <constraint firstItem="kx9-dH-7Eb" firstAttribute="centerX" secondItem="9yT-ej-rZd" secondAttribute="centerX" id="xt6-uM-PAH"/>
+                        <constraint firstItem="cfd-Py-0ys" firstAttribute="centerY" secondItem="9yT-ej-rZd" secondAttribute="centerY" id="pKp-4F-k2E"/>
+                        <constraint firstItem="kx9-dH-7Eb" firstAttribute="centerX" secondItem="9yT-ej-rZd" secondAttribute="centerX" constant="-45" id="xt6-uM-PAH"/>
                     </constraints>
                 </view>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24m-FZ-jFG">
