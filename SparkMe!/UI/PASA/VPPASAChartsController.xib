@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -17,6 +17,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VPPASAChartsController">
             <connections>
                 <outlet property="segmentControl" destination="tBf-53-tNp" id="Hfl-Eq-Xzx"/>
+                <outlet property="stPASAParamsButton" destination="lIp-dW-VBG" id="jIF-vy-1fP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="webView" destination="WFk-Ax-VxG" id="CsF-kf-frA"/>
             </connections>
@@ -59,10 +60,21 @@
                                     <constraint firstAttribute="height" constant="0.5" id="Fay-Si-bJI"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIp-dW-VBG">
+                                <rect key="frame" x="15" y="7" width="51" height="30"/>
+                                <state key="normal" title="Params">
+                                    <color key="titleColor" red="0.89411764709999997" green="0.3921568627" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="stPASAParamsButtonTapped:" destination="-1" eventType="touchUpInside" id="ewF-2n-KHq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="tBf-53-tNp" firstAttribute="centerY" secondItem="E94-X1-lGW" secondAttribute="centerY" id="1yQ-W6-gBQ"/>
                             <constraint firstItem="tBf-53-tNp" firstAttribute="centerX" secondItem="E94-X1-lGW" secondAttribute="centerX" id="G5M-a8-zHk"/>
+                            <constraint firstItem="lIp-dW-VBG" firstAttribute="centerY" secondItem="E94-X1-lGW" secondAttribute="centerY" id="OBb-2G-LBx"/>
+                            <constraint firstItem="lIp-dW-VBG" firstAttribute="leading" secondItem="E94-X1-lGW" secondAttribute="leading" constant="15" id="aqo-vn-bzj"/>
                             <constraint firstAttribute="trailing" secondItem="m3r-KQ-yQf" secondAttribute="trailing" constant="15" id="c5c-LX-XlO"/>
                             <constraint firstAttribute="trailing" secondItem="9u8-H1-6JY" secondAttribute="trailing" id="fM1-bG-bu6"/>
                             <constraint firstItem="9u8-H1-6JY" firstAttribute="leading" secondItem="E94-X1-lGW" secondAttribute="leading" id="lTE-te-1Rg"/>
@@ -82,7 +94,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFk-Ax-VxG">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="606"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
             </subviews>
@@ -91,7 +103,7 @@
                 <constraint firstAttribute="trailing" secondItem="xt9-mF-mQz" secondAttribute="trailing" id="64a-bT-GGK"/>
                 <constraint firstItem="xt9-mF-mQz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CHI-BV-wXn"/>
                 <constraint firstItem="i4D-fo-ghm" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="FgN-X4-GbW"/>
-                <constraint firstItem="i4D-fo-ghm" firstAttribute="top" secondItem="WFk-Ax-VxG" secondAttribute="bottom" constant="5" id="KWi-j1-r2T"/>
+                <constraint firstItem="i4D-fo-ghm" firstAttribute="top" secondItem="WFk-Ax-VxG" secondAttribute="bottom" id="KWi-j1-r2T"/>
                 <constraint firstItem="WFk-Ax-VxG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QBn-6e-ipx"/>
                 <constraint firstAttribute="bottom" secondItem="xt9-mF-mQz" secondAttribute="bottom" id="QOJ-J4-JMy"/>
                 <constraint firstItem="WFk-Ax-VxG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dyM-5O-eD2"/>

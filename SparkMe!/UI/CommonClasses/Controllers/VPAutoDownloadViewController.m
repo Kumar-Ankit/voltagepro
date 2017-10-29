@@ -51,7 +51,7 @@
 }
 
 - (float)refreshTimeIntervalInSeconds{
-    return 60 * 5 ;
+    return 60 * 1 ;
 }
 
 - (void)handleBackground{

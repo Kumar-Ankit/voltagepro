@@ -9,6 +9,4 @@
 #import "VPViewController.h"
 
 @interface VPPASAChartsController : VPViewController
-@property (nonatomic, strong) NSString *mtPASAURL;
-@property (nonatomic, strong) NSString *stPASAURL;
 @end

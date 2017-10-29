@@ -76,8 +76,8 @@ typedef enum{
 
 
 //WebContants and Path
-#define kMTPASAChartURL(time_id) [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/mtpasa_chart.php?region=NSW1&id=%@",time_id]
-#define kSTPASAChartURL(time_id) [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/stpasa_chart.php?region=NSW1&id=%@",time_id]
+//#define kMTPASAChartURL(region_id,time_id) [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/mtpasa_chart.php?region=%@1&id=%@",region_id,time_id]
+//#define kSTPASAChartURL(time_id) [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/stpasa_chart.php?region=NSW1&id=%@",time_id]
 
 #define kMTPASATimePath @"http://hvbroker.azurewebsites.net/webservices/?type=hvbconroller&requestmethod=mtpassdataTimeIdList"
 
