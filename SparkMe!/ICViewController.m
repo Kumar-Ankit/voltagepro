@@ -320,12 +320,23 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     }
     
     NSInteger indexSAPrice = [dispPrice.state indexOfObject:@"SA1"];
+    if (indexSAPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
+    
     NSString *indexSAPriceVal = [dispPrice.price objectAtIndex:indexSAPrice];
     saPrice.text= [NSString stringWithFormat:@"%.2f",[indexSAPriceVal floatValue]];
     saPrice.layer.borderColor = [UIColor greenColor].CGColor;
     saPrice.layer.borderWidth = 1.0;
     
     NSInteger indexVICPrice = [dispPrice.state indexOfObject:@"VIC1"];
+    if (indexVICPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
     NSString *indexVICPriceVal = [dispPrice.price objectAtIndex:indexVICPrice];
     vicPrice.text= [NSString stringWithFormat:@"%.2f",[indexVICPriceVal floatValue]];
     
@@ -333,18 +344,34 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     vicPrice.layer.borderWidth = 1.0;
     
     NSInteger indexNSWPrice = [dispPrice.state indexOfObject:@"NSW1"];
+    if (indexNSWPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
     NSString *indexNSWPriceVal = [dispPrice.price objectAtIndex:indexNSWPrice];
     nswPrice.text= [NSString stringWithFormat:@"%.2f",[indexNSWPriceVal floatValue]];
     nswPrice.layer.borderColor = [UIColor greenColor].CGColor;
     nswPrice.layer.borderWidth = 1.0;
     
     NSInteger indexQLDPrice = [dispPrice.state indexOfObject:@"QLD1"];
+    if (indexQLDPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
     NSString *indexQLDPriceVal = [dispPrice.price objectAtIndex:indexQLDPrice];
     qldPrice.text= [NSString stringWithFormat:@"%.2f",[indexQLDPriceVal floatValue]];
     qldPrice.layer.borderColor = [UIColor greenColor].CGColor;
     qldPrice.layer.borderWidth = 1.0;
     
     NSInteger indexTASPrice = [dispPrice.state indexOfObject:@"TAS1"];
+    if (indexTASPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
+
     NSString *indexTASPriceVal = [dispPrice.price objectAtIndex:indexTASPrice];
     tasPrice.text= [NSString stringWithFormat:@"%.2f",[indexTASPriceVal floatValue]];
     tasPrice.layer.borderColor = [UIColor greenColor].CGColor;
@@ -636,6 +663,12 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     NSLog(@"Index SA Price is %lu",(unsigned long)[dispPrice.state indexOfObject:@"SA1"]);
     
     NSInteger indexSAPrice = [dispPrice.state indexOfObject:@"SA1"];
+    if (indexSAPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
+
     NSString *indexSAPriceVal = [dispPrice.price objectAtIndex:indexSAPrice];
     saPrice.text= [NSString stringWithFormat:@"%.2f",[indexSAPriceVal floatValue]];
     
@@ -647,6 +680,12 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     
     
     NSInteger indexVICPrice = [dispPrice.state indexOfObject:@"VIC1"];
+    if (indexVICPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
+
     NSString *indexVICPriceVal = [dispPrice.price objectAtIndex:indexVICPrice];
     vicPrice.text= [NSString stringWithFormat:@"%.2f",[indexVICPriceVal floatValue]];
     
@@ -655,6 +694,12 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     vicPrice.layer.borderWidth = 1.0;
     
     NSInteger indexNSWPrice = [dispPrice.state indexOfObject:@"NSW1"];
+    if (indexNSWPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
+
     NSString *indexNSWPriceVal = [dispPrice.price objectAtIndex:indexNSWPrice];
     nswPrice.text= [NSString stringWithFormat:@"%.2f",[indexNSWPriceVal floatValue]];
     
@@ -663,6 +708,11 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     nswPrice.layer.borderWidth = 1.0;
     
     NSInteger indexQLDPrice = [dispPrice.state indexOfObject:@"QLD1"];
+    if (indexQLDPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
     NSString *indexQLDPriceVal = [dispPrice.price objectAtIndex:indexQLDPrice];
     qldPrice.text= [NSString stringWithFormat:@"%.2f",[indexQLDPriceVal floatValue]];
     
@@ -671,6 +721,12 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     qldPrice.layer.borderWidth = 1.0;
     
     NSInteger indexTASPrice = [dispPrice.state indexOfObject:@"TAS1"];
+    if (indexTASPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
+
     NSString *indexTASPriceVal = [dispPrice.price objectAtIndex:indexTASPrice];
     tasPrice.text= [NSString stringWithFormat:@"%.2f",[indexTASPriceVal floatValue]];
     
@@ -951,18 +1007,35 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     
     //    add labels for state/region price
     NSInteger indexSAPrice = [dispPrice.state indexOfObject:@"SA1"];
+    if (indexSAPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
+
     NSString *indexSAPriceVal = [dispPrice.price objectAtIndex:indexSAPrice];
     saPrice.text= [NSString stringWithFormat:@"%.2f",[indexSAPriceVal floatValue]];
     saPrice.layer.borderColor = [UIColor greenColor].CGColor;
     saPrice.layer.borderWidth = 1.0;
     
     NSInteger indexVICPrice = [dispPrice.state indexOfObject:@"VIC1"];
+    if (indexVICPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
     NSString *indexVICPriceVal = [dispPrice.price objectAtIndex:indexVICPrice];
     vicPrice.text= [NSString stringWithFormat:@"%.2f",[indexVICPriceVal floatValue]];
     vicPrice.layer.borderColor = [UIColor greenColor].CGColor;
     vicPrice.layer.borderWidth = 1.0;
     
     NSInteger indexNSWPrice = [dispPrice.state indexOfObject:@"NSW1"];
+    if (indexNSWPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
+
     NSString *indexNSWPriceVal = [dispPrice.price objectAtIndex:indexNSWPrice];
     nswPrice.text= [NSString stringWithFormat:@"%.2f",[indexNSWPriceVal floatValue]];
     
@@ -970,12 +1043,24 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     nswPrice.layer.borderWidth = 1.0;
     
     NSInteger indexQLDPrice = [dispPrice.state indexOfObject:@"QLD1"];
+    if (indexQLDPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
+
     NSString *indexQLDPriceVal = [dispPrice.price objectAtIndex:indexQLDPrice];
     qldPrice.text= [NSString stringWithFormat:@"%.2f",[indexQLDPriceVal floatValue]];
     qldPrice.layer.borderColor = [UIColor greenColor].CGColor;
     qldPrice.layer.borderWidth = 1.0;
     
     NSInteger indexTASPrice = [dispPrice.state indexOfObject:@"TAS1"];
+    if (indexTASPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
     NSString *indexTASPriceVal = [dispPrice.price objectAtIndex:indexTASPrice];
     tasPrice.text= [NSString stringWithFormat:@"%.2f",[indexTASPriceVal floatValue]];
     tasPrice.layer.borderColor = [UIColor greenColor].CGColor;
@@ -1225,6 +1310,11 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     //    add labels for state/region price
     
     NSInteger indexSAPrice = [dispPrice.state indexOfObject:@"SA1"];
+    if (indexSAPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
     NSString *indexSAPriceVal = [dispPrice.price objectAtIndex:indexSAPrice];
     saPrice.text= [NSString stringWithFormat:@"%.2f",[indexSAPriceVal floatValue]];
     
@@ -1234,6 +1324,12 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     
     
     NSInteger indexVICPrice = [dispPrice.state indexOfObject:@"VIC1"];
+    if (indexVICPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
+
     NSString *indexVICPriceVal = [dispPrice.price objectAtIndex:indexVICPrice];
     vicPrice.text= [NSString stringWithFormat:@"%.2f",[indexVICPriceVal floatValue]];
     
@@ -1242,6 +1338,12 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     vicPrice.layer.borderWidth = 1.0;
     
     NSInteger indexNSWPrice = [dispPrice.state indexOfObject:@"NSW1"];
+    if (indexNSWPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
+
     NSString *indexNSWPriceVal = [dispPrice.price objectAtIndex:indexNSWPrice];
     nswPrice.text= [NSString stringWithFormat:@"%.2f",[indexNSWPriceVal floatValue]];
     
@@ -1250,6 +1352,11 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     nswPrice.layer.borderWidth = 1.0;
     
     NSInteger indexQLDPrice = [dispPrice.state indexOfObject:@"QLD1"];
+    if (indexQLDPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
     NSString *indexQLDPriceVal = [dispPrice.price objectAtIndex:indexQLDPrice];
     qldPrice.text= [NSString stringWithFormat:@"%.2f",[indexQLDPriceVal floatValue]];
     
@@ -1258,6 +1365,12 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     qldPrice.layer.borderWidth = 1.0;
     
     NSInteger indexTASPrice = [dispPrice.state indexOfObject:@"TAS1"];
+    if (indexTASPrice == NSNotFound) {
+        [Utility showErrorAlertTitle:nil withMessage:kInsufficientData];
+        [Utility hideHUDForView:self.view];
+        return;
+    }
+
     NSString *indexTASPriceVal = [dispPrice.price objectAtIndex:indexTASPrice];
     tasPrice.text= [NSString stringWithFormat:@"%.2f",[indexTASPriceVal floatValue]];
     
