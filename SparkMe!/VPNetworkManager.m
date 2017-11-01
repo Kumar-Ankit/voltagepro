@@ -242,6 +242,17 @@ typedef enum{
     return error;
 }
 
++ (NSError *)generalErrorWithText:(NSString *)text{
+    
+    if (text.length == 0) {
+        return [VPNetworkManager generalError];
+    }
+    
+    NSError *error;
+    error = [NSError errorWithDomain:@"CoHo" code:1986 userInfo:@{NSLocalizedDescriptionKey : text}];
+    return error;
+}
+
 + (BOOL)isNetworkAvailable {
     AFNetworkReachabilityStatus status = [[AFNetworkReachabilityManager sharedManager] networkReachabilityStatus];
     if (status == AFNetworkReachabilityStatusNotReachable) {

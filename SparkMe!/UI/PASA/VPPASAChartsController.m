@@ -146,25 +146,20 @@
 {
     [Utility showHUDonView:self.view];
     [self.webView loadRequest:[NSURLRequest requestWithURL:[self.mtPASAModel MTPASAWebViewURL]]];
-    NSLog(@"Loading MTCharts%@",[self.mtPASAModel MTPASAWebViewURL].absoluteString);
+    NSLog(@"Loading MTCharts %@",[self.mtPASAModel MTPASAWebViewURL].absoluteString);
 }
 
 - (void)loadSTPASAChart
 {
     [Utility showHUDonView:self.view];
     [self.webView loadRequest:[NSURLRequest requestWithURL:[self.stPASAModel STPASAWebViewURL]]];
-    NSLog(@"Loading STCharts%@",[self.stPASAModel STPASAWebViewURL].absoluteString);
+    NSLog(@"Loading STCharts %@",[self.stPASAModel STPASAWebViewURL].absoluteString);
     
     NSString *title = [PASAModel shortNameForParamId:self.stPASAModel.paramId];
     [self.stPASAParamsButton setTitle:title forState:UIControlStateNormal];
 }
 
 #pragma mark - UIWebViewDelegate
-
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
-{
-    return YES;
-}
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     [Utility hideHUDForView:self.view];

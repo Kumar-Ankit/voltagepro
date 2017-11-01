@@ -32,5 +32,5 @@
 - (void)cancelAllTasks;
 - (void)updateAEMOHeaders;
 + (NSError *)generalError;
-
++ (NSError *)generalErrorWithText:(NSString *)text;
 @end

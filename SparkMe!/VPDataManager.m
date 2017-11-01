@@ -196,8 +196,12 @@
         {
             NSDictionary *data = responseObject[@"data"];
             VPPASADataModel *dataModel = [[VPPASADataModel alloc] initWithDictionary:data];
+            NSError *error = nil;
+            if (!dataModel) {
+                error = [VPNetworkManager generalErrorWithText:@"No Data Found!"];
+            }
             if (completionBlock) {
-                completionBlock (dataModel , nil, index);
+                completionBlock (dataModel , error, index);
             }
         }
         else

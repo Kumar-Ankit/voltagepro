@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *pasaTrailing;
 @property (weak, nonatomic) IBOutlet UILabel *labelParams;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerViewTopConstraints;
 @property (nonatomic, strong) VPPASADataModel *pasaModel;
 @end
 
@@ -47,6 +48,14 @@
     [self downloadData];
     
     [self handelUI];
+}
+
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"11.0")) {
+        self.headerViewTopConstraints.constant = CGRectGetMaxY(self.navigationController.navigationBar.frame);
+    }
 }
 
 - (void)handelUI{
