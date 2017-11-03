@@ -66,6 +66,7 @@
     VPTimeSelectionController *time = [[VPTimeSelectionController alloc] init];
     time.delegate = self;
     time.controllerType = [self controllerType];
+    time.preSelectedTimeId = [self modelForcontrollerType:[self controllerType]].timeId;
 
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:time];
     [self presentViewController:nav animated:YES completion:nil];

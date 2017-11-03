@@ -82,6 +82,22 @@
     
     self.times = times;
     [self.tableView reloadData];
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self scrollToPreSelectedTime];
+    });
+}
+
+- (void)scrollToPreSelectedTime
+{
+    for (NSInteger index = 0; index < self.times.count; index++) {
+        VPPASATimeCompareModel *time = self.times[index];
+        if ([time.time_id isEqualToString:self.preSelectedTimeId]) {
+            self.selectedRow = index;
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+            break;
+        }
+    }
 }
 
 - (void)cancelTapped{
