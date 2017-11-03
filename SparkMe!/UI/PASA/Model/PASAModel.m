@@ -18,7 +18,7 @@
     self = [super init];
     if (self) {
         self.timeId = @"0";
-        self.paramId = @"demand10";
+        self.paramId = @"NONE";
         self.regionId = @"NSW";
         
         self.stAllParams = [PASAModel stParamsArray];
@@ -27,16 +27,20 @@
 }
 
 + (NSArray *)stParamsArray{
-    return @[@"demand10",
+    return @[@"NONE",
+             @"demand10",
              @"demand50",
              @"demand90",
-             @"TOTALINTERMITTENTGENER",
-             @"DEMAND_AND_NONSCHEDGEN",
-             @"SEMISCHEDULEDCAPACITY"];
+             @"NonSchedGen"];
 }
 
 + (NSString *)shortNameForParamId:(NSString *)parmaId
 {
+    
+    if ([parmaId isEqualToString:@"NONE"]) {
+        return @"None";
+    }
+    
     if ([parmaId isEqualToString:@"demand10"]) {
         return @"DEM10";
     }
@@ -49,17 +53,10 @@
         return @"DEM90";
     }
     
-    if ([parmaId isEqualToString:@"TOTALINTERMITTENTGENER"]) {
-        return @"T.I.I";
+    if ([parmaId isEqualToString:@"NonSchedGen"]) {
+        return @"Wind";
     }
     
-    if ([parmaId isEqualToString:@"DEMAND_AND_NONSCHEDGEN"]) {
-        return @"D&N";
-    }
-    
-    if ([parmaId isEqualToString:@"SEMISCHEDULEDCAPACITY"]) {
-        return @"S.S.C.";
-    }
     
     return @"Params";
 }
