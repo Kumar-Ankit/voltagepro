@@ -67,7 +67,7 @@
             break;
             
         case STPASA:
-            self.labelParams.text = [PASAModel shortNameForParamId:self.pasa.paramId];
+            self.labelParams.text = self.pasa.activeSTParameter.shortText;
             break;
             
         default:
@@ -121,7 +121,7 @@
             break;
             
         case STPASA:
-            keyUrl = [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/webservices/?type=hvbconroller&requestmethod=stpassdata&node=%@1&id=%@&id1=%@",stateName,self.pasa.timeId,self.pasa.paramId];
+            keyUrl = [NSString stringWithFormat:@"http://hvbroker.azurewebsites.net/webservices/?type=hvbconroller&requestmethod=stpassdata&node=%@1&id=%@&id1=%@",stateName,self.pasa.timeId,self.pasa.activeSTParameter.serverText];
             break;
             
         default:
@@ -171,7 +171,7 @@
     cell.labelDelta.text = [[[Utility shared] numberFormatter] stringFromNumber:pasa.pasa_delta];
     
     if (pasa.st_pasa) {
-        NSString *prm = pasa.rawDict[self.pasa.paramId];
+        NSString *prm = pasa.rawDict[self.pasa.activeSTParameter.serverText];
         prm = prm ? prm : @"";
         cell.labelParams.text = [[[Utility shared] numberFormatter] stringFromNumber:@([prm doubleValue])];
         cell.labelPASA.text = [[[Utility shared] numberFormatter] stringFromNumber:pasa.st_pasa];

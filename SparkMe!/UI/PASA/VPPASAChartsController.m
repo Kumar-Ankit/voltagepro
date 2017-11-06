@@ -156,7 +156,7 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:[self.stPASAModel STPASAWebViewURL]]];
     NSLog(@"Loading STCharts %@",[self.stPASAModel STPASAWebViewURL].absoluteString);
     
-    NSString *title = [PASAModel shortNameForParamId:self.stPASAModel.paramId];
+    NSString *title = self.stPASAModel.activeSTParameter.shortText;
     [self.stPASAParamsButton setTitle:title forState:UIControlStateNormal];
 }
 
@@ -204,8 +204,8 @@
                                          destructiveButtonTitle:nil
                                               otherButtonTitles:nil];
     
-    for( NSString *title in self.stPASAModel.stAllParams)  {
-        [sheet addButtonWithTitle:title];
+    for( STPASAParameterModel *param in self.stPASAModel.stAllParams)  {
+        [sheet addButtonWithTitle:param.actualText];
     }
 
     [sheet showInView:self.view];
@@ -219,7 +219,7 @@
         return;
     }
     
-    self.stPASAModel.paramId = self.stPASAModel.stAllParams[index];
+    self.stPASAModel.activeSTParameter = self.stPASAModel.stAllParams[index];
     [self loadSTPASAChart];
 }
 
