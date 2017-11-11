@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSArray *regions;
 @property (nonatomic, strong) NSArray *sounds;
 @property (nonatomic, strong) NSArray *alerts;
+@property (nonatomic, strong) NSArray *priceRange;
 @end
 
 @implementation NotificationAddEditController
@@ -31,6 +32,7 @@
     self.regions = @[@"ALL",@"NSW",@"QLD",@"SA",@"TAS",@"VIC"];
     self.alerts = @[@"5 MIN",@"5 MIN PreDesp.",@"30 MIN PreDesp."];
     self.sounds = @[@"Default",@"Bird",@"Cat",@"Chewbacca",@"Cow",@"Doh",@"Dolphin",@"Demonstrative",@"Dwarf",@"Elephant",@"Fault",@"Frog",@"Friends",@"Inquisitiveness",@"Gameover",@"Jaws",@"Jawspower",@"Horse",@"Oringz",@"Pig",@"Raven",@"Solemn",@"Surprise"];
+    self.priceRange = @[@"Less Than", @"Greater Than"];
 
     self.tableView.tableFooterView = [UIView new];
     self.tableView.contentInset = (UIEdgeInsets) {-1.0, 0.0, 0.0, 0.0};;
@@ -55,6 +57,20 @@
                                                                           target:self
                                                                           action:@selector(saveCellTapped:)];
         self.navigationItem.rightBarButtonItem = rightBarButton;
+        
+        switch (self.model.priceForMode) {
+            case PriceForLessThan:
+                self.model.priceFor = self.priceRange[0];
+                break;
+                
+            case PriceForGreaterThan:
+                self.model.priceFor = self.priceRange[1];
+                break;
+                
+            default:
+                self.model.priceFor = nil;
+                break;
+        }
     }
 }
 
@@ -92,20 +108,13 @@
     }
     else if (indexPath.row == 2)
     {
-        VPDetailTextFieldCell *cell = [self tfCellForID:@"gtCell" path:indexPath tag:NotificationFieldTypeGreaterThan
-                                              titleText:@"Greater Than" tfText:self.model.greater_than tfMode:TextFieldModeRealNumber];
+        VPPickerViewCell *cell = [self pickerCellForID:@"priceRangeCell" path:indexPath tag:NotificationFieldTypePriceRange titleText:@"Price For" tfText:self.model.priceFor pickerMode:PickerCellModePicker];
         return cell;
     }
-    //else if (indexPath.row == 3)
-    //{
-      //  VPDetailTextFieldCell *cell = [self tfCellForID:@"etCell" path:indexPath tag:NotificationFieldTypeEquals
-                                              //titleText:@"Equals To" tfText:self.model.equals_to tfMode:TextFieldModeRealNumber];
-        //return cell;
-    //}
     else if (indexPath.row == 3)
     {
-        VPDetailTextFieldCell *cell = [self tfCellForID:@"ltCell" path:indexPath tag:NotificationFieldTypeLessThan
-                                              titleText:@"Less Than" tfText:self.model.less_than tfMode:TextFieldModeRealNumber];
+        VPDetailTextFieldCell *cell = [self tfCellForID:@"priceCell" path:indexPath tag:NotificationFieldTypePrice
+                                              titleText:@"Price" tfText:self.model.price tfMode:TextFieldModeRealNumber];
         return cell;
     }
     else
@@ -132,7 +141,7 @@
     
     tfCell.currentIndexPath = indexPath;
     tfCell.delegate = self;
-    tfCell.textField.placeholder = @"Price";
+    tfCell.textField.placeholder = @"Required";
     tfCell.nextIndexPath = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section];
     tfCell.previousIndexPath = [NSIndexPath indexPathForRow:indexPath.row - 1 inSection:indexPath.section];
     tfCell.textField.tag = tag;
@@ -279,10 +288,18 @@
         pickerCell.isPlaceholder = NO;
         [self playSound:text];
     }
+    else if (pickerCell.tag == NotificationFieldTypePriceRange)
+    {
+        NSString *text = [self.priceRange objectAtIndex:index];
+        [pickerCell setValueLabelText:text];
+        [self.model setText:text withFieldTag:(NotificationFieldType)pickerCell.tag pickerIndex:index];
+        pickerCell.isPlaceholder = NO;
+    }
 }
 
 - (void)pickerViewCell:(VPPickerViewCell *)pickerCell didSelectValueAtIndex:(NSInteger)index withText:(NSString *)text{
-    [self.model setText:text withFieldTag:(NotificationFieldType)pickerCell.tag];
+
+    [self.model setText:text withFieldTag:(NotificationFieldType)pickerCell.tag pickerIndex:index];
     
     if (pickerCell.tag == NotificationFieldTypeSound) {
         [self playSound:text];
@@ -297,7 +314,10 @@
         return self.alerts;
     }else if (pickerCell.tag == NotificationFieldTypeSound){
         return self.sounds;
-    }else{
+    }else if (pickerCell.tag == NotificationFieldTypePriceRange){
+        return self.priceRange;
+    }
+    else{
         return @[];
     }
 }
@@ -332,6 +352,18 @@
     {
         if (self.model.sound) {
             NSInteger index = [self.sounds indexOfObject:self.model.sound];
+            if (index == NSNotFound) {
+                return 0;
+            }else{
+                return index;
+            }
+        }
+        return 0;
+    }
+    else if (pickerCell.tag == NotificationFieldTypePriceRange)
+    {
+        if (self.model.priceFor) {
+            NSInteger index = [self.priceRange indexOfObject:self.model.priceFor];
             if (index == NSNotFound) {
                 return 0;
             }else{
@@ -391,11 +423,15 @@
     }
     
     if (!_model.greater_than.length  && !_model.less_than.length ) {
-        [self.invalidIndex addIndex:NotificationFieldTypeGreaterThan];
-       // [self.invalidIndex addIndex:NotificationFieldTypeEquals];
-        [self.invalidIndex addIndex:NotificationFieldTypeLessThan];
+        [self.invalidIndex addIndex:NotificationFieldTypePrice];
         isValid = NO;
     }
+
+    if (!_model.priceFor.length ) {
+        [self.invalidIndex addIndex:NotificationFieldTypePriceRange];
+        isValid = NO;
+    }
+
     
     if (!_model.sound.length) {
         [self.invalidIndex addIndex:NotificationFieldTypeSound];
@@ -422,10 +458,6 @@
     if (!_model.greater_than) {
         self.model.greater_than = @"";
     }
-    
-   //if (!_model.equals_to) {
-      //  self.model.equals_to = @"";
-    //}
     
     if (!_model.less_than) {
         self.model.less_than = @"";
