@@ -16,7 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VPPASADataController">
             <connections>
-                <outlet property="headerViewTopConstraints" destination="CHW-2X-gYJ" id="J7n-hG-vAq"/>
+                <outlet property="headerViewTopConstraints" destination="Xg0-xp-r6x" id="dng-mp-YbK"/>
                 <outlet property="labelParams" destination="cfd-Py-0ys" id="ZKr-Ms-qe3"/>
                 <outlet property="pasaTrailing" destination="xt6-uM-PAH" id="itd-fP-Att"/>
                 <outlet property="publishDate" destination="ecm-77-NkG" id="zlv-I2-iRz"/>
@@ -30,7 +30,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9yT-ej-rZd" userLabel="headerView">
-                    <rect key="frame" x="0.0" y="64" width="375" height="21"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2s2-7H-qJx">
                             <rect key="frame" x="12" y="4" width="25.5" height="14"/>
@@ -71,7 +71,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rV4-0p-bKO">
-                    <rect key="frame" x="0.0" y="85" width="375" height="517"/>
+                    <rect key="frame" x="0.0" y="21" width="375" height="581"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24m-FZ-jFG">
@@ -105,13 +105,13 @@
             <constraints>
                 <constraint firstItem="rV4-0p-bKO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="18s-fn-iBi"/>
                 <constraint firstItem="24m-FZ-jFG" firstAttribute="top" secondItem="ecm-77-NkG" secondAttribute="bottom" id="BoQ-Vl-daQ"/>
-                <constraint firstItem="9yT-ej-rZd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="CHW-2X-gYJ"/>
                 <constraint firstItem="24m-FZ-jFG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LLe-Un-ts1"/>
                 <constraint firstItem="rV4-0p-bKO" firstAttribute="top" secondItem="9yT-ej-rZd" secondAttribute="bottom" id="NHE-mZ-LXW"/>
                 <constraint firstAttribute="trailing" secondItem="24m-FZ-jFG" secondAttribute="trailing" id="UBQ-ai-ufC"/>
                 <constraint firstAttribute="trailing" secondItem="rV4-0p-bKO" secondAttribute="trailing" id="UaM-ay-WUR"/>
                 <constraint firstAttribute="bottom" secondItem="24m-FZ-jFG" secondAttribute="bottom" id="X4g-9M-JCF"/>
                 <constraint firstItem="ecm-77-NkG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="XXg-cf-gMw"/>
+                <constraint firstItem="9yT-ej-rZd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Xg0-xp-r6x"/>
                 <constraint firstAttribute="trailing" secondItem="9yT-ej-rZd" secondAttribute="trailing" id="b0J-IJ-MWt"/>
                 <constraint firstItem="9yT-ej-rZd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cAR-3R-Bk3"/>
                 <constraint firstAttribute="trailing" secondItem="ecm-77-NkG" secondAttribute="trailing" id="gdi-0U-Fg4"/>
