@@ -30,7 +30,7 @@
 
 
     self.regions = @[@"ALL",@"NSW",@"QLD",@"SA",@"TAS",@"VIC"];
-    self.alerts = @[@"5 MIN",@"5 MIN PreDesp.",@"30 MIN PreDesp."];
+    self.alerts = @[@"5 MIN",@"5 MIN PreDesp.",@"30 MIN PreDesp.",@"MT PASA Delta",@"ST PASA Delta"];
     self.sounds = @[@"Default",@"Bird",@"Cat",@"Chewbacca",@"Cow",@"Doh",@"Dolphin",@"Demonstrative",@"Dwarf",@"Elephant",@"Fault",@"Frog",@"Friends",@"Inquisitiveness",@"Gameover",@"Jaws",@"Jawspower",@"Horse",@"Oringz",@"Pig",@"Raven",@"Solemn",@"Surprise"];
     self.priceRange = @[@"Less Than", @"Greater Than"];
 
@@ -108,7 +108,7 @@
     }
     else if (indexPath.row == 2)
     {
-        VPPickerViewCell *cell = [self pickerCellForID:@"priceRangeCell" path:indexPath tag:NotificationFieldTypePriceRange titleText:@"Price For" tfText:self.model.priceFor pickerMode:PickerCellModePicker];
+        VPPickerViewCell *cell = [self pickerCellForID:@"priceRangeCell" path:indexPath tag:NotificationFieldTypePriceRange titleText:@"Alert When" tfText:self.model.priceFor pickerMode:PickerCellModePicker];
         return cell;
     }
     else if (indexPath.row == 3)
