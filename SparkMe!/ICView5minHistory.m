@@ -255,55 +255,62 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     
     NSLog(@"The value of the price row is %li", (long)priceIndex);
     
-    for(long i=priceIndex; i< priceIndex + 6; i++){
+    long currentIndex = priceIndex;
+    while (1)
+    {
+        NSArray *components = [[disp5min objectAtIndex:currentIndex] componentsSeparatedByString:@","];
+        if (![components[2] isEqualToString:@"PRICE"]) {
+            break;
+        }
         
-        //        NSLog(@"Row number is : %i",i);
+        NSString *intervention = components[8];
         
-        NSArray *components = [[disp5min objectAtIndex:i] componentsSeparatedByString:@","];
-        
-        //        [priceArray addObject:[NSString stringWithFormat:@"%@ %@", [components objectAtIndex:6],[components objectAtIndex:9]]];
-        
-        [dispPrice.state addObject:[components objectAtIndex:6]];
-        [dispPrice.price addObject:[components objectAtIndex:9]];
-        
+        if (![intervention isEqualToString:@"1"]) {
+            [dispPrice.state addObject:[components objectAtIndex:6]];
+            [dispPrice.price addObject:[components objectAtIndex:9]];
+        }
+        currentIndex++;
     }
     
-    for(long i=priceIndex + 6; i< priceIndex + 12; i++){
+    while (1)
+    {
+        NSArray *components = [[disp5min objectAtIndex:currentIndex] componentsSeparatedByString:@","];
+        if (![components[2] isEqualToString:@"REGIONSUM"]) {
+            break;
+        }
         
-        //        NSLog(@"Row number is : %i",i);
+        NSString *intervention = components[8];
         
-        NSArray *components = [[disp5min objectAtIndex:i] componentsSeparatedByString:@","];
-        
-        //        [regionSumArray addObject:[NSString stringWithFormat:@"%@ %@", [components objectAtIndex:6],[components objectAtIndex:9]]];
-        
-        [dispRegion.state addObject: [components objectAtIndex:6]];
-        [dispRegion.totDem addObject: [components objectAtIndex:9]];
-        [dispRegion.disGen addObject: [components objectAtIndex:13]];
-        [dispRegion.disLoad addObject: [components objectAtIndex:14]];
-        [dispRegion.netInchg addObject: [components objectAtIndex:15]];
-        
-        
+        if (![intervention isEqualToString:@"1"]) {
+            [dispRegion.state addObject: [components objectAtIndex:6]];
+            [dispRegion.totDem addObject: [components objectAtIndex:9]];
+            [dispRegion.disGen addObject: [components objectAtIndex:13]];
+            [dispRegion.disLoad addObject: [components objectAtIndex:14]];
+            [dispRegion.netInchg addObject: [components objectAtIndex:15]];
+        }
+        currentIndex++;
     }
     
-    for(long i=priceIndex + 12; i< priceIndex + 19; i++){
+    while (1)
+    {
+        NSArray *components = [[disp5min objectAtIndex:currentIndex] componentsSeparatedByString:@","];
+        if (![components[2] isEqualToString:@"INTERCONNECTORRES"]) {
+            break;
+        }
         
-        //        NSLog(@"Row number is : %i",i);
+        NSString *intervention = components[8];
         
-        NSArray *components = [[disp5min objectAtIndex:i] componentsSeparatedByString:@","];
-        
-        //        [regionSumArray addObject:[NSString stringWithFormat:@"%@ %@", [components objectAtIndex:6],[components objectAtIndex:9]]];
-        
-        [icFlows.icID addObject: [components objectAtIndex:6]];
-        [icFlows.meterFlow addObject: [components objectAtIndex:9]];
-        [icFlows.mwFlow addObject: [components objectAtIndex:10]];
-        [icFlows.mwLosses addObject: [components objectAtIndex:11]];
-        [icFlows.exportLimit addObject: [components objectAtIndex:15]];
-        [icFlows.importLimit addObject: [components objectAtIndex:16]];
-        
-        [icFlows.exportConId addObject: [components objectAtIndex:18]];
-        [icFlows.importConId addObject: [components objectAtIndex:19]];
-        
-        
+        if (![intervention isEqualToString:@"1"]) {
+            [icFlows.icID addObject: [components objectAtIndex:6]];
+            [icFlows.meterFlow addObject: [components objectAtIndex:9]];
+            [icFlows.mwFlow addObject: [components objectAtIndex:10]];
+            [icFlows.mwLosses addObject: [components objectAtIndex:11]];
+            [icFlows.exportLimit addObject: [components objectAtIndex:15]];
+            [icFlows.importLimit addObject: [components objectAtIndex:16]];
+            [icFlows.exportConId addObject: [components objectAtIndex:18]];
+            [icFlows.importConId addObject: [components objectAtIndex:19]];
+        }
+        currentIndex++;
     }
     
     
@@ -622,57 +629,62 @@ saVicHey, saVicMur, vicNsw, terranoraICLine, qniICLine, basslinkICLine, murrayli
     //NSLog(@"The value of the price row is %i", priceIndex);
     
     
-    for(long i=priceIndex; i< priceIndex + 6; i++){
+    NSInteger currentIndex = priceIndex;
+    while (1)
+    {
+        NSArray *components = [[disp5min objectAtIndex:currentIndex] componentsSeparatedByString:@","];
+        if (![components[2] isEqualToString:@"PRICE"]) {
+            break;
+        }
         
-        //        NSLog(@"Row number is : %i",i);
+        NSString *intervention = components[8];
         
-        NSArray *components = [[disp5min objectAtIndex:i] componentsSeparatedByString:@","];
-        
-        //        [priceArray addObject:[NSString stringWithFormat:@"%@ %@", [components objectAtIndex:6],[components objectAtIndex:9]]];
-        
-        [dispPrice.state addObject:[components objectAtIndex:6]];
-        [dispPrice.price addObject:[components objectAtIndex:9]];
-        
+        if (![intervention isEqualToString:@"1"]) {
+            [dispPrice.state addObject:[components objectAtIndex:6]];
+            [dispPrice.price addObject:[components objectAtIndex:9]];
+        }
+        currentIndex++;
     }
     
-    for(long i=priceIndex + 6; i< priceIndex + 12; i++){
+    while (1)
+    {
+        NSArray *components = [[disp5min objectAtIndex:currentIndex] componentsSeparatedByString:@","];
+        if (![components[2] isEqualToString:@"REGIONSUM"]) {
+            break;
+        }
         
-        //        NSLog(@"Row number is : %i",i);
+        NSString *intervention = components[8];
         
-        NSArray *components = [[disp5min objectAtIndex:i] componentsSeparatedByString:@","];
-        
-        //        [regionSumArray addObject:[NSString stringWithFormat:@"%@ %@", [components objectAtIndex:6],[components objectAtIndex:9]]];
-        
-        [dispRegion.state addObject: [components objectAtIndex:6]];
-        [dispRegion.totDem addObject: [components objectAtIndex:9]];
-        [dispRegion.disGen addObject: [components objectAtIndex:13]];
-        [dispRegion.disLoad addObject: [components objectAtIndex:14]];
-        [dispRegion.netInchg addObject: [components objectAtIndex:15]];
-        
-        
+        if (![intervention isEqualToString:@"1"]) {
+            [dispRegion.state addObject: [components objectAtIndex:6]];
+            [dispRegion.totDem addObject: [components objectAtIndex:9]];
+            [dispRegion.disGen addObject: [components objectAtIndex:13]];
+            [dispRegion.disLoad addObject: [components objectAtIndex:14]];
+            [dispRegion.netInchg addObject: [components objectAtIndex:15]];
+        }
+        currentIndex++;
     }
     
-    for(long i=priceIndex + 12; i< priceIndex + 19; i++){
+    while (1)
+    {
+        NSArray *components = [[disp5min objectAtIndex:currentIndex] componentsSeparatedByString:@","];
+        if (![components[2] isEqualToString:@"INTERCONNECTORRES"]) {
+            break;
+        }
         
-        //        NSLog(@"Row number is : %i",i);
+        NSString *intervention = components[8];
         
-        NSArray *components = [[disp5min objectAtIndex:i] componentsSeparatedByString:@","];
-        
-        //        [regionSumArray addObject:[NSString stringWithFormat:@"%@ %@", [components objectAtIndex:6],[components objectAtIndex:9]]];
-        
-        [icFlows.icID addObject: [components objectAtIndex:6]];
-        [icFlows.meterFlow addObject: [components objectAtIndex:9]];
-        [icFlows.mwFlow addObject: [components objectAtIndex:10]];
-        [icFlows.mwLosses addObject: [components objectAtIndex:11]];
-        [icFlows.exportLimit addObject: [components objectAtIndex:15]];
-        [icFlows.importLimit addObject: [components objectAtIndex:16]];
-        
-        [icFlows.exportConId addObject: [components objectAtIndex:18]];
-        [icFlows.importConId addObject: [components objectAtIndex:19]];
-        
-        
-        
-        
+        if (![intervention isEqualToString:@"1"]) {
+            [icFlows.icID addObject: [components objectAtIndex:6]];
+            [icFlows.meterFlow addObject: [components objectAtIndex:9]];
+            [icFlows.mwFlow addObject: [components objectAtIndex:10]];
+            [icFlows.mwLosses addObject: [components objectAtIndex:11]];
+            [icFlows.exportLimit addObject: [components objectAtIndex:15]];
+            [icFlows.importLimit addObject: [components objectAtIndex:16]];
+            [icFlows.exportConId addObject: [components objectAtIndex:18]];
+            [icFlows.importConId addObject: [components objectAtIndex:19]];
+        }
+        currentIndex++;
     }
     
     
