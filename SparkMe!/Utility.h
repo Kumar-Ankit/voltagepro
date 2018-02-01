@@ -80,7 +80,7 @@ typedef enum{
     STPASA
 }PASAType;
 
-#define kInsufficientData @"Data Insufficient"
+#define kInsufficientData @"AEMO data not feeding correctly for this screen. Please use the other tabs for spot infomation or try again later."
 
 #define kMTPASATimePath @"http://hvbroker.azurewebsites.net/webservices/?type=hvbconroller&requestmethod=mtpassdataTimeIdList"
 

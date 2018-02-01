@@ -171,7 +171,7 @@
         
         
         //        NSString *wepiTicker = [NSString stringWithFormat:@"Welcome to SPARKY PRO...Future News, Updates and Announcements will be displayed here..."];
-        NSString *wepiTicker = [NSString stringWithFormat:@"SPARKY PRO IS NOW VOLTAGE PRO - SPREAD THE WORD!"];
+        NSString *wepiTicker = [NSString stringWithFormat:@"TRY THE NEW VOLTAGE PRO MT PASA AND ST PASA ALERTS FUNCTIONALITY – GET BUSY"];
         
         NSArray *tickerStrings = [NSArray arrayWithObjects:wepiTicker, nil];
         
